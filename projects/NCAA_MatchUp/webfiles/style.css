@@ -1,0 +1,170 @@
+/* Document styling */
+body {
+  /*font-family: helvetica, sans-serif;*/
+  font-weight: 100;
+}
+
+#wrapper {
+  width: 820px;
+  /*width: 1200px;*/
+  margin: 0 auto;
+  position: relative;
+  padding-left: 20px;
+  font-weight: 100;
+    font-size:0.9em;
+    font-family: georgia, "helvetica neue",helvetica,arial,sans-serif; color: rgb(70,70,70);
+}
+
+#chart {
+  /*position: absolute;*/
+  position:fixed;
+  /*top: 30px;*/
+  /*left: 250px;*/
+  max-width: 600px;
+  /*margin: 25px auto;*/
+}
+
+#chartdiv {
+  position:absolute;
+  width:600px;
+  right:0;
+}
+
+#menu {
+  /*position: absolute;*/
+  top: 65px;
+  left: 30px;
+  width: 200px;
+}
+
+
+#title {
+  /*position: absolute;*/
+  top: 0;
+  left: 30px;
+  font-size: 16px;
+  letter-spacing: -2px;
+  line-height: 100%;
+}
+
+#about {
+  position: absolute;
+  top: 300px;
+  left: 30px;
+  width: 200px;
+  font-size: 12px;
+}
+
+li, h1, h2, tr {
+  font-weight: 100;
+}
+
+h2 {
+  font-size: 11px;
+  margin: 0;
+  color: #666;
+}
+
+ul {
+  list-style: none;
+  font-size: 12px;
+  padding: 0;
+  margin-top: 3px;
+}
+
+li,tr {
+  cursor: pointer;
+  padding-bottom: 5px;
+}
+
+li:hover {
+  color: #000;
+}
+
+
+li.preview {
+  font-weight: 400;
+}
+
+li.selected {
+  font-weight: bold;
+}
+
+li.selected1 {
+  font-weight: bold;
+  color: rgb(0,120,240);
+}
+
+li.selected2 {
+  font-weight: bold;
+  color: rgb(255,50,50);
+}
+
+tr{
+  font-size: 12px;
+}
+
+tr.selected1 {
+  font-weight: bold;
+  color: rgb(0,120,240);
+}
+
+tr.selected2 {
+  font-weight: bold;
+  color: rgb(255,50,50);
+}
+
+
+#page_header{
+   height: 50px; margin-top: 0px;  z-index: 1; background: rgba(255,255,255,0.85); top:0px ; text-align: left;
+    width:1000px;
+    padding-top: 30px;
+    padding-bottom: 20px;
+}
+
+#page_header h1{
+  text-align: left;
+  font-family: 'Arial', sans-serif;
+  font-weight: bold;
+  padding-bottom: 0px;
+  font-size: 2em;
+  margin-bottom: 0px;
+  line-height: 90%;
+  letter-spacing: -1.5px;
+  color:rgb(70,70,70);
+}
+
+
+a{
+  text-decoration: none;
+  color: rgb(255,50,50);
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+}
+
+#discussion{
+  font-size: 0.85em;
+  padding-bottom: 10px;
+}
+
+.red {
+  color: rgb(255,50,50); 
+}
+
+.red:hover{
+  text-decoration: none;
+}
+
+.blue {
+  color: rgb(0,120,240);
+}
+.blue:hover { 
+  text-decoration: none;
+}

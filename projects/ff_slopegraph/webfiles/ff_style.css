@@ -1,0 +1,55 @@
+body {
+	text-align: center; font-family: georgia, "helvetica neue",helvetica,arial,sans-serif; font-size: 1em; color: rgb(70,70,70);
+}
+h1 {
+	margin: 0px; padding: 0px; font-size: 1.8em; font-family: arial black, "helvetica neue",helvetica,arial,sans-serif; margin-left: 20px; width:1000px;
+}
+
+#description {
+	float:left; text-align: left; width: 400px; font-size: 0.9em;  position: relative; top: 60px; margin-left: 20px;
+}
+
+#image_content {
+	width: 600px; float: left; position: relative; top: 60px; font-family: "gothic"; margin-left: 20px
+}
+
+#fixed_header{
+	 padding: 3px; margin-top: 0px;  z-index: 1; background: rgba(255,255,255,0.85);  position: fixed; top:0px ; text-align: left;
+}
+
+#fixed_header h1{
+	color: rgb(70,70,70);
+}
+
+#filters {
+	font-family: Arial, sans-serif; margin-top: 10px ;margin-bottom: 10px;  margin-left: 20px; position: relative; left: 20px;
+}
+#filters a:last-child {
+	margin-right: 0px;
+}
+#filters a.QB_filter {
+	background: #C8CF02; color: rgb(255, 255, 255);
+}
+#filters a.TE_filter {
+	background: #E6781E; color: rgb(255, 255, 255);
+}
+#filters a.WR_filter {
+	background: #CC0C39; color: rgb(255, 255, 255);
+}
+#filters a.RB_filter {
+	background: #1693A7; color: rgb(255, 255, 255);
+}
+#filters a {
+	background: rgb(226, 226, 226); padding: 5px; color: rgb(0, 0, 0); font-size: 12px; margin-right: 3px; cursor: pointer;
+}
+
+
+.a_link {
+	text-decoration: none;
+	color: #CC333F;
+}
+
+.a_link:hover{
+	text-decoration: underline;
+}
+

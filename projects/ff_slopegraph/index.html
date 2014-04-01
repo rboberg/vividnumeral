@@ -1,0 +1,103 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0034)http://skedasis.com/d3/slopegraph/ -->
+<!DOCTYPE html PUBLIC "" ""><!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --><!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]--><!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]--><!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]--><!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]--><!--[if (gt IE 9)|!(IE)]><!-->
+
+<HTML><!--<![endif]-->
+<HEAD>
+
+	<META content="IE=10.000" http-equiv="X-UA-Compatible"> 
+	<META charset="utf-8">  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame Remove this if you use the .htaccess --> 
+	<META http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<!--  Mobile viewport optimized: j.mp/bplateviewport --> 
+	<META name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+	<LINK href="/favicon.ico" rel="shortcut icon"> 
+	<META name="GENERATOR" content="MSHTML 10.00.9200.16635"> 
+
+
+	<TITLE> Fantasy Slopegraph </TITLE>   
+	<META name="description" content="I used the slopegraph on this page as my fantasy football draft board. The line drawn from each player's ESPN Average Draft Position (ADP) on the left to his rank on the right highlights players that are being drafted too early or too late according to my rankings.">
+	<META name="date_posted" content="2013/09/02">
+	<META name="author" content="Ross Boberg">
+
+	<LINK href="webfiles/ff_style.css" rel="stylesheet" type="text/css">   
+	<SCRIPT src="webfiles/jquery-1.4.4.min.js"  type="text/javascript"></SCRIPT>
+	<SCRIPT src="webfiles/d3.js"  type="text/javascript"></SCRIPT>
+	<SCRIPT src="webfiles/ff_data.js"></SCRIPT>
+
+
+</HEAD> 
+
+<BODY>
+
+	<DIV id="fixed_header">
+		<H1>
+			Fantasy Slopegraph
+		</H1>
+		<DIV id="filters">
+			<A id="QB_filter">QB</A>
+			<A id="RB_filter">RB</A>
+			<A id="TE_filter">TE</A>
+			<A id="WR_filter">WR</A>
+		</DIV><!-- @end #filters -->
+	</DIV>
+
+	
+
+	<DIV id="description">
+		<P>
+			Slopegraphs are a very powerful tool for visual comparisons.
+			<a class="a_link" href="http://charliepark.org/slopegraphs/">Others have covered this type of graphic extensively</a>, but in short a slopegraph is a chart that connects the same data point in two different data sets making it very easy to visualize the differences between those two sets.
+
+			<br><br>
+			I used the slopegraph on this page as my fantasy football draft board. The line drawn from each player's ESPN Average Draft Position (ADP) on the left to his rank on the right highlights players that are being drafted too early or too late according to my rankings. My <a class="a_link" href="ff_ranking_discussion.html">Do It Yourself Guide to Fantasy Football Draft Strategies</a> has more background on my ranking methodology.
+
+			<br><br>
+			A sharply upward sloping line indicates a player that is being undervalued.
+			A sharply downward sloping line indicates a player that is being overvalued.
+			For example, Reggie Bush is undervalued and Aaron Rodgers is overvalued.
+
+			<br><br>
+			You can change which positions are highlighted by pressing the QB, RB, TE, and WR buttons at the top of the screen.
+			
+			
+			
+			
+			<br><br>
+			I stood on the shoulders of giants for this interactive graphic.
+			Using the <a class="a_link" href="http://d3js.org/">D3 javascript library</a>, I borrowed a lot from <a class="a_link" href="http://skedasis.com/d3/slopegraph/">Hamilton Ulmer</a> and a bit from <a class="a_link" href="http://projects.flowingdata.com/life-expectancy/">Nathan Yau</a>.
+
+
+		</P>
+	</DIV>
+	<DIV id="image_content">
+	
+		<DIV id="slopegraph"></DIV>
+	</DIV>
+	<SCRIPT src="webfiles/ff_slopegraph.js"></SCRIPT>
+
+	<SCRIPT type="text/javascript">
+	$(document).ready(function() {
+		$('#QB_filter').toggleClass('QB_filter');
+		$('#RB_filter').toggleClass('RB_filter');
+		$('#WR_filter').toggleClass('WR_filter');
+		$('#TE_filter').toggleClass('TE_filter');
+		//document.getElementById("project-header").innerHTML=document.getElementById("project-header").innerHTML+$('#QB_filter').attr('id');
+
+	    $('#filters a').click(function() {
+	        var positionId = $(this).attr("id");
+	        $(this).toggleClass(positionId);
+	        which_positions(positionId); 
+	    });
+
+	    $('#description').css('top',$('#fixed_header').css('height'));
+	    $('#image_content').css('top',$('#fixed_header').css('height'))
+	    
+	});
+	</SCRIPT>
+	 
+</BODY>
+</HTML>
+
+
+

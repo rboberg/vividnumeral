@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "" "">
+<HTML>
+<HEAD>
+	<META content="IE=10.000" http-equiv="X-UA-Compatible">
+	<META charset="utf-8">  <!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame Remove this if you use the .htaccess --> 
+	<META http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<!--  Mobile viewport optimized: j.mp/bplateviewport --> 
+	<META name="viewport" content="width=device-width, initial-scale=1.0">
+	<META name="GENERATOR" content="MSHTML 10.00.9200.16635">
+
+
+	<TITLE>NFL Dynasties</TITLE>   
+	<META name="description" content="An introduction to a statistical measure of the greatness (and awfulness) of NFL franchises and what it says about your favorite team.">   	
+	<META name="date_posted" content="2013/11/02">
+	<META name="author" content="Ross Boberg">
+	<LINK href="webfiles/nfl_dynasty_initial_style.css" rel="stylesheet" type="text/css"></LINK>
+	
+</HEAD>
+
+<BODY>
+	<DIV id="content">
+
+		<DIV id="page_header">
+			<H1>Quantifying NFL Dynasties</H1>
+			<p><a href="../../">Home</a></p>
+		</DIV>
+
+		<DIV id="main_text">
+			Does the Nobel committee award the Peace prize to people who are conspicuously asking for it? I hope so, because here is my bid for the Nobel Peace prize. Please nominate me.
+			<br><br>
+			I am going to bring peace to bars, living rooms, and offices by settling countless arguments that have ruined thanksgiving dinners, family reunions, and children's birthday parties. 
+			<br><br>
+			I am going to quantify the greatness of football dynasties so you don't have to argue.
+			<br><br>
+			Like many ambitious attempts at peacemaking, the unintended consequences might overwhelm the good intentions (insert jab at political party you don't like). People will certainly find things to hate about my methodology. I can only hope enough people read this article to incite a wave of violent emails about how I've done their team wrong. 
+			<br><br>
+			--
+			<br><br>
+			<div class="float_right_img">
+				<img src="webfiles/single_plots.png" alt="Franchise Score History" width="250", height="1250">
+			</div>
+			Success is a combination of luck and skill. Luck disappears over time, so a lucky successful team will regress to the average faster than a skillful successful team. The best franchises will not revert to the mean at all. A great dynasty is persistently successful, regardless of the luck that comes its way.
+			<br><br>
+			My measure of dynastic excellence (and awfulness) gauges how well a team resists regressing to the league average over a ten year period.
+			<br><br>
+			A couple broad points on the calculation of this metric:
+			<ol>
+			<li>Point differential is used instead of win percentage to measure performance because it's a more stable meaure of success.
+			<li>Each score is a statistical measurement of how much a team's change in point differential from season to season beat the expected mean reversion.
+			<li>There's nothing special about the choice of a ten year period; it just reflects my subjective assesment of a reasonable evaluation period.
+			</ol>
+			For the quantitatively inclined, I will post more details on the calculation, including data and source code, in the coming weeks. But for now suffice it to say that scores between 1 and 0 indicate varying levels of greatness, mediocrity, and awfulness. 
+			<br><br>
+			A 1.0 means there was no probability an average team could have done this well. In other words, there was 0% probability that this franchise's success was luck and a 100% probability that they demonstrated extreme skill for a long period of time. A perfect 1.0 is impossible since luck can never be ruled out, but, as you will see, a few teams come very close.
+			<br><br>
+			A 0.5 indicates a perfectly average team: a competent franchise whose success ebbs and flows with its luck.
+			<br><br>
+			A 0.0 means there was zero probability that an average team performed this poorly. There was a 0% probability this team was unlucky and a 100% probability that this team was incompetent. Again, impossible, but some franchises do flirt with zero.
+			<br><br>
+			The threshold is higher for teams that start off successful. A franchise in decline will get a lower score than a team on the rise even if their average performance is the same over the 10 year period. The rationale is that it takes more organizational skill to move a team from mediocre to excellent than from excellent to mediocre.
+			<br><br>
+			The graphic on the right shows these scores for each team since the AFL/NFL merger in 1970. Scores between 0.5 & 1 are shaded blue. Scores between 0 and 0.5 are shaded red. The score shown in each year corresponds to the prior 10 years performance.
+			<br><br>
+			---
+			<br><br>
+			Scanning this graphic gives a quick sense for the long term success of each franchise.
+			<br><br>
+			The Steelers (PIT) appear to be the most consistently successful franchise ever. They have never really had a period of less than average skill and have spent most of the past 40 years well above average.
+			<br><br>
+			The Broncos (DEN) have had a similar consistently solid history, with highs during the Elway era and lows at the transition from the Tebow "era" to Manning.
+			<br><br>
+			The Cardinals (CRD) appear to be the consistently worst franchise ever. Look at all that red on their chart. There has never been a 10 year period over which they demonstrated average skill. Even <a href="http://www.pro-football-reference.com/teams/crd/">the Kurt Warner teams</a> barely squeaked out positive point differentials. Their biggest run of near-competence came at the beginning of the history I looked at, before the <a href="http://en.wikipedia.org/wiki/Air_Coryell">Air Coryell</a> offense took its talents to San Diego.
+			<br><br>
+			The Lions (DET) are the only team that comes close to challenging the Cardinals for title of worst franchise ever. A burst of adequacy, courtesy of the Barry Sanders years, gave them a few positive years in the 90s, ruining their chances to be as awful as the Cardinals.
+			<br><br>
+			---
+			<br><br>
+			I am a 49ers fan. My wife is a Giants fan. When I started this exercise she predicted the answer would be "the 49ers are the best franchise ever" and I was just figuring out the right question to ask. Well, it turns out the 49ers (SFO on the chart) did have the most prolonged period of dominance by any team ever (post-merger). Of the 10 best scores I computed, the 49ers of the 80s and 90s hold 7 of them. 
+			<br><br>
+			I think (hope) this an objective result. I don't think it would surprise anyone that the Bill Walsh/George Seifert/Joe Montana/Steve Young teams registered as some of the most dominant teams.
+			<br><br>
+			However, the team with the highest score ever is not a 49ers team. It is the Belichick/Brady Patriots. For the period 2003-2012 the Patriots registered the highest score ever, topping the 1983-1992 49ers by 0.06%, and the post-2000 Patriot teams show up 4 times in the top 20. I haven't included the in-progress 2013 season in the numbers yet, so the 2003-2012 Patriots are the most recent Patriots. Which means we are lucky enough to watch the greatest dynasty ever fight the tide of mean-reversion every week. So far this year they are beating their opponents by an average 4.4 points per game. Not bad, but probably not enough to keep their place at the top for long.
+			<br><br>
+			The table on the left shows the 20 highest scores ever if you want to look for yourself. Joining the 49ers and Patriots are the Steelers and Cowboys of the 70s and the Washington DC team of the 80s. 
+			<br><br>
+			The table on the right shows the 20 lowest scores ever. The Raiders of the last ten years rank as the fifth worse, so we're also lucky (is lucky the right word?) to be watching one of the worst franchises ever try to get out of its own way and revert to average.
+			<br><br>
+
+			<div id="top_table" class="score_table">
+				<table>
+					<tr><th colspan=3>The Top 20</th></tr>
+					<?php
+					$file_name="webfiles/top20table.html";
+					$file_html = file_get_contents($file_name);
+					echo $file_html;
+					?> 
+				</table>
+			</div>
+
+
+			<div id="bottom_table" class="score_table">
+				<table>
+					<tr><th colspan=3>The Bottom 20</th></tr>
+					<?php
+					$file_name="webfiles/bottom20table.html";
+					$file_html = file_get_contents($file_name);
+					echo $file_html;
+					?> 
+				</table>
+			</div>
+
+			<br style="clear:left;"><br>
+			<h2>Rank Over Time</h2>
+			<br>
+			The set of <a href="http://www.edwardtufte.com/bboard/q-and-a-fetch-msg?msg_id=0003nk">bump charts</a> below are very useful for comparing teams within time periods. They show the rank of teams' scores over various 10 year periods. I grouped them roughly by decade and only show teams that ranked in the top 5 at some point over that decade to make the charts more legible. I posted busier charts with every team at the end of the article for additional information.
+			<br><br>
+			<h3>Seventies & Eighties</h3>
+			<div class="full_width_img">
+				<img src="webfiles/rank_1980.png" alt="70s 80s Rank Image">
+			</div>
+			<br>
+			The Steelers (PIT), Cowboys (DAL), and Dolphins (MIA) dominated the early 70s and 80s.
+			<br><br>
+			The Steelers were the most dominant of the three, holding the top spot in 4 out of the first 6 overlapping 10 year periods. The other two were held by the Cowboys.
+			<br><br>
+			The Dolphins were impressively consistent, ranking in the top 5 over every 10 year period, but topping the charts only once. The Raiders were sort of the poor man's Dolphins, never ranking worse than 9th, but never better than 4th.
+			<br><br>
+			Bill Walsh arrived in San Francisco in 1979 and marched the 49ers (SFO) steadily to the top of the charts, registering as the top team from '78 to '87. They would hold the top spot for 14 of the next 15 years.
+			<br><br>
+
+			<h3>Eighties & Nineties</h3>
+			<div class="full_width_img">
+				<img src="webfiles/rank_1990.png" alt="80s 90s Rank Image">
+			</div>
+			<br>
+			The 49ers' reign continues through the 80s to the 90s with the phenomenal fortune (organizational skill?) to have back-to-back Hall of Fame QBs. Troy Aikman's Cowboys briefly usurped the 49ers crown. Their reign was brief - they gave up the crown the next year and never again ranked better than 4th. But also glorious - the 'boys won three Super Bowls in four years. Tough to argue with the rings (though I'll try a bit later).
+			<br><br>
+			The resurgence of the Packers (GNB) is notable, turning (cheese) heads for the first time since the merger. They notched a top four spot for the last five periods of this era and that success has carried over to the present.
+			<br><br>
+			<h3>Nineties & Noughts</h3>
+			<div class="full_width_img">
+				<img src="webfiles/rank_2000.png" alt="00s 10s Rank Image">
+			</div>
+			<br>
+			I'm going to spend the most time here, because all of this is still pretty fresh in our collective memory. The victories are still sweet and these losses are still raw.
+			<br><br>
+			Green Bay and Denver, who spent the end of the last decade fighting over San Francisco's crumbs, would dominate the first few years of the millenium while the 49ers - uhg - did some "soul searching". The Packers would put together a very nice couple decades, save for a rocky patch during the Favre/Rodgers handover, but the resurgence of a new king would force them to take a backseat (or at least a passenger seat).
+			<br><br>
+			The turn-of-the-millennium and beyond has been dominated by the Patriots (NWE). The Steelers, Packers, and Ravens (RAV) were all impressively consistent, living up to the great reputation those franchises have developed, but New England's dominance is pretty complete.
+			<br><br>
+			The Chargers (SDG) were the biggest positive surprise to me on this chart. I would not have expected them to have be ranked 3, 4, and 2 in the three most recent 10 year periods. So kudos to that organization for being one of the consistently best of the past decade… probably not something they hear super often.
+			<br><br>
+			Did you know they haven't had a negative point differential since 2003?! That's pretty impressive. The Chargers are giving themselves consistent chances to win, even though they haven't panned out.
+			<br><br>
+			The biggest negative surprise? Did you notice a team missing from this chart that won two Super Bowls over this period? In addition to predicting that my metric would say the "49ers were a great dynasty," my wife also predicted that - still hurting from the <a href="http://en.wikipedia.org/wiki/2011%E2%80%9312_NFL_playoffs">2012 NFC Championship</a> game - I would say the "the New York Giants are not". She was right (again). The Giants never even registered as a top five team over this period, thus they didn't make the chart. 
+			<br><br>
+			To defend the objectivity of my ranking, here is a simple exercise to see why they don't register. Sum the <a href="http://www.pro-football-reference.com/teams/nyg/">Giant's point differential</a> under Tom Coughlin (207) and divide by the number of games they've played (150). The number you will get is 1.38. Over a decade including two Super Bowl wins, the Giants have scored slightly more than one point better than their opponents on average. If you're generous and exclude this season that number is 2.2.
+			<br><br>
+			These are pretty average numbers. For comparison: the Patriots outscored opponents by 10.5, the Chargers outscored opponents by 6.4, and the Colts - number six over this period inclusive of the "Suck for Luck" season - outscored opponents by 4.4. The Giants' 2.2 was good enough for 9th - hardly the mark of a great dynasty.
+			<br><br>
+			---
+			<br><br>
+			All that being said, there's no doubt the well-ranked Chargers would trade some point differential for one of the Giants' Super Bowls. No matter how consistently skillful a franchise the Chargers have been over the last decade, they can't put point differential in a trophy case.
+			<br><br>
+			If I had to choose either the entire Chargers' organization or the entire Giants' organization wholesale to run my football team going forward, I'm not sure which I'd pick. Even seeing the superior numbers that San Diego has posted over the past half century, it's really hard to overcome the hindsight bias of two Super Bowls wins. I really <em>think</em> I should go with the Chargers, but I really <em>feel</em> I should go with the Giants.
+			<br><br>
+			Maybe the Giants organization has some kind of high-variance strategy whereby they reach for high highs at the price of low lows. Doesn't it feel like they are setting themselves up for a Super Bowl win this year? Starting 2-6 in a shaky division, returning injured players to the lineup for the second half, sweeping in to the playoffs and taking the Super Bowl? Why not? With the Giants it actually feels probable. That's what makes football fun (and frustrating).
+			<br><br>
+			---
+			<br><br>
+			I plan on posting more details of my calculation and some interactive graphics over the coming weeks.
+			Feel free to reach out with any questions, comments, feedback, kind words, or hate mail: ross@vividnumeral.com
+			<br><br>
+			<h2>Charts With Every Active Team</h2>
+			<br>
+			<h3>70s & 80s</h3>
+			<div class="full_width_img">
+				<img src="webfiles/rank_all_1980.png" alt="70s 80s Rank Image">
+			</div>
+			<h3>80s & 90s</h3>
+			<div class="full_width_img">
+				<img src="webfiles/rank_all_1990.png" alt="80s 90s Rank Image">
+			</div>
+			<h3>90s & 00s</h3>
+			<div class="full_width_img">
+				<img src="webfiles/rank_all_2000.png" alt="90s 00s Rank Image">
+			</div>
+		</DIV>
+	</DIV>
+</BODY>
+</HTML>
