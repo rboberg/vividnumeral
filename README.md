@@ -1,9 +1,9 @@
 vividnumeral
 ============
 
-Casual Statistics and Armchair Analytics at VividNumeral.com
+### Casual Statistics and Armchair Analytics at [VividNumeral.com](www.vividnumeral.com)
 
-Directory Structure
+#### Directory Structure:
 
 	vividnumeral/
 		index : homepage
