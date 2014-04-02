@@ -4,6 +4,7 @@ vividnumeral
 Casual Statistics and Armchair Analytics at VividNumeral.com
 
 Directory Structure
+
 vividnumeral/
 	index
 	projects/
