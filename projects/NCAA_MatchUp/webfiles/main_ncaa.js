@@ -136,37 +136,6 @@ d3.csv('webfiles/20140317_ncaa_data.csv', function(data) {
   svg.append('g')
     .classed('chart', true)
     .attr('transform', 'translate(' + dim.w*0.08 +', ' + (0) + ')');
-   /* 
-  // Build menus
-  d3.select('#series-menu')
-    .selectAll('li')
-    .data(seriesOptions)
-    .enter()
-    .append('li')
-    .text(function(d) {return d;})
-    .classed('selected1', function(d) {
-      return d === series1;
-    })
-    .classed('selected2', function(d) {
-      return d === series2;
-    })
-    .on('click', function(d) {
-      if(series1 == ''){
-        if(d != series2){
-          series1 = d;
-        }
-      } else if(series1 === d){
-        series1 = '';
-      } else if(series2 === d){
-        series2 = '';
-    } else{
-        series2 = d;
-      }
-      //series1 = d;
-      updateMenus();
-      updateChart();
-    });
-  */
 
 updateScales();
 
@@ -376,6 +345,12 @@ updateScales();
     .call(makeYAxis);
 
 
+  // Add filterText behavior
+  d3.select('#filterText')
+  .on('change', function(){updateFilter();})
+  .on('keyup', function(){updateFilter();})
+  .on('paste', function(){updateFilter();});
+
 
   //// RENDERING FUNCTIONS
   function updateChart(init) {
@@ -525,6 +500,8 @@ updateScales();
       .orient("left"));
   }
 
+  //var re = new RegExp('a','i');
+
   function updateMenus() {
     d3.select('#series-menu')
       .selectAll('li')
@@ -541,7 +518,8 @@ updateScales();
     })
     .classed('selected2', function(d) {
       return d === series2;
-    });
+    })
+    
     d3.select('#x-axis-menu')
       .selectAll('li')
       .classed('selected', function(d) {
@@ -552,9 +530,34 @@ updateScales();
       .classed('selected', function(d) {
         return d === yAxis;
     });
+
+    updateFilter();
   }
 
+  function updateFilter() {
+    var ftext = d3.select("#filterText")[0][0]['value'];
+    var re;
+
+    if(ftext === ''){
+      re = new RegExp('.','i')
+    } else{
+      re = new RegExp(ftext,'i')
+    }
+
+    d3.select('#series-table')
+    .selectAll('tr')
+    .style('display', function(d){
+        if(d === series1 | d === series2){
+          return '';
+        } else{
+          return d.match(re) === null ? 'none' : '';
+        }
+      });
+  }
+
+
 })
+
 
 
 function cdf(x, mean, variance) {
