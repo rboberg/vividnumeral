@@ -54,6 +54,7 @@ function getTeams(d) {
   return retobj;
 }
 
+//Get a subset of data points to update
 function getSubset(d, series) {
   var retd = {}, i = 0;
   _.each(d, function(d){
@@ -97,6 +98,7 @@ function getCorrelation(xArray, yArray) {
 }
 
 d3.csv('webfiles/20140317_ncaa_data.csv', function(data) {
+  //set up dimensions so that they can be tweaked in one place
   var dim = {};
   dim.w = 750;
   dim.h = 400;
@@ -107,22 +109,31 @@ d3.csv('webfiles/20140317_ncaa_data.csv', function(data) {
   dim.xmax = dim.w*.7;
   var pointsize = 8;
 
+  //what data fields to use?
   var xAxis = 'OppStrength', yAxis = 'P';
   var xAxisOptions = ["OppStrength"];
   var yAxisOptions = ["P"];
 
+   // Get List of All Teams and their Values
   var teamInfo = getTeams(data)
   var seriesOptions = teamInfo.Team;
-  //var seriesOptions = getTeams(data);
 
+  // Set initial team values
   var series1 = seriesOptions[0]
   var series2 = seriesOptions[1]
   var seriesColors = ["rgb(0,120,240)","rgb(255,50,50)"]
 
+  // get column values
   var keys = _.keys(data[0]);
+
+  // parse data
   var data = parseData(data);
+
+  // get subsets for update
   var subdata1 = getSubset(data,series1);
   var subdata2 = getSubset(data,series2);
+
+  // get data limits
   var bounds = getBounds(data, 1);
 
   // SVG AND D3 STUFF
@@ -130,28 +141,32 @@ d3.csv('webfiles/20140317_ncaa_data.csv', function(data) {
     .append("svg")
     .attr("width", dim.w)
     .attr("height", dim.h+dim.topbuffer)
-    //.attr("top", dim.topbuffer);
+
   var xScale, yScale;
 
+  //Add the chart
   svg.append('g')
     .classed('chart', true)
     .attr('transform', 'translate(' + dim.w*0.08 +', ' + (0) + ')');
 
-updateScales();
+  //Set scales
+  updateScales();
 
-  // Tabular Menu
+  // Set Up Tabular Menu
   d3.select('#series-table')
     .selectAll('tr')
     .data(seriesOptions)
     .enter()
     .append('tr')
     .text(function(d) {return d;})
+    // set selected classes
     .classed('selected1', function(d) {
       return d === series1;
     })
     .classed('selected2', function(d) {
       return d === series2;
     })
+    // set click behavior
     .on('click', function(d) {
       if(series1 == ''){
         if(d != series2){
@@ -164,12 +179,11 @@ updateScales();
       } else{
         series2 = d;
       }
-      //series1 = d;
       updateMenus();
       updateChart();
     })
     .append('td')
-    //.text(function(d) {return Math.round(teamInfo.Strength[_.indexOf(seriesOptions, d)]*100)/100;});
+    // add team score
     .text(function(d) {return Number(teamInfo.Strength[_.indexOf(seriesOptions, d)]).toPrecision(3);});
 
 
@@ -187,7 +201,10 @@ updateScales();
   //     updateChart();
   //     updateMenus();
   //   });
+  
+  // Set up Win Probability Bar
 
+  // Add Red Bar (fixed width)
   d3.select('svg g.chart')
     .append('rect')
     .attr({'id': 'redBar', 'x': dim.xmin, 'y': dim.ymax - 50, 'height': 30})
@@ -203,6 +220,7 @@ updateScales();
       }
     });
 
+  // Add Blue Bar (variable width changes with win probability)
   d3.select('svg g.chart')
     .append('rect')
     .attr({'id': 'blueBar', 'x': dim.xmin, 'y': dim.ymax - 50, 'height': 30})
@@ -220,12 +238,13 @@ updateScales();
 
 
 
-  // Game name
+  // Set up game name to show on hover
   d3.select('svg g.chart')
     .append('text')
     .attr({'id': 'gameLabel', 'x': dim.xmin + 60, 'y': dim.ymax - 30})
     .style({'font-size': '15px', 'font-weight': 'bold', 'fill': 'white'});
 
+  // Show blue win probability
   d3.select('svg g.chart')
     .append('text')
     .attr({'id': 'bluePct', 'x': dim.xmin + 5, 'y': dim.ymax - 30})
@@ -254,34 +273,13 @@ updateScales();
     .append('text')
     .attr({'id': 'xLabel', 'x': (dim.xmin+dim.xmax)/2, 'y': dim.ymin + 60, 'text-anchor': 'middle'})
     .text("Strength of Opponent");
-
-  /*
-  d3.select('sg g.chart')
-    .append('text')
-    .attr({'id': 'yLabel', 'text-anchor': 'middle'})
-    .attr('transform', 'translate('+ (dim.xmin+50) +', ' + (dim.ymin+dim.ymax)/2 + ')rotate(-90)')
-    .text('Game Outcome Between 0 and 1 : 0.5 is a tie');
-  */
     
    d3.select('svg g.chart')
     .append('text')
     .attr({'id': 'yLabel', 'text-anchor': 'middle', 'transform': 'translate('+ (dim.xmin-60) +', ' + (dim.ymin+dim.ymax)/2 + ')rotate(-90)'})
     .text('Game Outcome Between 0 and 1 : 0.5 is a tie');
     
-
-  //d3.select('#xLabel')
-    //.text(seriesOptions[1])
-    //.style('stroke','red');
-  
   // Render points
-  
-
-
-  
-
-
-
-
   var pointColour = d3.scale.category20b();
   d3.select('svg g.chart')
     .selectAll('circle')
@@ -294,6 +292,7 @@ updateScales();
     .attr('cy', function(d) {
       return isNaN(d[yAxis]) ? d3.select(this).attr('cy') : yScale(d[yAxis]);
     })
+    //color according to series
     .attr('fill', function(d, i) {
       if(d['Team'] == series1){
         return seriesColors[0]
@@ -305,6 +304,7 @@ updateScales();
       return pointColour(i);
     })
     .style('cursor', 'pointer')
+    // show game on mouse-over
     .on('mouseover', function(d) {
       d3.select('svg g.chart #gameLabel')
         .text(d['Date'].concat(" ",d.Team," ",d.Outcome," ",d.Opponent))
@@ -317,16 +317,10 @@ updateScales();
         .duration(1500)
         .style('opacity', 0);
     })
+    // hide dots that are not selected
     .attr('r', function(d) {
-        //return isNaN(d[xAxis]) || isNaN(d[yAxis]) ? 0 : 12;
         return (d['Team'] === series1 || d['Team'] === series2)? pointsize : 0
       });
-    //.style('opacity',function(d){
-    //  return (d['Team'] === series1 || d['Team'] === series2)? 1 : 0
-    //});
-    //.style('display', function(d){
-    //    return (d['Team'] === series1 || d['Team'] === series2)? "inline" : "none"
-     // });
 
   updateChart(true);
   updateMenus();
@@ -359,6 +353,7 @@ updateScales();
     subdata1 = getSubset(data,series1);
     subdata2 = getSubset(data,series2);
 
+    //update points and transition
     d3.select('svg g.chart')
       .selectAll('circle')
       .filter(function(d, i){return (d['Team'] === series1 || d['Team'] === series2 || d3.select(this).attr("r") > 0)})
@@ -386,6 +381,7 @@ updateScales();
       return pointColour(i);
       });
 
+    //update probability bar
     d3.select('svg g.chart #blueBar')
     .transition()
     .duration(1500)
@@ -399,7 +395,8 @@ updateScales();
         return 0
       }
     });
-      
+    
+    //update blue pct
     d3.select('svg g.chart #bluePct')
     .transition()
     .duration(500)
@@ -414,6 +411,7 @@ updateScales();
       }
     });
 
+    //if only series selected grey out red bar
     d3.select('svg g.chart #redBar')
     .transition()
     .duration(1500)
@@ -448,7 +446,7 @@ updateScales();
     var x1 = xScale.domain()[0], y1 = c.m * x1 + c.b;
     var x2 = xScale.domain()[1], y2 = c.m * x2 + c.b;
 
-    // Fade in
+    // Fade in Fit Lines
     d3.select('#bestfit1')
       .style('opacity', 0)
       .attr({'x1': xScale(x1), 'y1': yScale(y1), 'x2': xScale(x2), 'y2': yScale(y2)})
@@ -472,6 +470,7 @@ updateScales();
       .style('stroke',seriesColors[1]);   
   }
 
+  // Set up scales in case axis changed
   function updateScales() {
     
     xScale = d3.scale.linear()
@@ -500,7 +499,6 @@ updateScales();
       .orient("left"));
   }
 
-  //var re = new RegExp('a','i');
 
   function updateMenus() {
     d3.select('#series-menu')
@@ -534,6 +532,7 @@ updateScales();
     updateFilter();
   }
 
+  // update series display when filter text updated
   function updateFilter() {
     var ftext = d3.select("#filterText")[0][0]['value'];
     var re;
