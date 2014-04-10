@@ -8,6 +8,9 @@ vividnumeral
 	vividnumeral/
 		index : homepage
 		webfiles/ : for homepage
+		style/
+			article.css : global css file for articles
+			article_template.html : html template for new articles/projects
 		projects/
 			[project]/
 				README.md : explaining the project
@@ -15,4 +18,4 @@ vividnumeral
 				webfiles/
 					main.js
 					style.css
-					others...
+					data, others...
