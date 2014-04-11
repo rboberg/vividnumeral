@@ -31,13 +31,21 @@ li{
 	margin-bottom: 10px;
 }
 
-#page_header{
-	 height: 50px; margin-top: 0px;  z-index: 1; background: rgba(255,255,255,0.85); top:0px ; text-align: left;
-	  width:1000px;
-	  padding-top: 30px;
-	  padding-bottom: 60px;
+p{
+	margin-bottom: 10px;
 }
 
+#page_header{
+	 margin-top: 0px; 
+	 z-index: 1;
+	 background: rgba(255,255,255,0.85);
+	 top:0px;
+	 text-align: left;
+	 width:800px;
+	 padding-top: 30px;
+	 padding-bottom: 30px;
+}
+	
 #page_header h1{
 	text-align: left;
 	font-family: 'Arial', sans-serif;
@@ -53,6 +61,7 @@ li{
 h2 {
 	font-size: 1.1em;
 	color: rgb(255,50,50);
+	margin-bottom:10px;
 }	
 
 h3 {
