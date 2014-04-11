@@ -80,4 +80,36 @@ h3 {
 }
 
 
+/*TABLES*/
+table{
+	color:#333333;
+	border-width: 1px;
+	border-color: #666666;
+	border-collapse: collapse;
+}
 
+th {
+	text-align: center;
+	border-width: 1px;
+	padding: 8px;
+	border-style: none;
+	border-bottom-style: solid;
+	border-color: rgb(70,70,70);
+	font-size: 0.9em;
+}
+
+td{
+	border-width: 1px;
+	padding: 8px;
+	border-style: none;
+	border-bottom-style: solid;
+	border-color: rgb(220,220,220);
+}
+
+.tdtext{
+	text-align: left;
+}
+
+.tdvalue{
+	text-align: right;
+}
