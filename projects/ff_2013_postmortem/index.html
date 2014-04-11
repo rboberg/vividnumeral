@@ -13,8 +13,9 @@
 	<META name="description" content="A look back at whether my systematic, quantitative approach to the 2013 Fantasy Football draft was actually any good.">   	
 	<META name="date_posted" content="1986/12/05">
 	<META name="author" content="Ross Boberg">
-	<LINK href="../../style/article.css" rel="stylesheet" type="text/css">
-	</LINK>
+	<LINK href="../../style/article.css" rel="stylesheet" type="text/css"></LINK>
+	<LINK href="webfiles/style.css" rel="stylesheet" type="text/css"></LINK>
+	
 	
 </HEAD>
 
@@ -28,7 +29,7 @@
 
 		<DIV id="main_text">
 
-			<h2>Nerd Level: 1</h2>
+			<h2>Nerd Level : 1</h2>
 
 			<p>
 			Before the 2013 Football season I wrote a couple pieces detailing a quantitative fantasy draft methodology. You can find the details <a href='../ff_rank'>here</a> , but, in short, I used player stat projections aggregated by <a href='http://www.fantasypros.com'>fantasypros.com</a> and some adjustments to compare players across positions to quantify each player's value. With the season in the rear-view mirror, I want to know whether it was worth the trouble.	
@@ -42,7 +43,7 @@
 			The punch line is that the expert estimate based draft ranks added between 4 and 7 points per game over just using ESPN's Average Draft Position to determine picks. That is statistically significant. I broke this article in to Nerd Levels: increasing degrees of method detail and quantitative complexity. So you can take my word that this method adds value, stop reading, and send me a congratulatory email or move on to Level 2.
 			</p>
 
-			<h2>Nerd Level: 2</h2>
+			<h2>Nerd Level : 2</h2>
 
 			<p>
 				To quantify the points added by my method, I ran a mock draft of a 12 team leage where 6 teams pick according to ESPN's pre-season average draft position (ADP) and 6 teams pick the the player with the best expert consensus value. I'll refer to the two types as ADP and Value Based going forward. Once the rosters were set, I calculated how many points each team would have scored over the sytem
@@ -77,35 +78,45 @@
 				It's possible I was just lucky that the Value Based approach added around 5 points per week. But it seems unlikely. This table summarizes the stastical significance of the results for each calculation method.
 			</p>
 
-			<table>
-				<tr>
-					<th colspan='100'>Weekly Points of Value Based over ADP</th>
-				</tr>
-				<tr>
-					<th rowspan='2' class='tdtext'>Method</th>
-					<th colspan='3' style='border:none'>95% Confidence Interval</th>
-					<th rowspan='2' class='tdvalue'>Probability<br>Points > 0</th>
-				</tr>
-				<tr>
-					<th class='tdvalue'>Low</th>
-					<th class='tdvalue'>Mean</th>
-					<th class='tdvalue'>High</th>
-				</tr>
-				<tr>
-					<td class='tdtext'>(1) All Players</td>
-					<td class='tdvalue'>-0.8</td>
-					<td class='tdvalue'>4.4</td>
-					<td class='tdvalue'>9.6</td>
-					<td class='tdvalue'>95.6%</td>
-				</tr>
-				<tr>
-					<td class='tdtext'>(2) Starters Only</td>
-					<td class='tdvalue'>1.6</td>
-					<td class='tdvalue'>6.2</td>
-					<td class='tdvalue'>10.8</td>
-					<td class='tdvalue'>99.7%</td>
-				</tr>
-			</table>
+
+
+			<div id='broad_table'>
+				<table>
+					<tr>
+						<th colspan='100'>Weekly Points of Value Based over ADP</th>
+					</tr>
+					<tr>
+						<th rowspan='2' class='tdtext'>Method</th>
+						<th colspan='3' style='border:none'>95% Confidence Interval</th>
+						<th rowspan='2' class='tdvalue'>Probability<br>Points > 0</th>
+					</tr>
+					<tr>
+						<th class='tdvalue'>Low</th>
+						<th class='tdvalue'>Mean</th>
+						<th class='tdvalue'>High</th>
+					</tr>
+					<tr>
+						<td class='tdtext'>(1) All Players</td>
+						<td class='tdvalue'>-0.8</td>
+						<td class='tdvalue'>4.4</td>
+						<td class='tdvalue'>9.6</td>
+						<td class='tdvalue'>95.6%</td>
+					</tr>
+					<tr>
+						<td class='tdtext'>(2) Starters Only</td>
+						<td class='tdvalue'>1.6</td>
+						<td class='tdvalue'>6.2</td>
+						<td class='tdvalue'>10.8</td>
+						<td class='tdvalue'>99.7%</td>
+					</tr>
+				</table>
+			</div>
+
+			<p>
+				The probability that the Value Based approach added positive points over ADP is greater than 95% for both calculation methods. 95% is usually good enough for scholarly articles, so I'll take it.
+			</p>
+
+			<h2> Nerd Level : 3</h3>
 
 		<DIV>
 	</DIV>
