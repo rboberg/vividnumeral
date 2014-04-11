@@ -30,6 +30,8 @@ d3.csv('webfiles/value_by_position.csv', function(data) {
     		return {column:column.colname,cvalue:row[column.colname]};
     	});
     })
+    .enter()
+    .append('td')
     .text(function(d){return d.cvalue})
 
 
