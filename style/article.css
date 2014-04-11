@@ -13,27 +13,6 @@
 	font-family: georgia, "helvetica neue",helvetica,arial,sans-serif; color: rgb(70,70,70);
 }
 
-a{
-	text-decoration: none;
-	color: rgb(255,50,50);
-}
-
-a:hover{
-	text-decoration: underline;
-}
-
-ol{
-	overflow: hidden;
-	padding: 20px;
-}
-
-li{
-	margin-bottom: 10px;
-}
-
-p{
-	margin-bottom: 10px;
-}
 
 #page_header{
 	 margin-top: 0px; 
@@ -45,7 +24,37 @@ p{
 	 padding-top: 30px;
 	 padding-bottom: 30px;
 }
+
+#main_text{
+	width:600px;
+}
 	
+
+
+a{
+	text-decoration: none;
+	color: rgb(255,50,50);
+}
+
+a:hover{
+	text-decoration: underline;
+}
+
+ol{
+	overflow: hidden;
+	padding: 30px;
+	padding-top: 0px;
+	padding-bottom: 10px;
+}
+
+li{
+	margin-bottom: 10px;
+}
+
+p{
+	margin-bottom: 10px;
+}
+
 #page_header h1{
 	text-align: left;
 	font-family: 'Arial', sans-serif;
@@ -67,6 +76,7 @@ h2 {
 h3 {
 	font-size: 1em;
 	margin: 0px; padding: 0px; border: 0px;
+	margin-bottom:10px;
 }
 
 

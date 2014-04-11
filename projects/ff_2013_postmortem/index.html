@@ -42,6 +42,37 @@
 			The punch line is that the expert estimate based draft ranks added between 4 and 7 points per game over just using ESPN's Average Draft Position to determine picks. That is statistically significant. I broke this article in to Nerd Levels: increasing degrees of method detail and quantitative complexity. So you can take my word that this method adds value, stop reading, and send me a congratulatory email or move on to Level 2.
 			</p>
 
+			<h2>Nerd Level: 2</h2>
+
+			<p>
+				To quantify the points added by my method, I ran a mock draft of a 12 team leage where 6 teams pick according to ESPN's pre-season average draft position (ADP) and 6 teams pick the the player with the best expert consensus value. I'll refer to the two types as ADP and Value Based going forward. Once the rosters were set, I calculated how many points each team would have scored over the sytem
+			</p>
+
+			<p>
+				If you're unusually interested, intrepid, or bored you can find more detail on the draft methodology here **INSERT LINK TO DRAFT METHODOLOGY HERE**. You can also find the R code used on GitHub **INSERT rross GITHUB LINK**.
+			</p>
+
+			<h3>Broad Results</h3>
+
+			<p>
+				Once I have the points scored by each team there are a couple ways to translate that in to a weekly point difference between the two mehtods.
+			</p>
+
+			<ol>
+				<li>
+				Average the weekkly points of the players at each position for each strategy. Then multiply by the number of starters at each position. This way, the Value Based teams averaged 4.4 points per week more than the ADP teams.
+				</li>
+				<li>
+				Same as method one, but instead of averaging the points of all players, only average the points of players that would have started. This way, the Value Based teams averaged 6.2 points per week more than the ADP teams.
+				</li>
+			</ol>
+			<p>
+				The second method throws out the worst outliers from each strategy's draft, so flukes like a player getting injured for the entire season in week 1 will not overly effect the results. This method is also more foregiving of high risk / high reward picks that don't pan out.
+			</p>
+			<p>
+				Clearly method two is far more flattering of the Value Based method. The main reason for the difference is Josh Freeman. The the Value Based system drafted him, and his almost non-existant season gets included in method one but thrown out in method two, because there's no way he would have started. More on that later.
+			</p>  
+
 		<DIV>
 	</DIV>
 </BODY>
