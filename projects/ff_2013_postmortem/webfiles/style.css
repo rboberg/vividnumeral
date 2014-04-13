@@ -2,3 +2,24 @@
 	width: 75%;
 	margin: 0px auto;
 }
+
+#position_table{
+	width: 75%;
+	margin: 0px auto;
+}
+
+.chart .posbar {
+  fill: steelblue;
+}
+
+.chart .negbar {
+  fill: red;
+}
+
+.chart text {
+  fill: rgb(70,70,70);
+  /*font: 10px sans-serif;*/
+  /*text-anchor: start;*/
+  text-anchor: end;
+}
+
