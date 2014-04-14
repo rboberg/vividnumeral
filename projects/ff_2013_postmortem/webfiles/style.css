@@ -8,11 +8,11 @@
 	margin: 0px auto;
 }
 
-.chart .posbar {
+.posbar {
   fill: steelblue;
 }
 
-.chart .negbar {
+.negbar {
   fill: red;
 }
 
