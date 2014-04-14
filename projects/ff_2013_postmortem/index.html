@@ -116,7 +116,7 @@
 				The probability that the Value Based approach added positive points over ADP is greater than 95% for both calculation methods. 95% is usually good enough for scholarly articles, so I'll take it.
 			</p>
 
-			<h2> Nerd Level : 3</h3>
+			<h2> Nerd Level : 3</h2>
 
 			<p>
 				There's lots of questions to ask about how these extra points are being generated. How are the extra points being generated? What did the method do right? Where did it screw up?  Breaking down the points added by position is a way to start answering these questions.
@@ -126,6 +126,83 @@
 
 			</div>
 
+			<p>
+				The weak spot in the Value Based drafting is highlighted by the red in the table above.
+				With only starters included, I added positive value at QB, but it's still the smallest of any position.
+				What happened?
+			</p>
+
+			<p>
+				ADD VISUALIZATION & EXPLANATION	
+			</p>
+
+			<p>
+				This visualization provides more granularity about the draft.
+				If you filter on QB's you can see the problem was underestimating the excellence of Peyton Manning and Drew Brees.
+				You can also see that the relative improvement in the "Starters Only" method is a result of dropping Josh Freeman from the evaluation. Providing almost no points and the high point scoring positiong, he was by far the worst pick of the draft.
+			</p>
+
+			<p>
+				(WARNING: THE FOLLOWING PARAGRAPH CONTAINS CONFUSING AND UNNECCESARY ABBREVIATIONS, DO NOT OPERATE HEAVY MACHINERY WHILE READING)
+			</p>
+			<p>
+				ADP correctly drafted the MVFP (most valuable fantasy player) and MVRP (most valuable reality player) Peyton Manning. I also missed 3MVFP (3rd most valuable fantasy player) Drew Brees. Those misses hurt my QB cred.
+
+			</p>
+
+			<p>
+				However the next 10 or so QBs drafted all produced about the same value. I waited until late to draft those QBs while ADP took them early. That earned back a bit of my QB cred.
+			</p>
+
+			<p>
+				I also did very well picking the most value RBs (top 3) and TEs.
+			</p>
+
+			<h2> Nerd Level : 4</h2>
+
+			<p>
+				The number of points garnered at each position can be broken down in to two sources: Position Preference and Player Choice.
+			</p>
+
+			<h3>(1) Position Preference</h3>
+
+			<p>
+				Position Preference is the value derived from drafting a position early or late.
+				For example, if I draft running backs early I should get more points from running backs than my opposition, regardless of how good I am at choosing between running backs.
+				But, I give up points at other positions by going after RBs aggressively.
+			</p>
+
+			<p>
+				However, I can net add value throughout my roster by drafting a position early if the skill generally drops off fastest at that position. In other words, if the marginal value of drafting early at that position is greater than the other positions. 
+			</p>
+
+			<p>ADD TABLE AND EXPLANATION (LINEAR REGRESSION ETC)</p>
+
+			<h3>(2) Player Choice</h3>
+
+			<p>
+				Player Choice is the value derived from drafting better players with the same pick as your opponents.
+				For example, if I consistently pick better running backs one pick after other people in the league, then I am adding value by Player Choice. This is the number of points that cannot be explained by Position Preference.
+			</p>
+
+			<p> ADD TABLE AND EXPLANATION (RESIDUAL OF LINEAR REGRESSION ETC)</p>
+
+			<h2>Lessons</h2>
+				<p>
+					This value based method seems to consistently beat just drafting according to the average draft position. It doesn't always smake the best choice, as can be seeing by missing out on gigantic years by Peyton Manning and Drew Brees, but it consistently adds value across positions and throughout the draft.
+				</p>
+				<p>
+					I'll be using this methodology next year, maybe with some added wrinkles. This year I only used the average projection in ranking players. Information about the uncertainty of projections might add value. For example, if the distribution of expert projections are all over the place, that might suggest the player is a risky pick and I can downgrade the rank accordingly.
+				</p>
+				<p>
+					Another area where I could improve would be more dynamic benchmarking. Comparing players within positions is pretty easy. If Adrian Peterson is projected to have more points than Arian Foster, take Adrian Peterson. But choosing BETWEEN positions is difficult.
+				</p>
+				<p>
+					To choose whether a player at one position is better than another, you have to adjust their projected points scored to try to make their values comparable. This year I used the worst player I might end up with at a position as the benchmark, but that can be improved.
+				</p>
+				<p>
+					A better benchmark might be the player I can get next round if I refrain from drafting this player this round. The intuition is, if the first 10 wide receivers are all projected about the same, it makes sense to take another position and wait until next round to take a wide receiver.
+				</p>
 		<DIV>
 	</DIV>
 

@@ -4,14 +4,18 @@
 d3.csv('webfiles/value_by_position.csv', function(data) {
 	var COLUMNS = [
 	{colname:'Position',coltext:'Position',coltype:'tdtext'},
-	{colname:'ValueAddedPerGame1',coltext:'Value Added (Method 1)',coltype:'tdvalue'},
-	{colname:'ValueAddedPerGame2',coltext:'Value Added (Method 2)',coltype:'tdvalue'}
+	{colname:'ValueAddedPerGame1',coltext:'(1) All Players',coltype:'tdvalue'},
+	{colname:'ValueAddedPerGame2',coltext:'(2) Starters Only',coltype:'tdvalue'}
 	];
 
 	var table, thead, tbody;
 	table = d3.select('#position_table').append('table');
 	thead = table.append("thead");
     tbody = table.append("tbody");
+
+    //add multiple column header row
+    thead.append('tr').append('th').attr("colspan",COLUMNS.length)
+    .text('Value Added Per Game');
 
     thead.append('tr')
     .selectAll('th')
@@ -24,7 +28,8 @@ d3.csv('webfiles/value_by_position.csv', function(data) {
     var rows = tbody.selectAll('tr')
     .data(data)
     .enter()
-    .append('tr');
+    .append('tr')
+    .classed('trtotal',function(d){return (d['Position']==='Total')});
 
     
     //old way of adding tds
@@ -53,7 +58,7 @@ d3.csv('webfiles/value_by_position.csv', function(data) {
     var maxpos = 7  ;
     var minneg = -2 ;
     var barheight = 20;
-    var barpct = 85;
+    var barpct = 80;
     var barcenter = barpct*-1*minneg/(maxpos - minneg)
 
     var x1 = d3.scale.linear()
