@@ -50,18 +50,21 @@ d3.csv('webfiles/value_by_position.csv', function(data) {
     
 
     //Add rects
-    var maxabs = 8  ;
+    var maxpos = 7  ;
+    var minneg = -2 ;
     var barheight = 20;
+    var barpct = 85;
+    var barcenter = barpct*-1*minneg/(maxpos - minneg)
 
     var x1 = d3.scale.linear()
-    .domain([0, maxabs])
-    .range([0, '100%']);
+    .domain([0, Math.max(maxpos,-1*minneg)])
+    .range([0, Math.max(maxpos,-1*minneg)/(maxpos-minneg)*barpct + '%']);
 
     var svg = rows.selectAll('.tdvalue')
     .append('svg')
     .attr('width','100%')
     .attr('height',barheight);
-
+    
     var g = svg
     .append('g')
     .classed('chart',true);
@@ -70,6 +73,10 @@ d3.csv('webfiles/value_by_position.csv', function(data) {
     .append('rect')
     .attr('width',function(d){return x1(Math.abs(d.cvalue));})
     .attr('height',barheight)
+    .attr("x",function(d){
+        return d.cvalue < 0?(barcenter - parseFloat(x1(Math.abs(d.cvalue)))) + "%":barcenter + "%"
+    })
+    .attr('transform','translate(100%)')
     .attr('class',function(d){return d.cvalue < 0?'negbar':'posbar'});
 
     var text = g
