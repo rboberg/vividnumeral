@@ -9,11 +9,15 @@
 }
 
 .posbar {
-  fill: steelblue;
+  fill: rgb(0,120,240);
 }
 
 .negbar {
   fill: red;
+}
+
+.valuebar {
+  fill: rgb(0,120,240);
 }
 
 .chart text {
@@ -28,7 +32,6 @@
 }
 
 .brush .extent {
-  stroke: #fff;
   fill-opacity: .125;
   shape-rendering: crispEdges;
 }
