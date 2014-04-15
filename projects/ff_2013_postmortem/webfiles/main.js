@@ -1,3 +1,8 @@
+//Add Axis w/ draft rounds?
+//Add starting brush extent
+//Changeable axis?
+//Change hover behavior?
+
 
 //Table of value added by position with embedded bar charts.
 d3.csv('webfiles/value_by_position.csv', function(data) {
@@ -111,15 +116,19 @@ height[2] = allheight - margin[2].top - margin[2].bottom,
 width = 600 - margin[1].left - margin[1].right;
 */
 
-var margins = {top: 10, right: 10, bottom: 10, left: 10, inner: 10},
+var margins = {top: 10, right: 10, bottom: 20, left: 10, inner: [0,20,10]},
 height = [20,400,80],
-heightAll = height.reduce(function(a,b){return a+b+margins.inner;}) + margins.top + margins.bottom,
+heightAll = height.reduce(function(a,b){return a+b;}) + margins.inner.reduce(function(a,b){return a+b;}) + margins.top + margins.bottom,
 width = 600 - margins.left - margins.right;
+
+var buttonar = ['QB','RB','WR','TE'];
+
+
 
 var margin = new Array(), istart=0,iend=0,itop,ibottom;
 for(var i=0;i<height.length;i++){
     istart=iend;
-    itop=(i==0?margins.top:margins.inner)
+    itop=margins.inner[i];
     ibottom=(i==(height.length-1)?margins.bottom:0)
     iend=istart+itop+height[i]+ibottom;
     margin[i] = {
@@ -136,7 +145,6 @@ x2 = d3.scale.linear().range([0, width]),
 y1 = d3.scale.linear().range([height[1],0]), 
 y2 = d3.scale.linear().range([height[2],0]); 
 
-var buttonar = ['QB','RB','WR','TE'];
 
 var buttons = d3.select("#draft_viz").append("div")
     .style({'width':'100%'})
@@ -198,6 +206,11 @@ d3.csv('webfiles/mock_draft.csv', function(data){
     // START USING DATA
     data = mock_draft_access(data);
 
+    var rounds = makeArray(
+        Math.floor(d3.extent(data.map(function(d) { return d[xcol]; }))[1]/12),
+        function(i){return 12*(i+1)}
+        );
+
     var barw = Math.floor(width/data.length - 1);
 
     var maxh = _.max(_.pluck(data,hcol));
@@ -257,6 +270,39 @@ d3.csv('webfiles/mock_draft.csv', function(data){
             .attr('height',function(d){return h2(Math.abs(d[hcol]));})
             .classed('valuebar',function(d){return d['DraftType'] == 'value'});
 
+    focus.selectAll('line')
+        .data(rounds)
+        .enter()
+        .append('line')
+            .attr({'y1':y1.range()[0],'y2':y1.range()[1],'class':'rdline'})
+            .attr('x1',function(d){return x1(d+1)})
+            .attr('x2',function(d){return x1(d+1)});
+
+    focus.selectAll('text')
+        .data(rounds)
+        .enter()
+        .append('text')
+            .attr({'y':y1.range()[1],'class':'rdtext'})
+            .attr('x',function(d){return x1(d-5)})
+            .text(function(d){return (d/12)})
+            .attr('transform','translate(0,-10)');
+
+    context.selectAll('line')
+        .data(rounds)
+        .enter()
+        .append('line')
+            .attr({'y1':y2.range()[0],'y2':y2.range()[1],'class':'rdline'})
+            .attr('x1',function(d){return x2(d+1)})
+            .attr('x2',function(d){return x2(d+1)});
+
+    context.selectAll('text')
+        .data(rounds)
+        .enter()
+        .append('text')
+            .attr({'y':y2.range()[0],'class':'rdtext'})
+            .attr('x',function(d){return x2(d-5)})
+            .text(function(d){return (d/12)})
+            .attr('transform','translate(0,15)');
 
 
     context.append("g")
@@ -265,6 +311,8 @@ d3.csv('webfiles/mock_draft.csv', function(data){
     .selectAll("rect")
       .attr("y", -6)
       .attr("height", height[2] + 7);
+
+    
 
 })
 
@@ -275,6 +323,13 @@ function brushed() {
     focus.selectAll(".vizbar")
     .attr('x',function(d){return x1(d[xcol]);})
     .attr('width', Math.floor(width/Math.max(x1.domain()[1]-x1.domain()[0],1)- 1));
+
+    focus.selectAll(".rdline")
+        .attr('x1',function(d){return x1(d+1)})
+        .attr('x2',function(d){return x1(d+1)});
+
+    focus.selectAll('.rdtext')
+        .attr('x',function(d){return x1(d-5)})
     //focus.select(".x.axis").call(xAxis);
 }
 
@@ -292,4 +347,19 @@ function mock_draft_access(d){
     _.each(colnumeric,function(col){dout[i][col]= +dout[i][col]});
     }
     return dout;
+}
+
+// make sequence array
+function makeArray(count, content) {
+   var result = [];
+   if(typeof(content) == "function") {
+      for(var i=0; i<count; i++) {
+         result.push(content(i));
+      }
+   } else {
+      for(var i=0; i<count; i++) {
+         result.push(content);
+      }
+   }
+   return result;
 }
