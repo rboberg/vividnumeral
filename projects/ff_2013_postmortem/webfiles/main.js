@@ -136,7 +136,31 @@ x2 = d3.scale.linear().range([0, width]),
 y1 = d3.scale.linear().range([height[1],0]), 
 y2 = d3.scale.linear().range([height[2],0]); 
 
+var buttonar = ['QB','RB','WR','TE'];
 
+var buttons = d3.select("#draft_viz").append("div")
+    .style({'width':'100%'})
+    .selectAll('div')
+    .data(['QB','RB','WR','TE'])
+    .enter()
+    .append('div')
+        .attr('class','vizbutton inviz')
+        .text(function(d){return d})
+        .style('width',(width+margins.left+margins.right)/buttonar.length - buttonar.length +'px')
+        .on('click',function(d){
+            var inviz = this.classList.contains('inviz')
+
+            d3.select(this).classed('inviz',!inviz)
+
+            focus.selectAll('rect')
+                .classed('dimbar',function(d2){
+                    return (d2.Position === d & !this.classList.contains('dimbar')) | (d2.Position !== d & this.classList.contains('dimbar'));
+                });
+            context.selectAll('rect')
+            .classed('dimbar',function(d2){
+                return (d2.Position === d & !this.classList.contains('dimbar')) | (d2.Position !== d & this.classList.contains('dimbar'));
+            });
+        })
 
 var brush = d3.svg.brush()
     .x(x2)
@@ -144,8 +168,8 @@ var brush = d3.svg.brush()
 
 
 var svg = d3.select("#draft_viz").append("svg")
-    .attr("width", width + margin[1].left + margin[1].right)
-    .attr("height", height[1] + margin[1].top + margin[1].bottom);
+    .attr("width", width + margins.left + margins.right)
+    .attr("height", heightAll);
 
 svg.append("defs").append("clipPath")
     .attr("id", "clip")
@@ -165,6 +189,9 @@ var context = svg.append("g")
     .attr("class", "context")
     .attr("transform", "translate(" + margin[2].left + "," + margin[2].top + ")");
 
+
+
+//debugger;
 
 d3.csv('webfiles/mock_draft.csv', function(data){
 
@@ -187,7 +214,9 @@ d3.csv('webfiles/mock_draft.csv', function(data){
     y2.domain(y1.domain());
     h2.domain(h1.domain());
 
-    plabel.append('text').attr({'x':0,'y':0}).text('test').style('opacity',0);
+    plabel.append('text')
+    .attr({'x':width/2,'y':height[0]/2})
+    .style('opacity',0);
 
     var bar1 = focus.selectAll('rect')
         .data(data)
@@ -201,12 +230,16 @@ d3.csv('webfiles/mock_draft.csv', function(data){
             .classed('valuebar',function(d){return d['DraftType'] == 'value';})
             .style('cursor', 'pointer')
             .on('mouseover',function(d){
+                d3.select(this).classed('highbar',true)
+
                 plabel.select('text')
-                .text(d.Player)
+                .text(makelabel(d))
                 .transition()
                 .style('opacity',1);
             })
             .on('mouseout',function(d){
+                d3.select(this).classed('highbar',false)
+
                 plabel.select('text')
                 .transition()
                 .duration(1500)
@@ -243,6 +276,13 @@ function brushed() {
     .attr('x',function(d){return x1(d[xcol]);})
     .attr('width', Math.floor(width/Math.max(x1.domain()[1]-x1.domain()[0],1)- 1));
     //focus.select(".x.axis").call(xAxis);
+}
+
+function makelabel(d){
+    return d.Player +' ('+d.Position
+        +') Pick#' + d.DraftPosition
+        + ' / ' + 'Rank#'+d.OverallRank
+        + ' / ' + Math.round(d.PointsOverRep) + ' Points Over Replacement';
 }
 
 // Accessor to manupulate incoming mock draft data
