@@ -105,7 +105,7 @@ var hcol = 'PointsOverRep';
 
 
 var margin = {top: 10, right: 10, bottom: 100, left: 10},
-margin2 = {top: 430, right: 10, bottom: 20, left: 10},
+margin2 = {top: 430, right: 10, bottom: 10, left: 10},
 width = 600 - margin.left - margin.right,
 height = 500 - margin.top - margin.bottom,
 height2 = 500 - margin2.top - margin2.bottom;
@@ -155,19 +155,20 @@ d3.csv('webfiles/mock_draft.csv', function(data){
     var amaxh = Math.max(maxh,Math.abs(minh));
 
     var h = d3.scale.linear().range([0,height*amaxh/(maxh-minh)]),
-    h2 = d3.scale.linear().range([0,height*amaxh/(maxh-minh)]);
+    h2 = d3.scale.linear().range([0,height2*amaxh/(maxh-minh)]);
 
     x.domain(d3.extent(data.map(function(d) { return d[xcol]; })));
     y.domain(d3.extent(data.map(function(d) { return d[hcol]; })));
     h.domain([0,amaxh]);
     x2.domain(x.domain());
     y2.domain(y.domain());
-    h2.domain(h2.domain());
+    h2.domain(h.domain());
 
     var bar1 = focus.selectAll('rect')
         .data(data)
         .enter()
         .append('rect')
+            .attr('class','vizbar')
             .attr('width',barw)
             .attr('x',function(d){return x(d[xcol]);})
             .attr('y',function(d){return d[hcol] < 0 ? y(0) : y(d[hcol]);})
@@ -175,16 +176,42 @@ d3.csv('webfiles/mock_draft.csv', function(data){
             //.attr('class',function(d){return d[hcol] < 0 ? 'negbar' : 'posbar';});
 
 
-    debugger;
+
+    var bar2 = context.selectAll('rect')
+        .data(data)
+        .enter()
+        .append('rect')
+            .attr('class','vizbar')
+            .attr('width',barw)
+            .attr('x',function(d){return x2(d[xcol]);})
+            .attr('y',function(d){return d[hcol] < 0 ? y2(0) : y2(d[hcol]);})
+            .attr('height',function(d){return h2(Math.abs(d[hcol]));})
+            .attr('on');
+
+    context.append("g")
+      .attr("class", "x brush")
+      .call(brush)
+    .selectAll("rect")
+      .attr("y", -6)
+      .attr("height", height2 + 7);
+
+//    debugger;
 
 })
 
 
 // HELPER FUNCTIONS
 function brushed() {
-  x.domain(brush.empty() ? x2.domain() : brush.extent());
-  focus.select(".area").attr("d", area);
-  focus.select(".x.axis").call(xAxis);
+    x.domain(brush.empty() ? x2.domain() : brush.extent());
+    focus.selectAll(".vizbar")
+    .attr('x',function(d){return x(d[xcol]);});
+
+    if(!brush.empty()){
+        focus.selectAll('.vizbar')
+        .attr('width', Math.floor(width/Math.max(brush.extent()[1]-brush.extent()[0],1)- 1));
+    }
+    //debugger;
+//focus.select(".x.axis").call(xAxis);
 }
 
 

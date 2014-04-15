@@ -23,3 +23,12 @@
   text-anchor: end;
 }
 
+.vizbar {
+  clip-path: url(#clip);
+}
+
+.brush .extent {
+  stroke: #fff;
+  fill-opacity: .125;
+  shape-rendering: crispEdges;
+}
