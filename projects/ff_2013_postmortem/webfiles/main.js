@@ -130,9 +130,6 @@ for(var i=0;i<height.length;i++){
     }
 };
 
-//debugger;
-
-
 
 var x1 = d3.scale.linear().range([0, width]),
 x2 = d3.scale.linear().range([0, width]),
@@ -215,7 +212,6 @@ d3.csv('webfiles/mock_draft.csv', function(data){
                 .duration(1500)
                 .style('opacity',0);
             });
-    // /debugger;
 
     var bar2 = context.selectAll('rect')
         .data(data)
@@ -237,8 +233,6 @@ d3.csv('webfiles/mock_draft.csv', function(data){
       .attr("y", -6)
       .attr("height", height[2] + 7);
 
-//    debugger;
-
 })
 
 
@@ -248,11 +242,8 @@ function brushed() {
     focus.selectAll(".vizbar")
     .attr('x',function(d){return x1(d[xcol]);})
     .attr('width', Math.floor(width/Math.max(x1.domain()[1]-x1.domain()[0],1)- 1));
-    //debugger;
     //focus.select(".x.axis").call(xAxis);
 }
-
-
 
 // Accessor to manupulate incoming mock draft data
 function mock_draft_access(d){

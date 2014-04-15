@@ -28,7 +28,7 @@
 }
 
 .vizbar {
- clip-path: url(#clip);
+ /*clip-path: url(#clip);*/
 }
 
 .brush .extent {
