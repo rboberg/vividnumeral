@@ -156,8 +156,8 @@ svg.append("defs").append("clipPath")
     .attr("width", width)
     .attr("height", height[1]);
 
-var label = svg.append("g")
-    .attr("class", "label")
+var plabel = svg.append("g")
+    .attr("class", "plabel")
     .attr("transform", "translate(" + margin[0].left + "," + margin[0].top + ")");
 
 var focus = svg.append("g")
@@ -190,6 +190,8 @@ d3.csv('webfiles/mock_draft.csv', function(data){
     y2.domain(y1.domain());
     h2.domain(h1.domain());
 
+    plabel.append('text').attr({'x':0,'y':0}).text('test').style('opacity',0);
+
     var bar1 = focus.selectAll('rect')
         .data(data)
         .enter()
@@ -199,8 +201,21 @@ d3.csv('webfiles/mock_draft.csv', function(data){
             .attr('x',function(d){return x1(d[xcol]);})
             .attr('y',function(d){return d[hcol] < 0 ? y1(0) : y1(d[hcol]);})
             .attr('height',function(d){return h1(Math.abs(d[hcol]));})
-            .classed('valuebar',function(d){return d['DraftType'] == 'value'});
-
+            .classed('valuebar',function(d){return d['DraftType'] == 'value';})
+            .style('cursor', 'pointer')
+            .on('mouseover',function(d){
+                plabel.select('text')
+                .text(d.Player)
+                .transition()
+                .style('opacity',1);
+            })
+            .on('mouseout',function(d){
+                plabel.select('text')
+                .transition()
+                .duration(1500)
+                .style('opacity',0);
+            });
+    // /debugger;
 
     var bar2 = context.selectAll('rect')
         .data(data)
@@ -213,9 +228,7 @@ d3.csv('webfiles/mock_draft.csv', function(data){
             .attr('height',function(d){return h2(Math.abs(d[hcol]));})
             .classed('valuebar',function(d){return d['DraftType'] == 'value'});
 
-    var labelText = label.append('text')
-       .attr({'x':0,'y':0})
-       .text('text');
+
 
     context.append("g")
       .attr("class", "x brush")
@@ -238,6 +251,7 @@ function brushed() {
     //debugger;
     //focus.select(".x.axis").call(xAxis);
 }
+
 
 
 // Accessor to manupulate incoming mock draft data
