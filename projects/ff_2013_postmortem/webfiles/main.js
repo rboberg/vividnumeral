@@ -204,14 +204,10 @@ d3.csv('webfiles/mock_draft.csv', function(data){
 function brushed() {
     x.domain(brush.empty() ? x2.domain() : brush.extent());
     focus.selectAll(".vizbar")
-    .attr('x',function(d){return x(d[xcol]);});
-
-    if(!brush.empty()){
-        focus.selectAll('.vizbar')
-        .attr('width', Math.floor(width/Math.max(brush.extent()[1]-brush.extent()[0],1)- 1));
-    }
+    .attr('x',function(d){return x(d[xcol]);})
+    .attr('width', Math.floor(width/Math.max(x.domain()[1]-x.domain()[0],1)- 1));
     //debugger;
-//focus.select(".x.axis").call(xAxis);
+    //focus.select(".x.axis").call(xAxis);
 }
 
 
