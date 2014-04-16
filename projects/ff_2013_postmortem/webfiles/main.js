@@ -247,8 +247,10 @@ d3.csv('webfiles/mock_draft.csv', function(data){
 
                 plabel.select('text')
                 .text(makelabel(d))
+                .classed('valuetext',d.DraftType==='value')
                 .transition()
                 .style('opacity',1);
+                
             })
             .on('mouseout',function(d){
                 d3.select(this).classed('highbar',false)

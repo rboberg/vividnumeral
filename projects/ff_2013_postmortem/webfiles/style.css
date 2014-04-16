@@ -20,8 +20,12 @@
   fill: rgb(0,120,240);
 }
 
+.valuetext {
+  fill: rgb(0,120,240);
+}
+
 .highbar {
-  stroke: red;
+  fill: red;
   stroke-width:2;
 }
 
@@ -54,7 +58,7 @@
   position:relative;
   float:left;
   text-align: center;
-  background-color: rgb(180,180,180);
+  background-color: rgb(220,220,220);
   padding-top:10px;
   padding-bottom:10px;
   height:20px;
@@ -70,7 +74,7 @@
 }
 
 .vizbutton:hover {
-  background-color: rgb(0,120,240);
+  background-color: rgb(145,145,145);
   cursor:pointer;
 }
 
