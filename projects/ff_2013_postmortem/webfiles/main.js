@@ -1,4 +1,4 @@
-//Add Axis Labels
+
 
 //Table of value added by position with embedded bar charts.
 d3.csv('webfiles/value_by_position.csv', function(data) {
@@ -112,8 +112,8 @@ height[2] = allheight - margin[2].top - margin[2].bottom,
 width = 600 - margin[1].left - margin[1].right;
 */
 
-var margins = {top: 10, right: 10, bottom: 20, left: 10, inner: [0,20,10]},
-height = [20,400,80],
+var margins = {top: 10, right: 10, bottom: 70, left: 30, inner: [0,20,10]},
+height = [20,300,60],
 heightAll = height.reduce(function(a,b){return a+b;}) + margins.inner.reduce(function(a,b){return a+b;}) + margins.top + margins.bottom,
 width = 600 - margins.left - margins.right;
 
@@ -189,19 +189,67 @@ var context = svg.append("g")
     .attr("transform", "translate(" + margin[2].left + "," + margin[2].top + ")");
 
 var boundary = svg.append("g")
+    .attr('class','boundary')
+
+
     
-    boundary
-        .append('rect')
-        .attr({'class':'boundary','height':heightAll,'width':margins.left})
+boundary
+    .append('rect')
+    .attr('transform','translate('+ (-1) +')' )
+    .attr({'height':heightAll,'width':margins.left +1 })
 
-    boundary
-        .append('rect')
-        .attr('transform','translate('+ (width + margins.left) +')' )
-        .attr({'class':'boundary','height':heightAll,'width':margins.right})
+boundary
+    .append('rect')
+    .attr('transform','translate('+ (width + margins.left) +')' )
+    .attr({'height':heightAll,'width':margins.right+1})
+
+boundary
+    .append('text')
+    .attr('transform','translate('+margins.left/2+','+ (margin[1].top + height[1]/2) +')rotate(-90)')
+    .text('Points Over Replacement (Season)')
+
+boundary
+    .append('text')
+    .attr('transform','translate('+ (margins.left + width/2) +','+ (margin[2].top + height[2] + 30) +')')
+    .text('Draft Position (Labels Show Rounds)')
 
 
-//debugger;
+var legend = svg.append("g")
+    .attr('class','legend')
 
+var dimleg = {
+    h:[15,15],
+    w:[10,10],
+    ybump:15
+};
+dimleg.x = [margins.left+width/10,margins.left+width*6/10]
+dimleg.y = [(heightAll-dimleg.h[0]-1 - dimleg.ybump),(heightAll-dimleg.h[1]-dimleg.ybump)]
+dimleg.textx = dimleg.w[0] + 5
+dimleg.texty = dimleg.h[0] * 0.8
+
+legend
+.append('rect')
+    .attr('transform','translate('+ dimleg.x[0] +','+ dimleg.y[0] +')')
+    .attr({'height':dimleg.h[0],'width':dimleg.w[0],'class':'valuebar'});
+
+legend
+.append('text')
+    .attr('transform','translate('+ (dimleg.x[0] + dimleg.textx) +','+ (dimleg.y[0] + dimleg.texty) +')')
+    .text('Value Based Draft Pick')
+
+legend
+.append('rect')
+    .attr('transform','translate('+ dimleg.x[1] +','+ dimleg.y[1] +')')
+    .attr({'height':dimleg.h[1],'width':dimleg.w[1]});
+
+legend
+.append('text')
+    .attr('transform','translate('+ (dimleg.x[1] + dimleg.textx) +','+ (dimleg.y[1] + dimleg.texty) +')')
+    .text('ADP Draft Pick')
+
+
+
+ 
 d3.csv('webfiles/mock_draft.csv', function(data){
 
     // START USING DATA
@@ -315,7 +363,7 @@ d3.csv('webfiles/mock_draft.csv', function(data){
       .attr("y", 0)
       .attr("height", height[2]);
 
-    svg.select(".brush").call(brush.extent([1, 36.5]));
+    svg.select(".brush").call(brush.extent([1, 37]));
     brushed();
 })
 

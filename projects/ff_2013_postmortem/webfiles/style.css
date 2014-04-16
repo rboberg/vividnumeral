@@ -100,7 +100,19 @@
 
 }
 
-.boundary {
+.boundary rect{
   fill : white;
   stroke : none;
+}
+
+.boundary text, .legend text{
+  fill:  rgb(150,150,150);
+  font-size: 12px;
+  font-weight: normal;
+  font-family: sans-serif;
+  /*shape-rendering: crispEdges;*/
+}
+
+.boundary text{
+  text-anchor: middle;
 }
