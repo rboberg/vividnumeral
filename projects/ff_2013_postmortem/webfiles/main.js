@@ -188,7 +188,16 @@ var context = svg.append("g")
     .attr("class", "context")
     .attr("transform", "translate(" + margin[2].left + "," + margin[2].top + ")");
 
+var boundary = svg.append("g")
+    
+    boundary
+        .append('rect')
+        .attr({'class':'boundary','height':heightAll,'width':margins.left})
 
+    boundary
+        .append('rect')
+        .attr('transform','translate('+ (width + margins.left) +')' )
+        .attr({'class':'boundary','height':heightAll,'width':margins.right})
 
 
 //debugger;

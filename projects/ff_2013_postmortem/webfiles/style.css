@@ -47,7 +47,6 @@
 .brush .extent {
   fill-opacity: .125;
   shape-rendering: crispEdges;
-  stroke: rgb(70,70,70);
 }
 
 .plabel text{
@@ -99,4 +98,9 @@
   font-style: normal;
   shape-rendering: crispEdges;
 
+}
+
+.boundary {
+  fill : white;
+  stroke : none;
 }
