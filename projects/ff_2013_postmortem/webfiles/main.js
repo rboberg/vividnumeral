@@ -1,8 +1,4 @@
-//Add Axis w/ draft rounds?
-//Add starting brush extent
-//Changeable axis?
-//Change hover behavior?
-
+//Add Axis Labels
 
 //Table of value added by position with embedded bar charts.
 d3.csv('webfiles/value_by_position.csv', function(data) {
@@ -179,11 +175,6 @@ var svg = d3.select("#draft_viz").append("svg")
     .attr("width", width + margins.left + margins.right)
     .attr("height", heightAll);
 
-svg.append("defs").append("clipPath")
-    .attr("id", "clip")
-  .append("rect")
-    .attr("width", width)
-    .attr("height", height[1]);
 
 var plabel = svg.append("g")
     .attr("class", "plabel")
@@ -196,6 +187,7 @@ var focus = svg.append("g")
 var context = svg.append("g")
     .attr("class", "context")
     .attr("transform", "translate(" + margin[2].left + "," + margin[2].top + ")");
+
 
 
 
@@ -311,11 +303,11 @@ d3.csv('webfiles/mock_draft.csv', function(data){
       .attr("class", "x brush")
       .call(brush)
     .selectAll("rect")
-      .attr("y", -6)
-      .attr("height", height[2] + 7);
+      .attr("y", 0)
+      .attr("height", height[2]);
 
-    
-
+    svg.select(".brush").call(brush.extent([1, 36.5]));
+    brushed();
 })
 
 
