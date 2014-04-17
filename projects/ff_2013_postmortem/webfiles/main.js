@@ -442,7 +442,7 @@ d3.csv('webfiles/dp_summary.csv', function(data) {
     {colname:'StartingSpots',coltext:'Starters',coltype:'tdvalue',colgroup:null},
     {colname:'ValueMeanDP',coltext:'Value Based',coltype:'tdvalue',colgroup:'Mean Draft Position'},
     {colname:'ADPMeanDP',coltext:'ADP Based',coltype:'tdvalue',colgroup:'Mean Draft Position'},
-    {colname:'MarginalPoints',coltext:'Marginal Points Per Season',coltype:'tdvalue',colgroup:null},
+    {colname:'MarginalPointsPerSeason',coltext:'Marginal Points Per Season',coltype:'tdvalue',colgroup:null},
     //{colname:'PositionPointsPerSeason',coltext:'Season',coltype:'tdvalue',colgroup:'Position Points'},
     //{colname:'PositionPointsPerGame',coltext:'Game',coltype:'tdbar',colgroup:'Position Points'}
     {colname:'PositionPointsPerGame',coltext:'Total Points Per Game',coltype:'tdbar',colgroup:null}
