@@ -1,12 +1,17 @@
+table{
+  margin: 0px auto;
+}
+
 #broad_table{
 	width: 75%;
-	margin: 0px auto;
+
 }
 
 #postable_div{
-	width: 60%;
+	width: 100%;
 	margin: 0px auto;
 }
+
 
 #draft_viz{
   overflow-x: hidden;
