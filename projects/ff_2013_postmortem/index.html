@@ -182,6 +182,27 @@
 				However, I can net add value throughout my roster by drafting a position early if the skill generally drops off fastest at that position. In other words, if the marginal value of drafting early at that position is greater than the other positions. 
 			</p>
 
+			<p>
+				To calcualte the difference in points between the two draft strategies attributable to position preference, you need to know (A) where each strategy drafted a particular position on average (Mean Draft Position) and (B) how many points it is worth to draft a player one pick earlier (Marginal Points).
+			</p>
+			<p>
+				Calculating the Mean Draft Position for each strategy and position is straightforward (and self defining), just take the mean of all the draft picks. It tells you how early a strategy type picked that position on average.
+			</p>
+			<p>
+				I used a linear regression of the Points Scored on the Draft Position to estimate the Marginal Points for each position. That value tells you how important it was to draft a player early. A higher number indicates it was more important to draft that position early. 
+			</p>
+			<p>
+				This table summarizes the results. It was most important to pick QB's early (they had the highest Marginal Points). Unfortunately, the Value Based system did not do that. That results in the big red bar you see in the table indicating that I gave up a lot of value by not drafting QB's early enough.
+			</p>
+			<p>
+				Generally, this big negative should be offset by a positive somewhere. If I wasn't picking QB's I was picking something else. 
+				But because RBs, which had less marginal value than QB's, the Value Based strategy gave up some points on average by not picking QBs as early as the ADP strategy. 
+			</p>
+			<p>
+				In total the Value Based system lost 0.58 points by not going after QB's aggressively enough early.
+			</p>
+
+
 			<div id='preftable_div'>
 			<table id='preftable'></table>
 			</div>
