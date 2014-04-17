@@ -8,16 +8,13 @@ d3.csv('webfiles/value_by_position.csv', function(data) {
 	{colname:'ValueAddedPerGame2',coltext:'(2) Starters Only',coltype:'tdvalue'}
 	];
 
-	var table, thead, tbody;
-	table = d3.select('#position_table').append('table');
-	thead = table.append("thead");
-    tbody = table.append("tbody");
+	var table = d3.select('#postable');
 
     //add multiple column header row
-    thead.append('tr').append('th').attr("colspan",COLUMNS.length)
+    table.append('tr').attr('class','thead').append('th').attr("colspan",COLUMNS.length)
     .text('Value Added Per Game');
 
-    thead.append('tr')
+    table.append('tr').attr('class','thead')
     .selectAll('th')
     .data(COLUMNS)
     .enter()
@@ -25,14 +22,13 @@ d3.csv('webfiles/value_by_position.csv', function(data) {
     .text(function(column){return column.coltext})
     .attr('class',function(column){return column.coltype});
 
-    var rows = tbody.selectAll('tr')
+    var rows = table.selectAll('tr:not(.thead)')
     .data(data)
     .enter()
     .append('tr')
     .classed('trtotal',function(d){return (d['Position']==='Total')});
 
     
-    //old way of adding tds
     var cells = rows.selectAll('td')
     .data(function(row){
         return _.map(COLUMNS,function(column){
@@ -67,7 +63,7 @@ d3.csv('webfiles/value_by_position.csv', function(data) {
 
     var svg = rows.selectAll('.tdvalue')
     .append('svg')
-    .attr('width','100%')
+    .attr('width',120)
     .attr('height',barheight);
     
     var g = svg

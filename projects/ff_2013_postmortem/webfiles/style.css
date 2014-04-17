@@ -3,11 +3,14 @@
 	margin: 0px auto;
 }
 
-#position_table{
+#postable_div{
 	width: 60%;
 	margin: 0px auto;
 }
 
+#draft_viz{
+  overflow-x: hidden;
+}
 .posbar {
   fill: rgb(0,120,240);
 }
