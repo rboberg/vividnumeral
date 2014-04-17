@@ -111,7 +111,12 @@ td{
 	text-align: left;
 }
 
-.tdvalue{
+.thgroup{
+	text-align: center;
+	border-bottom-style: none;
+}
+
+.tdvalue, .tdbar{
 	text-align: right;
 }
 
