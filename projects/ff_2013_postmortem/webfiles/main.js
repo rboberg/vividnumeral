@@ -366,6 +366,22 @@ barpct = 90
 cellwidth = 200
 d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidth);
 
+csvIn = 'webfiles/best_picks.csv'
+COLUMNS = [
+{colname:'Player',coltext:'Player',coltype:'tdtext',colgroup:null},
+{colname:'Position',coltext:'Position',coltype:'tdtext',colgroup:null},
+{colname:'DraftType',coltext:'Drafted By',coltype:'tdtext',colgroup:null},
+{colname:'DraftPosition',coltext:'Pick#',coltype:'tdvalue',colgroup:null},
+{colname:'PointsOverRep',coltext:'Points Over Replacement',coltype:'tdvalue',colgroup:null},
+{colname:'MeanResidual',coltext:'Pick Success',coltype:'tdbar',colgroup:null}
+]
+tableid = '#besttable'
+domain = [0,180]
+barheight = 20
+barpct = 70
+cellwidth = 140
+d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidth);
+
 
 
 function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidth){
@@ -375,10 +391,11 @@ function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidt
 
 
         var HEAD1 = new Array();
+        var HEAD2 = _.filter(COLUMNS,function(o){return o.colgroup !== null})
         var whichgrp;
          _.each(COLUMNS,function(o){
             if(o.colgroup === null){
-                HEAD1.push({coltext:o.coltext,coltype:o.coltype,ncol:1,nrow:2})
+                HEAD1.push({coltext:o.coltext,coltype:o.coltype,ncol:1,nrow:HEAD2.length >0 ? 2 : 1})
             } else{
                 whichgrp = _.indexOf(_.pluck(HEAD1,'coltext'),o.colgroup)
                 if(whichgrp===-1){
@@ -390,7 +407,7 @@ function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidt
             
         })
 
-        var HEAD2 = _.filter(COLUMNS,function(o){return o.colgroup !== null})
+        
 
         table.append('tr').attr('class','thead')
         .selectAll('th')
@@ -402,13 +419,15 @@ function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidt
         .attr('colspan',function(column){return column.ncol})
         .attr('rowspan',function(column){return column.nrow});
 
-        table.append('tr').attr('class','thead')
-        .selectAll('th')
-        .data(HEAD2)
-        .enter()
-        .append('th')
-        .text(function(column){return column.coltext})
-        .attr('class',function(column){return column.coltype});
+        if(HEAD2.length > 0){
+            table.append('tr').attr('class','thead')
+            .selectAll('th')
+            .data(HEAD2)
+            .enter()
+            .append('th')
+            .text(function(column){return column.coltext})
+            .attr('class',function(column){return column.coltype});
+        }
 
         var rows = table.selectAll('tr:not(.thead)')
         .data(data)
@@ -473,377 +492,6 @@ function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidt
     })   
 }
 
-
-
-
-
-
-
-
-
-/*
-
-
-//************************************************************
-//Table of value added by position with embedded bar charts.
-d3.csv('webfiles/value_by_position.csv', function(data) {
-    var COLUMNS = [
-    {colname:'Position',coltext:'Position',coltype:'tdtext'},
-    {colname:'ValueAddedPerGame1',coltext:'(1) All Players',coltype:'tdvalue'},
-    {colname:'ValueAddedPerGame2',coltext:'(2) Starters Only',coltype:'tdvalue'}
-    ];
-
-    var table = d3.select('#postable');
-
-    //add multiple column header row
-    table.append('tr').attr('class','thead').append('th').attr("colspan",COLUMNS.length)
-    .text('Value Added Per Game');
-
-    table.append('tr').attr('class','thead')
-    .selectAll('th')
-    .data(COLUMNS)
-    .enter()
-    .append('th')
-    .text(function(column){return column.coltext})
-    .attr('class',function(column){return column.coltype});
-
-    var rows = table.selectAll('tr:not(.thead)')
-    .data(data)
-    .enter()
-    .append('tr')
-    .classed('trtotal',function(d){return (d['Position']==='Total')});
-
-    
-    var cells = rows.selectAll('td')
-    .data(function(row){
-        return _.map(COLUMNS,function(column){
-            return {column:column.colname,cvalue:row[column.colname],ctype:column.coltype};
-        });
-    })
-    .enter()
-    .append('td')
-    .attr('class',function(d){
-        return d.ctype;
-    });
-
-    rows.selectAll('.tdtext')
-    .text(function(d){return d.cvalue})
-
-    rows.selectAll('.tdvalue')
-    .style({'text-align' : 'center'})
-    //.text(function(d){return Math.round(d.cvalue*100)/100})
-
-    
-
-    //Add rects
-    var maxpos = 7  ;
-    var minneg = -2 ;
-    var barheight = 20;
-    var barpct = 80;
-    var barcenter = barpct*-1*minneg/(maxpos - minneg)
-
-    var x1 = d3.scale.linear()
-    .domain([0, Math.max(maxpos,-1*minneg)])
-    .range([0, Math.max(maxpos,-1*minneg)/(maxpos-minneg)*barpct + '%']);
-
-    var svg = rows.selectAll('.tdvalue')
-    .append('svg')
-    .attr('width',120)
-    .attr('height',barheight);
-    
-    var g = svg
-    .append('g')
-    .classed('chart',true);
-
-    var bar = g
-    .append('rect')
-    .attr('width',function(d){return x1(Math.abs(d.cvalue));})
-    .attr('height',barheight)
-    .attr("x",function(d){
-        return d.cvalue < 0?(barcenter - parseFloat(x1(Math.abs(d.cvalue)))) + "%":barcenter + "%"
-    })
-    .attr('class',function(d){return d.cvalue < 0?'negbar':'posbar'});
-
-    var text = g
-    .append('text')
-    //.attr('x',function(d){return x1(Math.abs(d.cvalue));})
-    .attr('x','100%')
-    .attr('y',barheight/2)
-    .attr('dy','0.3em')
-    .attr('transform','translate(0)')
-    .text(function(d){return Math.round(d.cvalue*100)/100});
-
-    var i =1;
-})
-
-*/
-
-
-
-
-
-/*
-
-
-
-//************************************************************
-//Table of value added by position with embedded bar charts.
-d3.csv('webfiles/dp_summary.csv', function(data) {
-    var COLUMNS = [
-    {colname:'Position',coltext:'Position',coltype:'tdtext',colgroup:null},
-    {colname:'StartingSpots',coltext:'Starters',coltype:'tdvalue',colgroup:null},
-    {colname:'ValueMeanDP',coltext:'Value Based',coltype:'tdvalue',colgroup:'Mean Draft Position'},
-    {colname:'ADPMeanDP',coltext:'ADP Based',coltype:'tdvalue',colgroup:'Mean Draft Position'},
-    {colname:'MarginalPointsPerSeason',coltext:'Marginal Points Per Season',coltype:'tdvalue',colgroup:null},
-    //{colname:'PositionPointsPerSeason',coltext:'Season',coltype:'tdvalue',colgroup:'Position Points'},
-    //{colname:'PositionPointsPerGame',coltext:'Game',coltype:'tdbar',colgroup:'Position Points'}
-    {colname:'PositionPointsPerGame',coltext:'Total Points Per Game',coltype:'tdbar',colgroup:null}
-    ];
-
-    var table = d3.select('#preftable');
-
-
-    var HEAD1 = new Array();
-    var whichgrp;
-     _.each(COLUMNS,function(o){
-        if(o.colgroup === null){
-            HEAD1.push({coltext:o.coltext,coltype:o.coltype,ncol:1,nrow:2})
-        } else{
-            whichgrp = _.indexOf(_.pluck(HEAD1,'coltext'),o.colgroup)
-            if(whichgrp===-1){
-                HEAD1.push({colname:o.colgroup,coltext:o.colgroup,coltype:'thgroup',ncol:1,nrow:1})
-            }else{
-                HEAD1[whichgrp].ncol ++
-            }
-        }
-        
-    })
-
-    var HEAD2 = _.filter(COLUMNS,function(o){return o.colgroup !== null})
-
-
-    table.append('tr').attr('class','thead')
-    .selectAll('th')
-    .data(HEAD1)
-    .enter()
-    .append('th')
-    .text(function(column){return column.coltext})
-    .attr('class',function(column){return column.coltype})
-    .attr('colspan',function(column){return column.ncol})
-    .attr('rowspan',function(column){return column.nrow});
-
-    table.append('tr').attr('class','thead')
-    .selectAll('th')
-    .data(HEAD2)
-    .enter()
-    .append('th')
-    .text(function(column){return column.coltext})
-    .attr('class',function(column){return column.coltype});
-
-
-
-    
-    var rows = table.selectAll('tr:not(.thead)')
-    .data(data)
-    .enter()
-    .append('tr')
-    .classed('trtotal',function(d){return (d['Position']==='Total')});
-
-    
-    var cells = rows.selectAll('td')
-    .data(function(row){
-        return _.map(COLUMNS,function(column){
-            return {column:column.colname,cvalue:row[column.colname],ctype:column.coltype};
-        });
-    })
-    .enter()
-    .append('td')
-    .attr('class',function(d){
-        return d.ctype;
-    });
-
-    rows.selectAll('.tdtext')
-    .text(function(d){return d.cvalue})
-
-    rows.selectAll('.tdvalue')
-    .text(function(d){return Math.round(d.cvalue*100)/100})
-
-    //debugger;
-    
-
-    //Add rects
-    var maxpos = 2  ;
-    var minneg = -2 ;
-    var barheight = 20;
-    var barpct = 80;
-    var barcenter = barpct*-1*minneg/(maxpos - minneg)
-
-    var x1 = d3.scale.linear()
-    .domain([0, Math.max(maxpos,-1*minneg)])
-    .range([0, Math.max(maxpos,-1*minneg)/(maxpos-minneg)*barpct + '%']);
-
-    var svg = rows.selectAll('.tdbar')
-    .append('svg')
-    .attr('width',180)
-    .attr('height',barheight);
-    
-    var g = svg
-    .append('g')
-    .classed('chart',true);
-
-    var bar = g
-    .append('rect')
-    .attr('width',function(d){return x1(Math.abs(d.cvalue));})
-    .attr('height',barheight)
-    .attr("x",function(d){
-        return d.cvalue < 0?(barcenter - parseFloat(x1(Math.abs(d.cvalue)))) + "%":barcenter + "%"
-    })
-    .attr('class',function(d){return d.cvalue < 0?'negbar':'posbar'});
-
-    var text = g
-    .append('text')
-    //.attr('x',function(d){return x1(Math.abs(d.cvalue));})
-    .attr('x','100%')
-    .attr('y',barheight/2)
-    .attr('dy','0.3em')
-    .attr('transform','translate(0)')
-    .text(function(d){return Math.round(d.cvalue*100)/100});
-
-})
-
-*/
-
-
-
-
-
-
-
-/*
-
-//************************************************************
-//Table of player choice by position with embedded bar charts.
-d3.csv('webfiles/skill_summary.csv', function(data) {
-    var COLUMNS = [
-    {colname:'Position',coltext:'Position',coltype:'tdtext',colgroup:null},
-    {colname:'StartingSpots',coltext:'Starters',coltype:'tdvalue',colgroup:null},
-    {colname:'ValueMeanResidual',coltext:'Value Based',coltype:'tdvalue',colgroup:'Mean Residual Points'},
-    {colname:'ADPMeanResidual',coltext:'ADP Based',coltype:'tdvalue',colgroup:'Mean Residual Points'},
-    //{colname:'PositionPointsPerSeason',coltext:'Season',coltype:'tdvalue',colgroup:'Position Points'},
-    //{colname:'PositionPointsPerGame',coltext:'Game',coltype:'tdbar',colgroup:'Position Points'}
-    {colname:'SkillAddedPerGame',coltext:'Player Choice Points Per Game',coltype:'tdbar',colgroup:null}
-    ];
-
-    var table = d3.select('#choicetable');
-
-
-    var HEAD1 = new Array();
-    var whichgrp;
-     _.each(COLUMNS,function(o){
-        if(o.colgroup === null){
-            HEAD1.push({coltext:o.coltext,coltype:o.coltype,ncol:1,nrow:2})
-        } else{
-            whichgrp = _.indexOf(_.pluck(HEAD1,'coltext'),o.colgroup)
-            if(whichgrp===-1){
-                HEAD1.push({colname:o.colgroup,coltext:o.colgroup,coltype:'thgroup',ncol:1,nrow:1})
-            }else{
-                HEAD1[whichgrp].ncol ++
-            }
-        }
-        
-    })
-
-    var HEAD2 = _.filter(COLUMNS,function(o){return o.colgroup !== null})
-
-    table.append('tr').attr('class','thead')
-    .selectAll('th')
-    .data(HEAD1)
-    .enter()
-    .append('th')
-    .text(function(column){return column.coltext})
-    .attr('class',function(column){return column.coltype})
-    .attr('colspan',function(column){return column.ncol})
-    .attr('rowspan',function(column){return column.nrow});
-
-    table.append('tr').attr('class','thead')
-    .selectAll('th')
-    .data(HEAD2)
-    .enter()
-    .append('th')
-    .text(function(column){return column.coltext})
-    .attr('class',function(column){return column.coltype});
-
-
-
-    
-    var rows = table.selectAll('tr:not(.thead)')
-    .data(data)
-    .enter()
-    .append('tr')
-    .classed('trtotal',function(d){return (d['Position']==='Total')});
-
-    
-    var cells = rows.selectAll('td')
-    .data(function(row){
-        return _.map(COLUMNS,function(column){
-            return {column:column.colname,cvalue:row[column.colname],ctype:column.coltype};
-        });
-    })
-    .enter()
-    .append('td')
-    .attr('class',function(d){
-        return d.ctype;
-    });
-
-    rows.selectAll('.tdtext')
-    .text(function(d){return d.cvalue})
-
-    rows.selectAll('.tdvalue')
-    .text(function(d){return Math.round(d.cvalue*100)/100})
-
-    //debugger;
-    
-
-    //Add rects
-    var maxpos = 2  ;
-    var minneg = 0 ;
-    var barheight = 20;
-    var barpct = 90;
-    var barcenter = barpct*-1*minneg/(maxpos - minneg)
-
-    var x1 = d3.scale.linear()
-    .domain([0, Math.max(maxpos,-1*minneg)])
-    .range([0, Math.max(maxpos,-1*minneg)/(maxpos-minneg)*barpct + '%']);
-
-    var svg = rows.selectAll('.tdbar')
-    .append('svg')
-    .attr('width',200)
-    .attr('height',barheight);
-    
-    var g = svg
-    .append('g')
-    .classed('chart',true);
-
-    var bar = g
-    .append('rect')
-    .attr('width',function(d){return x1(Math.abs(d.cvalue));})
-    .attr('height',barheight)
-    .attr("x",function(d){
-        return d.cvalue < 0?(barcenter - parseFloat(x1(Math.abs(d.cvalue)))) + "%":barcenter + "%"
-    })
-    .attr('class',function(d){return d.cvalue < 0?'negbar':'posbar'});
-
-    var text = g
-    .append('text')
-    //.attr('x',function(d){return x1(Math.abs(d.cvalue));})
-    .attr('x','100%')
-    .attr('y',barheight/2)
-    .attr('dy','0.3em')
-    .attr('transform','translate(0)')
-    .text(function(d){return Math.round(d.cvalue*100)/100});
-    
-})
-*/
 
 
 

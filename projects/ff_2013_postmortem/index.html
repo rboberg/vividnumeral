@@ -49,7 +49,7 @@
 			</p>
 
 			<p>
-				If you're unusually interested, intrepid, or bored you can find more detail on the draft methodology here **INSERT LINK TO DRAFT METHODOLOGY HERE**. You can also find the R code used on GitHub **INSERT rross GITHUB LINK**.
+				If you're unusually interested, intrepid, or bored you can find more detail on the draft methodology here **INSERT LINK TO DRAFT METHODOLOGY HERE**. You can also find the R code used to scrape and analyze data on <a href='https://github.com/rboberg/rross'>GitHub</a>.
 			</p>
 
 			<h3>Broad Results</h3>
@@ -189,7 +189,7 @@
 				Calculating the Mean Draft Position for each strategy and position is straightforward (and self defining), just take the mean of all the draft picks. It tells you how early a strategy type picked that position on average.
 			</p>
 			<p>
-				I used a linear regression of the Points Scored on the Draft Position to estimate the Marginal Points for each position. That value tells you how important it was to draft a player early. A higher number indicates it was more important to draft that position early. 
+				I used a linear regression of the Points Scored on the Draft Position to estimate the Marginal Points for each position. High Marginal Points indicates there is more value in drafting early at that position. To be really robust, I probably should have used data from multiple seasons to get more data points from the regression. But since I work full time, have a baby, and am not getting paid to do this, I'm going to favor expediency over statistical integrity this time. 
 			</p>
 			
 			<p>
@@ -222,17 +222,27 @@
 			<p>
 				This table summarizes the Player Choice points for each position. The Value Based approach beat the ADP approach at each position.
 			</p>
-			<p>
-				QB was again the weakest for missing Peyton Manning and Drew Brees, but was still positive. The value was added by picking QB's in the 5th, 6th, and 7th round that actually did better than several QB's taken before. The Value Based chose better RB's in the early rounds (got the top 3), chose better WR's in the late rounds (particularly Josh Gordon), and chose better TE's in the late rounds (Jordan Cameron and Martellus Bennett).
-			</p>
-			<p>
-				This table summarizes the best picks in the draft.
-			</p>
-			<p> ADD TABLE OF BST </p>
 
 			<div id='choicetable_div'>
 			<table id='choicetable'></table>
 			</div>
+
+			<p>
+				QB was again the weakest for missing Peyton Manning and Drew Brees, but was still positive. The value was added by picking QB's in the 5th, 6th, and 7th round that actually did better than several QB's taken before. The Value Based chose better RB's in the early rounds (got the top 3), chose better WR's in the late rounds (particularly Josh Gordon), and chose better TE's in the late rounds (Jordan Cameron and Martellus Bennett).
+			</p>
+
+			<h3>Best Picks</h3>
+			<p>
+				The best picks of any draft are the players that outperform the usual expectations of a pick from the same area of the draft. In the real world, Tom Brady, drafted 199th, was a better draft pick than Peyton Manning, drafted 1st, regardless of any arguments of which player is better. In the fantasy world, drafting Andy Dalton with the 122nd pick was a better pick than Drew Brees with 13th, even though he scored 80 fewer points on the season. That's because the 13th pick is on average worth over 80 points more than the 122nd pick. 
+			</p>
+			<p>
+				This table summarizes the best picks of the draft. I use the same calculation to evaluate the "best picks" as I do to calculate Player Choice above. This table demonstrates that great picks can come from anywhere in the draft, so it is just as important to pay attention to the bottom of the draft as the top. In fact the highest scoring WR was Josh Gordon who went with the 98th pick in this mock draft. Looking at this table, it's pretty clear why my fantasy football teams succeeded this year. All of my teams had Matt Forte and Josh Gordon, two of the top six best picks.
+			</p>
+
+			<div id='besttable_div'>
+			<table id='besttable'></table>
+			</div>
+			<br>
 
 			<h2>Lessons</h2>
 				<p>
