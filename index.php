@@ -16,7 +16,8 @@
 <!--  <LINK href="ff_rank_files/discussion_style.css" rel="stylesheet" type="text/css"></LINK> -->
 <!--<SCRIPT src="jquery_files/jquery-1.4.4.min.js"  type="text/javascript"></SCRIPT>-->
 <META name="GENERATOR" content="MSHTML 10.00.9200.16635">
-<LINK href="webfiles/home_style.css" rel="stylesheet" type="text/css">   
+<LINK rel="shortcut icon" href="favicon.ico" />
+<LINK href="webfiles/home_style.css" rel="stylesheet" type="text/css"/>   
 
 </HEAD>
 
