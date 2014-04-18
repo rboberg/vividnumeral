@@ -191,9 +191,15 @@
 			<p>
 				I used a linear regression of the Points Scored on the Draft Position to estimate the Marginal Points for each position. That value tells you how important it was to draft a player early. A higher number indicates it was more important to draft that position early. 
 			</p>
+			
 			<p>
 				This table summarizes the results. It was most important to pick QB's early (they had the highest Marginal Points). Unfortunately, the Value Based system did not do that. That results in the big red bar you see in the table indicating that I gave up a lot of value by not drafting QB's early enough.
 			</p>
+			
+			<div id='preftable_div'>
+			<table id='preftable'></table>
+			</div>
+			
 			<p>
 				Generally, this big negative should be offset by a positive somewhere. If I wasn't picking QB's I was picking something else. 
 				But because RBs, which had less marginal value than QB's, the Value Based strategy gave up some points on average by not picking QBs as early as the ADP strategy. 
@@ -202,17 +208,27 @@
 				In total the Value Based system lost 0.58 points by not going after QB's aggressively enough early.
 			</p>
 
-
-			<div id='preftable_div'>
-			<table id='preftable'></table>
-			</div>
-
 			<h3>(2) Player Choice</h3>
 
 			<p>
-				Player Choice is the value derived from drafting better players with the same pick as your opponents.
+				Player Choice is the value from drafting better players with the same pick as your opponents.
 				For example, if I consistently pick better running backs one pick after other people in the league, then I am adding value by Player Choice. This is the number of points that cannot be explained by Position Preference.
 			</p>
+
+			<p>
+				The points from Player Choice is the residual of the linear regression used to calculate the Marginal Value for the Position Preference. Drafting a player that ends up scoring more than expected of that draft pick adds positive Player Choice points.
+			</p>
+
+			<p>
+				This table summarizes the Player Choice points for each position. The Value Based approach beat the ADP approach at each position.
+			</p>
+			<p>
+				QB was again the weakest for missing Peyton Manning and Drew Brees, but was still positive. The value was added by picking QB's in the 5th, 6th, and 7th round that actually did better than several QB's taken before. The Value Based chose better RB's in the early rounds (got the top 3), chose better WR's in the late rounds (particularly Josh Gordon), and chose better TE's in the late rounds (Jordan Cameron and Martellus Bennett).
+			</p>
+			<p>
+				This table summarizes the best picks in the draft.
+			</p>
+			<p> ADD TABLE OF BST </p>
 
 			<div id='choicetable_div'>
 			<table id='choicetable'></table>
