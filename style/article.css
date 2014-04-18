@@ -47,6 +47,14 @@ ol{
 	padding-bottom: 10px;
 }
 
+
+ul{
+	overflow: hidden;
+	padding: 30px;
+	padding-top: 0px;
+	padding-bottom: 0px;
+}
+
 li{
 	margin-bottom: 10px;
 }

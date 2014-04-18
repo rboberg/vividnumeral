@@ -2,6 +2,10 @@ table{
   margin: 0px auto;
 }
 
+#content div{
+  margin-bottom:10px;
+}
+
 #broad_table{
 	width: 100%;
 }
