@@ -32,31 +32,34 @@
 			<h2>Nerd Level : 1</h2>
 
 			<p>
-			Before the 2013 Football season I wrote a couple pieces detailing a quantitative fantasy draft methodology. You can find the details <a href='../ff_rank'>here</a>. In short, I used player stat projections aggregated by <a href='http://www.fantasypros.com'>fantasypros.com</a> and some adjustments to compare players across positions and quantify each player's value. With this season past and in the morgue, I'm going to perform a postmortem: slice up 2013's fantasy football results and find out whether building a drafting system was worth the trouble.	
+			Before the 2013 Football season I wrote a couple pieces detailing a quantitative fantasy draft methodology. You can find the details <a href='../ff_rank'>here</a>. In short, I used player stat projections aggregated by <a href='http://www.fantasypros.com'>fantasypros.com</a> with some adjustments to quantify each player's value. With this season past and in the morgue, I'm going to perform a postmortem: slice up 2013's fantasy football results and find out whether building a drafting system was worth the trouble.	
 			</p>
 			
 			<p>
-			I'm feeling pretty good about the model since all three of my fantasy teams were first or second this year. But that's a very small sample size and a ton of other factors that could effect that success (like luck or obsessive waiver wire watching). This article takes a more robust look at whether it was a waste of time.
+			I'm feeling pretty good about the model since all three of my fantasy teams were first or second this year. But three teams is a very small sample size and a ton of other factors that could effect that success (like luck or obsessive waiver wire watching). This article takes a more robust look at whether it was a waste of time.
 			</p>
 			
 			<p>
-			The punch line is that the expert aggregate based draft ranks added between 4 and 7 points per game over just using ESPN's Average Draft Position to determine picks. That is statistically significant. I broke this article in to Nerd Levels: increasing degrees of method detail and quantitative complexity. So you can take my word that this method adds value, stop reading, and check in before next football season or move on to Level 2.
+				The punch line is that a draft methodology based on aggregating expert ranks added between 4 and 7 points per game over just using ESPN's Average Draft Position to determine picks. That is statistically significant.
+			</p>
+			<p>
+				I broke this article in to Nerd Levels: increasing degrees of method detail and quantitative complexity. So you can take my word that this method adds value, stop reading, and check in before next football season or move on to Level 2.
 			</p>
 
 			<h2>Nerd Level : 2</h2>
 
 			<p>
-				To quantify the points added by my method, I ran a mock draft of a 12 team leage where 6 teams pick according to ESPN's pre-season average draft position (ADP) and 6 teams pick the the player with the best expert consensus value. I'll refer to the two types as ADP and Value Based going forward. Once the rosters were set, I calculated how many points each team would have scored over the sytem
+				To quantify the points added by my method, I ran a mock draft for a fictional 12 team leage where 6 teams pick according to ESPN's pre-season average draft position (ADP) and 6 teams pick the the player with the best expert consensus value according to my methodology. I'll refer to the two types as ADP and Value Based going forward. Once the rosters were set, I calculated how many points each team would have scored over the sytem
 			</p>
 
 			<p>
-				If you're unusually interested, intrepid, or bored you can find more detail on the <a href='postmortem_method.html'>draft methodology here</a>. You can also find the R code that scrapes and analyzes the data on <a href='https://github.com/rboberg/rross'>GitHub</a>.
+				If you're unusually interested, intrepid, or bored you can find more detail on the <a href='postmortem_method.html'>draft methodology here</a>. You can also find the R code that gathers and analyzes the data on <a href='https://github.com/rboberg/rross'>my GitHub repo</a>.
 			</p>
 
 			<h3>Broad Results</h3>
 
 			<p>
-				To evaluate the whether Value Based was better than ADP, I want to translate the fantasy points each draft strategy's players scored in to a weekly point difference. I used two methods to do that.
+				To evaluate the whether Value Based was better than ADP, I want to know how many more points per week a Value Based team would have score than an ADP team, on average. I used two methods to translate the fantasy points each draft strategy's players scored in to a weekly point difference.
 			</p>
 
 			<ol>
@@ -71,7 +74,7 @@
 				The second method throws out the worst outliers from each strategy's draft, so flukes like a player getting injured for the entire season in week 1 will not overly effect the results. This method is also more foregiving of high risk / high reward picks that don't pan out.
 			</p>
 			<p>
-				With 6.2 points per week instead of 4.4, method two is more flattering of the Value Based strategy. The main reason for the difference is Josh Freeman. The the Value Based system drafted him (unfortunately). His almost non-existant season gets included in method one but thrown out of method two, because there's no way he would have started. More on that later.
+				With 6.2 points per week instead of 4.4, method two is more flattering of the Value Based strategy. The main reason for the difference is Josh Freeman. The Value Based system drafted him (unfortunately). His almost non-existant season is included in method one but thrown out of method two, because there's no way he would have started. More on that later.
 			</p>
 
 			<p>
@@ -117,7 +120,7 @@
 			<h2> Nerd Level : 3</h2>
 
 			<p>
-				There are alot of additional questions to answer. How are the extra points being generated? What did the method do right? Where did it screw up?  Breaking down the points added by position adds some insights.
+				There are alot of additional questions to answer. How are the extra points being generated? What did the Value Based method do right? Where did it screw up?  Breaking down the points added by position adds some insights.
 			</p>
 
 			<div id='postable_div'>
@@ -131,7 +134,7 @@
 			</p>
 
 			<p>
-				This visualization below helps answer that question by providing more granularity. Each bar is a draft pick, arranged by draft order from left to right. The size of each bar indicates how well each pick turned out, measured by how many more points that player scored than the worst player that would have started at that position in a 12 team league. The color indicates whether they were drafted by a Value Based team (my system) or an ADP based team.
+				The visualization below helps answer that question by providing more granularity. Each bar is a draft pick, arranged by draft order from left to right. The size of each bar indicates how well each pick turned out, measured by points scored above replacement. I define points above replacement as the number of fantasy points a player scored over the worst player that would have started at that position in a 12 team league. The color indicates whether they were drafted by a Value Based team (my system) or an ADP based team.
 			</p>
 
 			<p>
@@ -144,10 +147,10 @@
 
 
 			<p>
-				If you filter on QB's, you can see that the two biggest bars are black, indicating that the ADP teams drafted them (damn!). Hover over to see that those bars are Peyton Manning and Drew Brees. My method clearly did not anticipate the historic years those players would have.
+				If you filter on QB's, you can see that the two biggest bars are black, indicating that the ADP teams drafted them (damn!). Hover over to see that those bars are Peyton Manning and Drew Brees.
 			</p>
 			<p>
-				ADP correctly drafted the MVFP (most valuable fantasy player) and MVRP (most valuable reality player) Peyton Manning. I also missed the 3MVFP (3rd most valuable fantasy player) Drew Brees (my finance background makes awkward acronyms second nature). Those misses hurt my QB cred.
+				The Value Based method missed the MVFP (most valuable fantasy player) and MVRP (most valuable reality player) Peyton Manning. I also missed the 3MVFP (3rd most valuable fantasy player) Drew Brees (my finance background makes awkward acronyms second nature). Those misses hurt my QB cred.
 			</p>
 
 			<p>
@@ -178,17 +181,17 @@
 			</p>
 
 			<p>
-				However, I can net add value throughout my roster by drafting a position early if the skill generally drops off fastest at that position. In other words, if the marginal value of drafting early at that position is greater than the other positions. 
+				However, I can add value throughout my roster by drafting a position early if the skill generally drops off fastest at that position. In other words, if the marginal value of drafting early at that position is greater than the other positions. For example, if the points scored by the top QB's drops off faster than the points scored by the top WR's I can add value by drafting QB's earlier in general.
 			</p>
 
 			<p>
 				To calcualte the difference in points between the two draft strategies attributable to position preference, you need to know (A) where each strategy drafted a particular position on average (Mean Draft Position) and (B) how many points it is worth to draft a player one pick earlier (Marginal Points).
 			</p>
 			<p>
-				Calculating the Mean Draft Position for each strategy and position is straightforward (and self defining), just take the mean of all the draft picks. It tells you how early a strategy type picked that position on average.
+				Calculating the Mean Draft Position for each strategy and position is straightforward, just take the mean of all the draft picks. It tells you how early a strategy type picked that position on average.
 			</p>
 			<p>
-				I used a linear regression of the Points Scored on the Draft Position to estimate the Marginal Points for each position. High Marginal Points indicates there is more value in drafting early at that position. To be really robust, I probably should have used data from multiple seasons to get more data points from the regression. But since I work full time, have a baby, and am not getting paid to do this, I'm going to favor expediency over statistical integrity this time. 
+				I used a linear regression of each player's Points Scored versus their Draft Position to estimate the Marginal Points for each position. High Marginal Points indicates there is more value in drafting early at that position. To be really robust, I probably should have used data from multiple seasons to get more data points from the regression. But since I work full time, have a baby, and am not getting paid to do this, I'm going to favor expediency over statistical integrity this once. 
 			</p>
 			
 			<p>
@@ -201,7 +204,7 @@
 			
 			<p>
 				Generally, this big negative should be offset by a positive somewhere. If I wasn't picking QB's I was picking something else. 
-				But because RBs, which had less marginal value than QB's, the Value Based strategy gave up some points on average by not picking QBs as early as the ADP strategy. 
+				But because I was picking RBs, which had less marginal value than QB's, the Value Based strategy gave up some points on average by not picking QBs as early as the ADP strategy. 
 			</p>
 			<p>
 				In total the Value Based system lost 0.58 points by not going after QB's aggressively enough early.
@@ -211,7 +214,7 @@
 
 			<p>
 				Player Choice is the value from drafting better players with the same pick as your opponents.
-				For example, if I consistently pick better running backs one pick after other people in the league, then I am adding value by Player Choice. This is the number of points that cannot be explained by Position Preference.
+				For example, if I use the 13th pick on a better RB than the RB my opponent got with the 12th pick, I am adding value via Player Choice. In total, this is the number of points that cannot be explained by Position Preference.
 			</p>
 
 			<p>
@@ -227,15 +230,17 @@
 			</div>
 
 			<p>
-				QB was again the weakest for missing Peyton Manning and Drew Brees, but was still positive. The value was added by picking QB's in the 5th, 6th, and 7th round that actually did better than several QB's taken before. The Value Based chose better RB's in the early rounds (got the top 3), chose better WR's in the late rounds (particularly Josh Gordon), and chose better TE's in the late rounds (Jordan Cameron and Martellus Bennett).
+				QB was again the weakest for missing Peyton Manning and Drew Brees, but was still positive. The value was added by picking QB's in the 5th, 6th, and 7th round that actually did better than several QB's taken before.The Value Based approach chose better RB's in the early rounds (got the top 3), chose better WR's in the late rounds (particularly Josh Gordon), and chose better TE's in the late rounds (Jordan Cameron and Martellus Bennett).
 			</p>
+
+			<p>Over all players, the Value Based approach added 4.99 points of value. 4.99 points of Player Choice minus 0.58 from Position Preference equals the 4.42 points total value added number (with some rounding error).</p>
 
 			<h3>Best Picks</h3>
 			<p>
-				The best picks of any draft are the players that outperform the usual expectations of a pick from the same area of the draft. In the real world, Tom Brady, drafted 199th, was a better draft pick than Peyton Manning, drafted 1st, regardless of any arguments of which player is better. In the fantasy world, drafting Andy Dalton with the 122nd pick was a better pick than Drew Brees with 13th, even though he scored 80 fewer points on the season. That's because the 13th pick is on average worth over 80 points more than the 122nd pick. 
+				The best picks of any draft are the players that outperform the usual expectations of a pick from the same area of the draft. In the real world, Tom Brady, drafted 199th, was a better draft pick than Peyton Manning, drafted 1st, regardless of any arguments of which player is better. In the fantasy world, drafting Andy Dalton with the 122nd pick was a better pick than Drew Brees with 13th, even though he scored 80 fewer points on the season. The 13th pick is on average worth over 80 points more than the 122nd pick. 
 			</p>
 			<p>
-				This table summarizes the best picks of the draft. I use the same calculation to evaluate the "best picks" as I do to calculate Player Choice above. This table demonstrates that great picks can come from anywhere in the draft, so it is just as important to pay attention to the bottom of the draft as the top. In fact the highest scoring WR was Josh Gordon who went with the 98th pick in this mock draft. Looking at this table, it's pretty clear why my fantasy football teams succeeded this year. All of my teams had Matt Forte and Josh Gordon, two of the top six best picks.
+				This table summarizes the best picks of the draft. I use the same calculation to evaluate the "best picks" as I do to calculate Player Choice above. This table demonstrates that great picks can come from anywhere in the draft, so it is just as important to pay attention to the bottom of the draft as the top. In fact the highest scoring WR was Josh Gordon who went with the 98th pick in this mock draft. Looking at this table, it's pretty clear why my fantasy football teams succeeded this year. All of my teams had Matt Forte and Josh Gordon, two of the top six most successful picks.
 			</p>
 
 			<div id='besttable_div'>
@@ -245,24 +250,27 @@
 
 			<h2>Lessons</h2>
 				<p>
-					A systematic Value Based method seems to consistently beat just drafting according to the average draft position. It doesn't always smake the best choice, as can be seeing by missing out on gigantic years by Peyton Manning and Drew Brees, but it consistently adds value across positions and throughout the draft.
+					A systematic Value Based method seems to consistently beat just drafting according to the average draft position. It doesn't always make the best choice, missing out on gigantic years by Peyton Manning and Drew Brees are obvious exceptions, but it consistently adds value across positions and throughout the draft.
 				</p>
 				<p>
-					This postmortem encourages me to use this methodology next year, maybe with some added wrinkles. This year I only used the average projection in ranking players. Information about the uncertainty of projections might add value. For example, if the distribution of expert projections are all over the place, that might suggest the player is a risky pick and I can downgrade the rank accordingly.
+					This postmortem encourages me to try this methodology again next year, maybe with some added wrinkles. This year I only used the average projection in ranking players. Information about the uncertainty of projections might add value. For example, if the distribution of expert projections are all over the place, that might suggest the player is a risky pick and I can downgrade the rank accordingly.
 				</p>
 				<p>
-					Another area where I could improve would be more dynamic benchmarking. Comparing players within positions is pretty easy. If Adrian Peterson is projected to have more points than Arian Foster, take Adrian Peterson. But choosing BETWEEN positions is difficult.
+					Better benchmarking might be another area for improvement. Comparing players within positions is pretty easy. If Adrian Peterson is projected to have more points than Arian Foster, take Adrian Peterson. But choosing BETWEEN positions is difficult.
 				</p>
 				<p>
-					To choose whether a player at one position is better than another, you have to adjust their projected points scored to try to make their values comparable. This year I used the worst player I might end up with at a position as the benchmark, but that can be improved.
+					To decide whether a player at one position is better than another, the projected points scored must be adjusted to make player values comparable across positions. This year I used the worst player I might end up with at a position as the benchmark, but that can be improved.
 				</p>
 				<p>
-					A better benchmark might be the player I can get next round if I refrain from drafting this player this round. The intuition is, if the first 10 wide receivers are all projected about the same, it makes sense to take another position and wait until next round to take a wide receiver.
+					A more dynamic benchmark might use the best player at this position I could get next round if I refrain from drafting this player this round. The intuition is, if the first 10 wide receivers are all projected about the same, I don't want to draft the first wide receiver. It makes sense to take another position and wait until next round or later to take a wide receiver.
+				</p>
+				<p>
+					This dynamic benchmark would have to live-update throughout the draft, though you could get an idea of what might happen ahead of time using pre-draft ADP numbers.
 				</p>
 
 				<p>---</p>
 				<p>
-					I'm always happy to get any feedback, positive or negative... either way it means someone's reading this. You can reach me at ross@vividnumeral.com. Again, you can find the source code on GitHub. The R code for the number crunching is in the <a href="https://github.com/rboberg/rross">rross repo</a>. The html, javascript, and css for this page is in the <a href="https://github.com/rboberg/vividnumeral">vividnumeral repo</a>. I used <a href="http://www.d3js.org">d3</a> and underscore to make the visualizations in this article. 
+					I'm always happy to get any feedback, positive or negative... either way it means someone's reading this. You can reach me at ross@vividnumeral.com. Again, you can find the source code on GitHub. The R code for the number crunching is in the <a href="https://github.com/rboberg/rross">rross repo</a>. The html, javascript, and css for this page is in the <a href="https://github.com/rboberg/vividnumeral">vividnumeral repo</a>. I used <a href="http://www.d3js.org">d3</a> and <a href='http://underscorejs.org/'>underscore</a> to make the visualizations in this article. 
 				</p>
 		</DIV>
 	</DIV>
