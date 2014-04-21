@@ -51,7 +51,7 @@ var buttons = d3.select("#draft_viz").append("div")
     .data(['QB','RB','WR','TE'])
     .enter()
     .append('div')
-        .attr('class','vizbutton inviz')
+        .attr('class','vizbutton inviz ')
         .text(function(d){return d})
         .style('width',(width+margins.left+margins.right)/buttonar.length - buttonar.length +'px')
         .on('click',function(d){
@@ -59,14 +59,25 @@ var buttons = d3.select("#draft_viz").append("div")
 
             d3.select(this).classed('inviz',!inviz)
 
-            focus.selectAll('rect')
+            if(inviz){
+                focus.selectAll('rect:not(.dimbar)')
+                    .classed('dimbar',function(d2){
+                        return (d2.Position === d);
+                    });
+                context.selectAll('rect:not(.dimbar)')
                 .classed('dimbar',function(d2){
-                    return (d2.Position === d & !this.classList.contains('dimbar')) | (d2.Position !== d & this.classList.contains('dimbar'));
+                    return (d2.Position === d);
                 });
-            context.selectAll('rect')
-            .classed('dimbar',function(d2){
-                return (d2.Position === d & !this.classList.contains('dimbar')) | (d2.Position !== d & this.classList.contains('dimbar'));
-            });
+            } else{
+                focus.selectAll('rect.dimbar')
+                    .classed('dimbar',function(d2){
+                        return !(d2.Position === d);
+                    });
+                context.selectAll('rect.dimbar')
+                .classed('dimbar',function(d2){
+                    return !(d2.Position === d);
+                });
+            }
         })
 
 var brush = d3.svg.brush()

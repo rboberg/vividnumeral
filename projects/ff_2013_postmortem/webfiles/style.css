@@ -53,6 +53,7 @@ table{
 
 .dimbar {
   opacity:0.125;
+  filter: alpha(opacity=12);
 }
 
 .brush .extent {
