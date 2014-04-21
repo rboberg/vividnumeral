@@ -1,0 +1,19 @@
+.teamButton {
+	position:relative;
+	float:left;
+	border: solid white;
+	/*padding:2px;*/
+	font-family: 'Arial', sans-serif;
+	color: whitesmoke;
+	background-color: whitesmoke;
+	text-align: center;
+}
+
+.teamButton:hover{
+	cursor:pointer;
+	background-color: silver;
+}
+
+#team_button_div {
+	margin: 0px auto;
+}
