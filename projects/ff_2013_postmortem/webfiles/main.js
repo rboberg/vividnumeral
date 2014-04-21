@@ -2,27 +2,23 @@
 //Interactive Visualization of Mock Draft
 
 
+//Which Columns of the data are numeric?
 var colnumeric = ['DraftPosition','OverallRank','PointsOverRep','PositionRank'];
+
+//Choose the x variable
 var xcol = 'DraftPosition';
+
+//Choose the height variable
 var hcol = 'PointsOverRep';
 
-/*
-var allheight = 500,
-margin[1] = {top: 10, right: 10, bottom: 100, left: 10},
-height[1] = allheight - margin[1].top - margin[1].bottom,
-margin[2] = {top: height[1] + 10, right: 10, bottom: 10, left: 10},
-height[2] = allheight - margin[2].top - margin[2].bottom,
-width = 600 - margin[1].left - margin[1].right;
-*/
+//Set up position buttons
+var buttonar = ['QB','RB','WR','TE'];
 
+//Set up dimensions
 var margins = {top: 10, right: 10, bottom: 70, left: 30, inner: [0,20,10]},
 height = [20,300,60],
 heightAll = height.reduce(function(a,b){return a+b;}) + margins.inner.reduce(function(a,b){return a+b;}) + margins.top + margins.bottom,
 width = 600 - margins.left - margins.right;
-
-var buttonar = ['QB','RB','WR','TE'];
-
-
 
 var margin = new Array(), istart=0,iend=0,itop,ibottom;
 for(var i=0;i<height.length;i++){
@@ -39,22 +35,24 @@ for(var i=0;i<height.length;i++){
 };
 
 
+//Initialize axis
 var x1 = d3.scale.linear().range([0, width]),
 x2 = d3.scale.linear().range([0, width]),
 y1 = d3.scale.linear().range([height[1],0]), 
 y2 = d3.scale.linear().range([height[2],0]); 
 
-
+//Set up Buttons
 var buttons = d3.select("#draft_viz").append("div")
     .style({'width':'100%'})
     .selectAll('div')
-    .data(['QB','RB','WR','TE'])
+    .data(buttonar)
     .enter()
     .append('div')
         .attr('class','vizbutton inviz ')
         .text(function(d){return d})
         .style('width',(width+margins.left+margins.right)/buttonar.length - buttonar.length +'px')
         .on('click',function(d){
+            //Button dim / highlight functionality
             var inviz = this.classList.contains('inviz')
 
             d3.select(this).classed('inviz',!inviz)
@@ -84,29 +82,29 @@ var brush = d3.svg.brush()
     .x(x2)
     .on("brush", brushed);
 
-
 var svg = d3.select("#draft_viz").append("svg")
     .attr("width", width + margins.left + margins.right)
     .attr("height", heightAll);
 
-
+//point labels
 var plabel = svg.append("g")
     .attr("class", "plabel")
     .attr("transform", "translate(" + margin[0].left + "," + margin[0].top + ")");
 
+//focus chart
 var focus = svg.append("g")
     .attr("class", "focus")
     .attr("transform", "translate(" + margin[1].left + "," + margin[1].top + ")");
 
+// small context chart
 var context = svg.append("g")
     .attr("class", "context")
     .attr("transform", "translate(" + margin[2].left + "," + margin[2].top + ")");
 
+// to clip some boundaries and add some annotations
 var boundary = svg.append("g")
     .attr('class','boundary')
 
-
-    
 boundary
     .append('rect')
     .attr('transform','translate('+ (-1) +')' )
@@ -127,10 +125,11 @@ boundary
     .attr('transform','translate('+ (margins.left + width/2) +','+ (margin[2].top + height[2] + 30) +')')
     .text('Draft Position (Labels Show Rounds)')
 
-
+// set up legend
 var legend = svg.append("g")
     .attr('class','legend')
 
+// set up legend dimensions
 var dimleg = {
     h:[15,15],
     w:[10,10],
@@ -141,6 +140,7 @@ dimleg.y = [(heightAll-dimleg.h[0]-1 - dimleg.ybump),(heightAll-dimleg.h[1]-diml
 dimleg.textx = dimleg.w[0] + 5
 dimleg.texty = dimleg.h[0] * 0.8
 
+// build legend
 legend
 .append('rect')
     .attr('transform','translate('+ dimleg.x[0] +','+ dimleg.y[0] +')')
@@ -163,17 +163,19 @@ legend
 
 
 
- 
+//Heavy Lifting
 d3.csv('webfiles/mock_draft.csv', function(data){
 
     // START USING DATA
     data = mock_draft_access(data);
 
+    // Make an array of the rounds for the axis labels
     var rounds = makeArray(
         Math.floor(d3.extent(data.map(function(d) { return d[xcol]; }))[1]/12),
         function(i){return 12*(i+1)}
         );
 
+    // Set up dimensions and scales
     var barw = Math.floor(width/data.length - 1);
 
     var maxh = _.max(_.pluck(data,hcol));
@@ -190,10 +192,12 @@ d3.csv('webfiles/mock_draft.csv', function(data){
     y2.domain(y1.domain());
     h2.domain(h1.domain());
 
+    //Define Label Position
     plabel.append('text')
     .attr({'x':width/2,'y':height[0]/2})
     .style('opacity',0);
 
+    //Make Focus Bars
     var bar1 = focus.selectAll('rect')
         .data(data)
         .enter()
@@ -224,6 +228,7 @@ d3.csv('webfiles/mock_draft.csv', function(data){
                 .style('opacity',0);
             });
 
+    //Make Context Bars
     var bar2 = context.selectAll('rect')
         .data(data)
         .enter()
@@ -235,6 +240,7 @@ d3.csv('webfiles/mock_draft.csv', function(data){
             .attr('height',function(d){return h2(Math.abs(d[hcol]));})
             .classed('valuebar',function(d){return d['DraftType'] == 'value'});
 
+    //Set up custom axis labels and grid lines for draft rounds
     focus.selectAll('line')
         .data(rounds)
         .enter()
@@ -269,7 +275,7 @@ d3.csv('webfiles/mock_draft.csv', function(data){
             .text(function(d){return (d/12)})
             .attr('transform','translate(0,15)');
 
-
+    //Set up brushing functionality
     context.append("g")
       .attr("class", "x brush")
       .call(brush)
@@ -283,6 +289,7 @@ d3.csv('webfiles/mock_draft.csv', function(data){
 
 
 // HELPER FUNCTIONS
+// Define changes on brush
 function brushed() {
     x1.domain(brush.empty() ? x2.domain() : brush.extent());
     focus.selectAll(".vizbar")
@@ -295,9 +302,9 @@ function brushed() {
 
     focus.selectAll('.rdtext')
         .attr('x',function(d){return x1(d-5)})
-    //focus.select(".x.axis").call(xAxis);
 }
 
+// Define label format and content
 function makelabel(d){
     return d.Player +' ('+d.Position
         +') Pick#' + d.DraftPosition
@@ -314,7 +321,7 @@ function mock_draft_access(d){
     return dout;
 }
 
-// make sequence array
+// make sequential array
 function makeArray(count, content) {
    var result = [];
    if(typeof(content) == "function") {
@@ -329,8 +336,10 @@ function makeArray(count, content) {
    return result;
 }
 
+////////////////////////////
+// Make fancy tables from CSV
 
-
+// Value by Position Table
 var csvIn = 'webfiles/value_by_position.csv',
 COLUMNS = [
     {colname:'Position',coltext:'Position',coltype:'tdtext',colgroup:null},
@@ -344,7 +353,7 @@ barpct = 80,
 cellwidth = 150;
 d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidth);
 
-
+// Position Preference Table
 csvIn = 'webfiles/dp_summary.csv'
 COLUMNS = [
     {colname:'Position',coltext:'Position',coltype:'tdtext',colgroup:null},
@@ -361,7 +370,7 @@ barpct = 80
 cellwidth = 180
 d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidth);
 
-
+// Player Choice Table
 csvIn = 'webfiles/skill_summary.csv'
 COLUMNS = [
 {colname:'Position',coltext:'Position',coltype:'tdtext',colgroup:null},
@@ -377,6 +386,7 @@ barpct = 90
 cellwidth = 200
 d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidth);
 
+// Best Picks Table
 csvIn = 'webfiles/best_picks.csv'
 COLUMNS = [
 {colname:'Player',coltext:'Player',coltype:'tdtext',colgroup:null},
@@ -394,16 +404,19 @@ cellwidth = 140
 d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidth);
 
 
-
+// FUNCTION TO MAKE PRETTY TABLES WITH BARS
 function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidth){
     d3.csv(csvIn, function(data) {
 
+        //set operative table from ID
         var table = d3.select(tableid);
 
-
+        // CREATE HEADERS FROM INPUT INFORMATION
+        // MAY BE TWO ROWS OF HEADERS DEPENDING IF ON SOME ARE GROUPED
         var HEAD1 = new Array();
         var HEAD2 = _.filter(COLUMNS,function(o){return o.colgroup !== null})
         var whichgrp;
+        //Group headers if there are any
          _.each(COLUMNS,function(o){
             if(o.colgroup === null){
                 HEAD1.push({coltext:o.coltext,coltype:o.coltype,ncol:1,nrow:HEAD2.length >0 ? 2 : 1})
@@ -419,7 +432,7 @@ function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidt
         })
 
         
-
+        //Create the first header row
         table.append('tr').attr('class','thead')
         .selectAll('th')
         .data(HEAD1)
@@ -430,6 +443,7 @@ function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidt
         .attr('colspan',function(column){return column.ncol})
         .attr('rowspan',function(column){return column.nrow});
 
+        //If any columns were grouped create their individual headers
         if(HEAD2.length > 0){
             table.append('tr').attr('class','thead')
             .selectAll('th')
@@ -440,13 +454,14 @@ function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidt
             .attr('class',function(column){return column.coltype});
         }
 
+        //Create Rows
         var rows = table.selectAll('tr:not(.thead)')
         .data(data)
         .enter()
         .append('tr')
         .classed('trtotal',function(d){return (d['Position']==='Total')});
 
-        
+        //Create Cells
         var cells = rows.selectAll('td')
         .data(function(row){
             return _.map(COLUMNS,function(column){
@@ -456,16 +471,19 @@ function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidt
         .enter()
         .append('td')
         .attr('class',function(d){
+            //Set Cell class (tdvalue, tdtext, tdbar)
             return d.ctype;
         });
 
+        //format tdtext
         rows.selectAll('.tdtext')
         .text(function(d){return d.cvalue})
 
+        //format tdvalue
         rows.selectAll('.tdvalue')
         .text(function(d){return Math.round(d.cvalue*100)/100})
 
-        //Add rects
+        //Add rects to .tdbar cells
         var maxpos = domain[1]  ;
         var minneg = domain[0] ;
         var barcenter = barpct*-1*minneg/(maxpos - minneg)
@@ -492,9 +510,9 @@ function d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidt
         })
         .attr('class',function(d){return d.cvalue < 0?'negbar':'posbar'});
 
+        //Add label text to tdbar
         var text = g
         .append('text')
-        //.attr('x',function(d){return x1(Math.abs(d.cvalue));})
         .attr('x','100%')
         .attr('y',barheight/2)
         .attr('dy','0.3em')
