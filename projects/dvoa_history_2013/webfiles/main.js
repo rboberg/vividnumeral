@@ -1,9 +1,9 @@
 // BUTTON DIV
 var bheight = 20,
-bwidth = 80,
+bwidth = 50,
 bcol = 7,
 brow = 5,
-borderpx = 0;
+borderpx = 1;
 
 var bdiv = d3.select("#team_button_div");
 bdiv.style({'width':((bwidth + borderpx*2) * bcol) + 'px','height':((bheight + borderpx*2) * brow) + 'px'});
@@ -16,33 +16,33 @@ d3.csv('webfiles/team_info.csv',function(data){
 	.append('div')
 		.attr('class','teamButton')
 		.style({'width':bwidth + 'px','height':bheight + 'px','border-width':borderpx + 'px'})
-		//.style('background-color',function(d){return d.ColorSolo})
+		.style('background-color',function(d){return d.ColorLight})
 		.style('color',function(d){return d.ColorSolo})
 		.attr('title',function(d){return d.TeamName + ' '+ d.YearsActive})
 		.text(function(d){return d.Team})
 		.on('click',function(d){
 			colorThis(d, this, true);
-			//debugger;
 		})
 		.on('mouseover',function(d){
-			d3.select(this).style({'background-color':'DarkSlateGray ','color':'WhiteSmoke'})
+			d3.select(this).style({'border-color':'DarkSlateGray '})
 		})
 		.on('mouseout',function(d){
-			colorThis(d, this, false);
+			d3.select(this).style({'border-color':'white'})
 		});
 
 		function colorThis(d, me, changeBool){
 			var highButton = me.classList.contains('highButton')
 
 			if((highButton & !changeBool) | (!highButton & changeBool)){
-				d3.select(me).style({'background-color':d.ColorSolo,'color':'WhiteSmoke'})
+				d3.select(me).style({'background-color':d.ColorSolo,'color':d.ColorLight})
 				.classed('highButton',true);
 			} else{
-				d3.select(me).style({'background-color':'WhiteSmoke','color':d.ColorSolo})
+				d3.select(me).style({'background-color':d.ColorLight,'color':d.ColorSolo})
 				.classed('highButton',false);
 			}
-
-
-			//debugger;
 		}
 })
+
+
+// Interactive Time Series
+
