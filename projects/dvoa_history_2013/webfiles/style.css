@@ -18,5 +18,46 @@
 }
 
 #team_button_div {
-	margin: 0px auto;
+	/*margin: 0px auto;*/
+	float:left;
+	position:relative;
 }
+
+#ma_control{
+	width:50px;
+	height:150px;
+	position:relative;
+	float:left;
+	padding-left: 10px;
+}
+
+#ma_slider{
+	margin : 0px auto;
+	margin-top : 10px;
+	height: 100px;
+}
+
+#ma_label{
+	margin: 0px auto;
+	font-size:0.8em;
+	color:rgb(70,70,70);
+	font-family: 'Arial', sans-serif;
+	text-align: center;
+	font-weight: bold;
+}
+#ma_label:hover {
+ text-decoration: none;
+}
+
+.ui-tooltip {
+  padding: 1px 1px;
+  color: black;
+  text-transform: uppercase;
+  box-shadow: none;
+  border-width: 1px;
+  font-size:11px;
+  /*font-family: georgia, "helvetica neue",helvetica,arial,sans-serif;*/
+  color: rgb(70,70,70);
+  background-color: whitesmoke;
+}
+

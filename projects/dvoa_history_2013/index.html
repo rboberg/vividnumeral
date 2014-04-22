@@ -13,6 +13,7 @@
 	<META name="description" content="DVOA History">   	
 	<META name="date_posted" content="1986/12/05">
 	<META name="author" content="Ross Boberg">
+	<link rel="stylesheet" href="../../style/flick/jquery-ui-1.10.4.custom.css">
 	<LINK href="../../style/article.css" rel="stylesheet" type="text/css"/>
 	<LINK href="webfiles/style.css" rel="stylesheet" type="text/css">
 	<LINK rel="shortcut icon" href="../../favicon.ico" />
@@ -33,26 +34,30 @@
 			<ul>
 				<li> I used pro-football references team classifications. This merged some of the series that footballperspective.com differentiated. For example, they had the Oakland and LA Raiders as two difference series. Pro-football reference has them as one franchise and I followed their convention and present one series.
 			</ul>
+			<DIV id='controls'>
+				
+				<DIV id='team_button_div'>
 
-			<DIV id='team_button_div'>
-
+				</DIV>
+				<DIV id='ma_control'>
+					<div id='ma_label'></div>
+					<div id='ma_slider'></div>
+				</DIV>
 			</DIV>
+
+			<DIV id='yaxis_menu'></DIV>
 			<DIV id='dvoa_chart_div'>
 
 			</DIV>
+			
 		<DIV>
 	</DIV>
 	<!-- SCRIPT -->
-	<script src="webfiles/d3.js"></script>
-	<script src="webfiles/underscore-min.js"></script>
-	<script src="webfiles/jquery-min.js"></script>
-	<script src="webfiles/jquery-ui-1.10.4.custom.js"></script>
+	<script src="../../js/d3/d3-201404.js"></script>
+	<script src="../../js/underscore/underscore-min-201404.js"></script>
+	<script src="../../js/jquery/jquery-min-201404.js"></script>
+	<script src="../../js/jquery/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="webfiles/main.js"></script>
-	<script>
-		 $(function() {
-	        $( document ).tooltip();
-	     });
-	</script>
 
 </BODY>
 </HTML>
