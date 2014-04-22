@@ -151,8 +151,33 @@ for(var val in data) {
 }
 */
 d3.csv('webfiles/estimated_dvoa.csv',function(data){
+	data = processData(data)
 
-})
+	var ycol = 'Total';
+	setYAxis(ycol);
+
+	function setYAxis(ycol){
+		    y1.domain(d3.extent(data.map(function(d) { return d[ycol]; })));
+    		y2.domain(y1.domain());
+	}
+
+	function processData(data){
+		var num = ['WinPct','PDpG','OffPass','OffRun','DefPass','DefRun','TotOff','TotDef','ST','Total','Year'],
+		k = _.keys(data[0]),
+		out = new Array();
+
+		for(var i = 0; i<data.length;i++){
+			out.push(data[i]);
+			for(var j = 0;j<num.length;j++){
+				out[i][num[j]] = parseFloat(out[i][num[j]]);
+			}
+		}
+
+		return out;
+	}
+
+	//debugger;
+});
 
 
 // HELPER FUNCTIONS
@@ -172,3 +197,4 @@ function brushed() {
         .attr('x',function(d){return x1(d-5)})
      */
 }
+
