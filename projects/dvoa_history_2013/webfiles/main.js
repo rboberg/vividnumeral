@@ -110,7 +110,7 @@ var xcol = 'Year',
 
 
 var line1 = d3.svg.line()
-    .x(function(d) { return x1(d[xcol]); })
+    .x(function(d) {return x1(d[xcol]);})
     .y(function(d) { return y1(d[ycol]); });
 
 var line2 = d3.svg.line()
@@ -160,7 +160,7 @@ boundary
     .attr('transform','translate('+ (margins.left + width/2) +','+ (margin[1].top + height[1]) +')')
     .text('X Axis')
 
-var color = d3.scale.category10();
+//var color = d3.scale.category10();
 
 
 // Build Series Selector
@@ -175,47 +175,56 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	setYAxis(ycol);
 	setXAxis(xcol);
 
-	focus.append("path")
-	.datum(data)
+	focus.selectAll("path")
+	.data(data)
+	.enter()
+	.append('path')
 	.attr("class", "tmline")
-	.attr("d", line1);
+	.attr("d", function(d){
+		return line1(d.gdata)
+	});
 
+	/*
 	context.append("path")
 	.datum(data)
 	.attr("class", "tmline")
-	.attr("d", line2);
-
+	.attr("d", function(d){return line2(d.gdata)});
+	*/
 
 	function setYAxis(){
-		    y1.domain(d3.extent(data.map(function(d) { return d[ycol]; })));
+		    y1.domain(d3.extent(_.flatten(_.pluck(data,'gdata')).map(function(d) { return d[ycol]; })));
     		y2.domain(y1.domain());
 	}
 
 	function setXAxis(){
-		    x1.domain(d3.extent(data.map(function(d) { return d[xcol]; })));
+		    x1.domain(d3.extent(_.flatten(_.pluck(data,'gdata')).map(function(d) {return d[xcol]; })));
     		x2.domain(x1.domain());
 	}
 
 	function processData(data){
-		var groupby = 'Team',
-		groups = _.uniq(_.pluck(data,groupby),true);
-
+		//reformat data
 		var num = ['WinPct','PDpG','OffPass','OffRun','DefPass','DefRun','TotOff','TotDef','ST','Total','Year'],
-		k = _.keys(data[0]),
-		out = new Array();
+		k = _.keys(data[0]);
 
-		for(var i = 0; i<data.length;i++){
-			out.push(data[i]);
+	for(var i = 0; i<data.length;i++){
 			for(var j = 0;j<num.length;j++){
-				out[i][num[j]] = parseFloat(out[i][num[j]]);
+				data[i][num[j]] = parseFloat(data[i][num[j]]);
 			}
 		}
 
-		debugger;
+		var groups = _.uniq(_.pluck(data,"Team"),true),
+		out = new Array();;
+
+		for(var i = 0;i<groups.length;i++){
+			out.push({
+				group:groups[i],
+				gdata:_.where(data,{Team:groups[i]})
+			});
+		}
+
 		return out;
 	}
-
-
+	debugger;
 });
 
 
