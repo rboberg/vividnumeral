@@ -76,3 +76,8 @@
 .boundary text{
   text-anchor: middle;
 }
+
+.tmline{
+	fill: none;
+	stroke: black;
+}
