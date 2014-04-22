@@ -61,3 +61,18 @@
   background-color: whitesmoke;
 }
 
+.boundary rect{
+  fill : white;
+  stroke : none;
+}
+
+.boundary text{
+  fill:  rgb(150,150,150);
+  font-size: 12px;
+  font-weight: normal;
+  font-family: sans-serif;
+}
+
+.boundary text{
+  text-anchor: middle;
+}
