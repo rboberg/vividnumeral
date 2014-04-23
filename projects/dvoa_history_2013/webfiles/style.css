@@ -61,6 +61,11 @@
   background-color: whitesmoke;
 }
 
+#dvoa_chart_div{
+  font-family: 'Arial', sans-serif;
+  font-size:0.8em;
+}
+
 .boundary rect{
   fill : white;
   stroke : none;
@@ -80,4 +85,24 @@
 .tmline{
 	fill: none;
 	stroke: black;
+}
+
+.axis path, .axis line {
+  fill: none;
+  stroke: none;
+  shape-rendering: crispEdges;
+}
+
+#context_outline{
+	fill:whitesmoke;
+	fill-opacity:50;
+	stroke: none;
+}
+
+.brush rect{
+	opacity:0.125;
+}
+
+.context text{
+	fill: rgb(150,150,150);
 }
