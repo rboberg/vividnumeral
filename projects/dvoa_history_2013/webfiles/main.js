@@ -182,14 +182,18 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	.attr("class", "tmline")
 	.attr("d", function(d){
 		return line1(d.gdata)
-	});
+	})
+	.style('stroke',function(d){return d.light});
 
-	/*
-	context.append("path")
-	.datum(data)
+	context.selectAll("path")
+	.data(data)
+	.enter()
+	.append('path')
 	.attr("class", "tmline")
-	.attr("d", function(d){return line2(d.gdata)});
-	*/
+	.attr("d", function(d){
+		return line2(d.gdata)
+	})
+	.style('stroke',function(d){return d.light});
 
 	function setYAxis(){
 		    y1.domain(d3.extent(_.flatten(_.pluck(data,'gdata')).map(function(d) { return d[ycol]; })));
@@ -216,15 +220,19 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 		out = new Array();;
 
 		for(var i = 0;i<groups.length;i++){
+			teami = teamdata[_.indexOf(_.pluck(teamdata,"Team"),groups[i])]
 			out.push({
 				group:groups[i],
-				gdata:_.where(data,{Team:groups[i]})
+				gdata:_.where(data,{Team:groups[i]}),
+				light:teami.ColorLight,
+				dark:teami.ColorDark
 			});
+			//debugger;
 		}
 
 		return out;
 	}
-	debugger;
+	
 });
 
 
