@@ -1,10 +1,11 @@
 // TO DO
-// Fix lines out of bounds on y axis
+//xxx Fix lines out of bounds on y axis (problem is in refreshMA. getting domain before data updates)
+// Year formats
+// Series Hover
 // Show anything in context? Maybe active lines???
 // Add additional chart on hover?
 // Move MA slider??
-// Year formats
-// Series Hover
+
 
 
 ////////////////////////////////
@@ -91,12 +92,12 @@ $(function() {
 });
 
 // Set up chart dimensions
-var margins = {top: 20, right: 10, bottom: 30, left: 30, inner: [0,25]},
+var margins = {top: 20, right: 10, bottom: 30, left: 30, inner: [0,50]},
 height = [300,20],
 heightAll = height.reduce(function(a,b){return a+b;}) + margins.inner.reduce(function(a,b){return a+b;}) + margins.top + margins.bottom,
 width = 600 - margins.left - margins.right;
 
-var margin = new Array(), istart=0,iend=0,itop,ibottom;
+var margin = new Array(), istart=0,iend=margins.top,itop,ibottom;
 for(var i=0;i<height.length;i++){
     istart=iend;
     itop=margins.inner[i];
@@ -168,12 +169,12 @@ var boundary = svg.append("g")
 
 boundary
     .append('rect')
-    .attr('transform','translate('+ (-1) +')' )
-    .attr({'height':margin[0].top + height[0],'width':margins.left +1 })
+    .attr('transform','translate('+ (-1) +',' + margin[0].top + ')' )
+    .attr({'height': height[0],'width':margins.left +1 })
 
 boundary
     .append('rect')
-    .attr('transform','translate('+ (width + margins.left) +')' )
+    .attr('transform','translate('+ (width + margins.left) +',' + margin[0].top + ')' )
     .attr({'height':margin[0].top,'width':margins.right+1})
 /*
 boundary
@@ -221,7 +222,7 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 
   	boundary.append("g")
 		.attr("class", "y axis")
-		.attr('transform','translate('+margins.left+')')
+		.attr('transform','translate('+margins.left+ ',' + margin[0].top + ')')
 	    .call(yAxis);
 
 	context.append("g")
@@ -319,20 +320,29 @@ function updatex(){
 
 function refreshMA(n){
 
-	focus.selectAll('.tmline')
+
+
+	var chg = focus.selectAll('.tmline')
 	.datum(function(d){
 		d.gdata = makeMA(d.gdata,ycol,n);
 		//debugger;
 		return d;
-	})
+	});
+
+	var yrg = d3.extent(_.pluck(_.flatten(_.pluck(focus.selectAll('.tmline').data(),'gdata')),'ma'));
+	y1.domain([yrg[0],yrg[1]]);
+
+	chg
 	.transition(3000)
 	.attr("d", function(d){
 		return line1(d.gdata)
 	});
 
-	y1.domain(d3.extent(_.pluck(_.flatten(_.pluck(focus.selectAll('.tmline').data(),'gdata')),'ma')));
-	boundary.select('.y.axis').transition(3000).call(yAxis);
 	//debugger;
+
+	
+	boundary.select('.y.axis').transition(3000).call(yAxis);
+
 
 	
 }
