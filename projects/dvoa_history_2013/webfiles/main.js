@@ -1,3 +1,10 @@
+// TO DO
+// Fix lines out of bounds on y axis
+// Show anything in context? Maybe active lines???
+// Add additional chart on hover?
+// Move MA slider??
+
+
 ////////////////////////////////
 // BUTTON DIV
 ////////////////////////////////
@@ -82,7 +89,7 @@ $(function() {
 });
 
 // Set up chart dimensions
-var margins = {top: 10, right: 10, bottom: 30, left: 30, inner: [0,20]},
+var margins = {top: 20, right: 10, bottom: 30, left: 30, inner: [0,25]},
 height = [300,20],
 heightAll = height.reduce(function(a,b){return a+b;}) + margins.inner.reduce(function(a,b){return a+b;}) + margins.top + margins.bottom,
 width = 600 - margins.left - margins.right;
@@ -115,6 +122,11 @@ var xAxis1 = d3.svg.axis().scale(x1).orient("bottom"),
     xAxis2
     .tickSize(0);
 
+
+var brush = d3.svg.brush()
+    .x(x2)
+    .on("brush", brushed);
+
 var xcol = 'Year',
 	ycol = 'Total';
 
@@ -126,10 +138,6 @@ var line1 = d3.svg.line()
 var line2 = d3.svg.line()
     .x(function(d) { return x2(d.x); })
     .y(function(d) { return y2(d.ma); });
-
-var brush = d3.svg.brush()
-    .x(x2)
-    .on("brush", brushed);
 
 var svg = d3.select("#dvoa_chart_div").append("svg")
     .attr("width", width + margins.left + margins.right)
@@ -154,18 +162,18 @@ context.append('rect')
 
 // to clip some boundaries and add some annotations
 var boundary = svg.append("g")
-    .attr('class','boundary')
-/*
+    .attr('class','boundary');
+
 boundary
     .append('rect')
     .attr('transform','translate('+ (-1) +')' )
-    .attr({'height':heightAll,'width':margins.left +1 })
+    .attr({'height':margin[0].top + height[0],'width':margins.left +1 })
 
 boundary
     .append('rect')
     .attr('transform','translate('+ (width + margins.left) +')' )
-    .attr({'height':heightAll,'width':margins.right+1})
-
+    .attr({'height':margin[0].top,'width':margins.right+1})
+/*
 boundary
     .append('text')
     .attr('transform','translate('+margins.left/2+','+ (margin[0].top + height[0]/2) +')rotate(-90)')
@@ -209,13 +217,14 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	    .attr("transform", "translate(0," + (margin[0].top + height[0])+ ")")
 	  	.call(xAxis1);	
 
-  	focus.append("g")
+  	boundary.append("g")
 		.attr("class", "y axis")
+		.attr('transform','translate('+margins.left+')')
 	    .call(yAxis);
 
 	context.append("g")
 	    .attr("class", "x axis")
-	    .attr("transform", "translate(0," + (0) + ")")
+	    .attr("transform", "translate(0," + (height[1]) + ")")
 	  	.call(xAxis2);
 
 	context.append("g")
@@ -277,8 +286,34 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 		return out;
 	}
 
+
+
+
 });
 
+
+	// HELPER FUNCTIONS
+// Define changes on brush
+function brushed() {
+    x1.domain(brush.empty() ? x2.domain() : brush.extent());
+    //debugger;
+    /*
+    if((xrg[1]-xrg[0]) >= 1){
+    	y1.domain(d3.extent(_.pluck(_.filter(_.flatten(_.pluck(data,'gdata')),function(di){return (di[xcol]>=xrg[0] & di[xcol]<=xrg[1])}),ycol)));
+    }
+    */
+     
+    updatex();
+
+}
+
+function updatex(){
+	focus.selectAll(".tmline")
+    .attr("d", function(d){
+		return line1(d.gdata)
+	});
+	focus.select('.x.axis').call(xAxis1);
+}
 
 function refreshMA(n){
 
@@ -292,31 +327,15 @@ function refreshMA(n){
 	.attr("d", function(d){
 		return line1(d.gdata)
 	});
-	
-	context.selectAll('.tmline')
-	.datum(function(d){
-		d.gdata = makeMA(d.gdata,ycol,n);
-		//debugger;
-		return d;
-	})
-	.transition(3000)
-	.attr("d", function(d){
-		return line2(d.gdata)
-	});
+
+	y1.domain(d3.extent(_.pluck(_.flatten(_.pluck(focus.selectAll('.tmline').data(),'gdata')),'ma')));
+	boundary.select('.y.axis').transition(3000).call(yAxis);
+	//debugger;
+
 	
 }
 
-// HELPER FUNCTIONS
-// Define changes on brush
-function brushed() {
-    x1.domain(brush.empty() ? x2.domain() : brush.extent());
-    focus.selectAll(".tmline")
-    .attr("d", function(d){
-		return line1(d.gdata)
-	});
-	focus.select('.x.axis').call(xAxis1);
 
-}
 
 function makeMA(gdata,col,n){
 	var sn = 0;
@@ -327,3 +346,10 @@ function makeMA(gdata,col,n){
 	}
 	return(gdata);
 }
+
+
+function runOnLoad(){
+	refreshMA($('#ma_slider').slider('value'));
+}
+
+window.onload = runOnLoad;
