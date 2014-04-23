@@ -3,6 +3,8 @@
 // Show anything in context? Maybe active lines???
 // Add additional chart on hover?
 // Move MA slider??
+// Year formats
+// Series Hover
 
 
 ////////////////////////////////
@@ -312,7 +314,7 @@ function updatex(){
     .attr("d", function(d){
 		return line1(d.gdata)
 	});
-	focus.select('.x.axis').call(xAxis1);
+	focus.select('.x.axis').transition(1500).call(xAxis1);
 }
 
 function refreshMA(n){
