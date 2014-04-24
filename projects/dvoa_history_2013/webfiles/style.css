@@ -97,7 +97,7 @@
 .tmline:hover{
 	cursor:pointer;
 }
-.highline, .hoverline{
+.highline{
 	opacity:1;
 }
 
@@ -126,4 +126,10 @@
 
 .context text{
 	fill: rgb(150,150,150);
+}
+
+circle{
+	fill:#000;
+	stroke:#000;
+	opacity: 0;
 }

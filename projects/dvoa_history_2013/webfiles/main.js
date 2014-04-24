@@ -1,11 +1,12 @@
 // TO DO
-//xxx Series Hover
-//xxx Sort active series to top
-//xxx Title to lines
+//xxx Add transitions to series selection
 // Show points in lines
+// Change series start behavior
+// Add 0 line
 // Show anything in context? Maybe active lines???
 // Add additional chart on hover?
 // Move MA slider??
+
 
 
 
@@ -53,14 +54,17 @@ d3.csv('webfiles/team_info.csv',function(data){
 function fover(team){
 	d3.selectAll('.teamButton.'+team).style({'border-color':'DarkSlateGray '});
 	d3.selectAll('path.'+team)
-	.style('stroke','black').classed('hoverline',true);
+	.transition(3000)
+	.style({'stroke':'black','opacity':1});
 }
 
 function fout(team){
 	d3.selectAll('.teamButton.'+team).style({'border-color':'white'});
+
 	d3.selectAll('path.'+team)
-	.classed('hoverline',false)
-	.style('stroke',function(dln){return dln.dark});
+	.transition(3000)
+	.style('stroke',function(dln){return dln.dark})
+
 	colorTeam(team,false)
 }
 
@@ -76,7 +80,6 @@ function colorTeam(team, changeClass){
 		.classed('highButton',true);
 
 		tline
-		//.style('stroke',function(dln){return dln.dark})
 		.classed('highline',true);
 	} else{
 		tbutton
@@ -85,8 +88,10 @@ function colorTeam(team, changeClass){
 		.classed('highButton',false);
 
 		tline
-		//.style('stroke',function(dln){return dln.dark})
-		.classed('highline',false);
+		.classed('highline',false)
+		.transition(3000)
+		.style('opacity',0.125);
+		
 	}
 }
 
@@ -216,6 +221,9 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	setYAxis(ycol);
 	setXAxis(xcol);
 
+
+	/*
+	//// THIS WORKS ////
 	focus.selectAll("path")
 	.data(data)
 	.enter()
@@ -235,6 +243,56 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	.on('mouseout',function(d){
 		fout(d.group);
 	});
+	//// ABOVE WORKS ////
+	*/
+
+	//// EXPERIMENTAL STARTS ////
+	var pathgroup = focus.selectAll('.pathgroup').data(data).enter().append('g').attr('class','pathgroup');
+
+	pathgroup
+	.append('path')
+	.attr("class", function(d){return 'tmline '+d.group})
+	.attr("d", function(d){
+		return line1(d.gdata)
+	})
+	.attr('title',function(d){return d.title})
+	.style('stroke',function(d){return d.dark})
+	.on('click',function(d){
+		colorTeam(d.group, true);
+	})
+	.on('mouseover',function(d){
+		fover(d.group);
+	})
+	.on('mouseout',function(d){
+		fout(d.group);
+	});
+
+	
+	/*
+	// testing adding points
+	focus
+	.selectAll('circle')
+	.data(_.flatten(_.pluck(data,'gdata')))
+	.enter()
+	.append('circle')
+	.attr('cx',function(d){return x1(d.x)})
+	.attr('cy',function(d){return y1(d.ma)})
+	.attr('r',2);
+	*/
+
+	var pointgroup = pathgroup.append('g').attr('class','pointgroup');
+	pointgroup
+	.selectAll('.tmpoint')
+	.data(function(d){return d.gdata})
+	.enter()
+	.append('circle')
+	.attr('class','tmpoint')
+	.attr('cx',function(d){return x1(d.x)})
+	.attr('cy',function(d){return y1(d.ma)})
+	.attr('r',2);
+
+
+	//// EXPERIMENTAL ENDS ////
 
 	focus.append("g")
 	    .attr("class", "x axis")
@@ -316,8 +374,7 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 
 });
 
-
-	// HELPER FUNCTIONS
+// HELPER FUNCTIONS
 // Define changes on brush
 function brushed() {
     x1.domain(brush.empty() ? x2.domain() : brush.extent());   
@@ -326,17 +383,30 @@ function brushed() {
 
 function updatex(){
 	focus.selectAll(".tmline")
+	.transition(3000)
     .attr("d", function(d){
 		return line1(d.gdata)
 	});
+	focus.selectAll(".tmpoint")
+	.transition(3000)
+    .attr('cx',function(d){return x1(d.x)})
+	.attr('cy',function(d){return y1(d.ma)});
 	focus.select('.x.axis').transition(3000).call(xAxis1);
 }
 
 function refreshMA(n){
 
 
-
+	/* THIS WORKS
 	var chg = focus.selectAll('.tmline')
+	.datum(function(d){
+		d.gdata = makeMA(d.gdata,ycol,n);
+		//debugger;
+		return d;
+	});
+	WORKS END*/	
+
+	var chg = focus.selectAll('.pathgroup')
 	.datum(function(d){
 		d.gdata = makeMA(d.gdata,ycol,n);
 		//debugger;
@@ -346,11 +416,16 @@ function refreshMA(n){
 	var yrg = d3.extent(_.pluck(_.flatten(_.pluck(focus.selectAll('.tmline').data(),'gdata')),'ma'));
 	y1.domain([yrg[0],yrg[1]]);
 
-	chg
+	chg.selectAll('.tmline')
 	.transition(3000)
 	.attr("d", function(d){
 		return line1(d.gdata)
 	});
+
+	chg.selectAll('.tmpoint')
+	.transition(3000)
+	.attr('cx',function(d){return x1(d.x)})
+	.attr('cy',function(d){return y1(d.ma)});
 
 	//debugger;
 
