@@ -4,8 +4,8 @@
 //xxx Add 0 line
 //xxx Change series start behavior
 //xxx Move MA slider??
-// Add y-axis selector
-// Add y-axis label
+//xxx Add y-axis selector
+//xxx Add y-axis label
 // Show anything in context? Maybe active lines???
 // Add additional chart on hover?
 
@@ -122,6 +122,10 @@ $(function() {
 	$("#ma_label" ).text('MA=' + $('#ma_slider').slider('value'));
 });
 
+
+
+
+
 // Set up chart dimensions
 var margins = {top: 10, right: 10, bottom: 30, left: 30, inner: [0,50]},
 height = [300,20],
@@ -164,6 +168,29 @@ var brush = d3.svg.brush()
 
 var xcol = 'Year',
 	ycol = 'Total';
+
+// Build y variable chooser
+var ycols = [
+	{value:'Total',name:'Total DVOA'},
+	{value:'TotOff',name:'Offense DVOA'},
+	{value:'TotDef',name:'Defense DVOA'},
+	{value:'WinPct',name:'Win Percent'},
+	{value:'PDpG',name:'Point Differential'},
+	{value:'OffPass',name:'Pass Offense DVOA'},
+	{value:'OffRun',name:'Run Offsense DVOA'},
+	{value:'DefPass',name:'Pass Defense DVOA'},
+	{value:'DefRun',name:'Run Defense DVOA'},
+	{value:'ST',name:'Special Teams DVOA'},
+	];
+var y_select = $('#y_select');
+for(var i=0;i<ycols.length;i++){
+	y_select.append('<option value="'+ycols[i].value+'">'+ycols[i].name+'</option>')
+};
+y_select.change(function(){
+	ycol = $(this).val();
+	refreshMA($('#ma_slider').slider('value'));
+});
+
 
 var line1 = d3.svg.line()
     .x(function(d) {return x1(d.x);})
@@ -244,9 +271,6 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	.on('mouseout',function(d){
 		fout(d.group);
 	});
-
-	
-
 
 	/*
 	var pointgroup = pathgroup.append('g').attr('class','pointgroup');
@@ -360,7 +384,6 @@ function updatex(){
 }
 
 function refreshMA(n){
-
 
 	var chg = focus.selectAll('.pathgroup')
 	.datum(function(d){

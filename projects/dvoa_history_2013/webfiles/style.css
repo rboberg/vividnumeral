@@ -30,6 +30,9 @@
 	float:left;
 	margin-top : 10px;
 }
+#y_select_div{
+	margin-top : 10px;
+}
 
 #ma_slider{
 	float:left;
@@ -39,7 +42,7 @@
 
 #controls{
 	float:left;
-	width: 500px;
+	width: 600px;
 }
 
 #ma_label{
