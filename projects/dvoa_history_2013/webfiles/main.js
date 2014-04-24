@@ -1,10 +1,12 @@
 // TO DO
 //xxx Fix lines out of bounds on y axis (problem is in refreshMA. getting domain before data updates)
 //xxx Year formats
-// Series Hover
+//xxx Series Hover
+// Sort active series to top
 // Show anything in context? Maybe active lines???
 // Add additional chart on hover?
 // Move MA slider??
+
 
 
 
@@ -36,33 +38,49 @@ d3.csv('webfiles/team_info.csv',function(data){
 		.attr('title',function(d){return d.TeamName + ' '+ d.YearsActive})
 		.text(function(d){return d.Team})
 		.on('click',function(d){
-			colorThis(d, this, true);
+			colorTeam(d.Team, true);
 		})
 		.on('mouseover',function(d){
-			d3.select(this).style({'border-color':'DarkSlateGray '});
-			d3.selectAll('path.'+d.Team).style('stroke','black');
-			//debugger;
+			fover(d.Team);
 		})
 		.on('mouseout',function(d){
-			d3.select(this).style({'border-color':'white'});
-			colorThis(d,this,false);
+			fout(d.Team);
 		});
-
-		function colorThis(d, me, changeClass){
-			var highButton = me.classList.contains('highButton')
-
-			if((highButton & !changeClass) | (!highButton & changeClass)){
-				d3.select(me).style({'background-color':d.ColorSolo,'color':d.ColorLight})
-				.classed('highButton',true);
-				d3.selectAll('path.'+d.Team).style('stroke',function(dln){return dln.dark});
-			} else{
-				d3.select(me).style({'background-color':d.ColorLight,'color':d.ColorSolo})
-				.classed('highButton',false);
-				d3.selectAll('path.'+d.Team).style('stroke',function(dln){return dln.light});
-			}
-		}
+		
 	teamdata = data;
 })
+
+function fover(team){
+	d3.selectAll('.teamButton.'+team).style({'border-color':'DarkSlateGray '});
+	d3.selectAll('path.'+team).style('stroke','black');
+}
+
+function fout(team){
+	d3.selectAll('.teamButton.'+team).style({'border-color':'white'});
+	colorTeam(team,false)
+}
+
+function colorTeam(team, changeClass){
+	var tbutton = d3.selectAll('.teamButton.'+team),
+	tline = d3.selectAll('path.'+team);
+	
+	var highButton = (tbutton[0][0].className.indexOf('highButton') > -1)
+	if((highButton & !changeClass) | (!highButton & changeClass)){
+		tbutton
+		.style('background-color',function(d){return d.ColorSolo})
+		.style('color',function(d){return d.ColorLight})
+		.classed('highButton',true);
+
+		tline.style('stroke',function(dln){return dln.dark});
+	} else{
+		tbutton
+		.style('background-color',function(d){return d.ColorLight})
+		.style('color',function(d){return d.ColorSolo})
+		.classed('highButton',false);
+
+		tline.style('stroke',function(dln){return dln.light});
+	}
+}
 
 //sets up tool tip for button labels
 $(function() {
@@ -198,7 +216,16 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	.attr("d", function(d){
 		return line1(d.gdata)
 	})
-	.style('stroke',function(d){return d.light});
+	.style('stroke',function(d){return d.light})
+	.on('click',function(d){
+		colorTeam(d.group, true);
+	})
+	.on('mouseover',function(d){
+		fover(d.group);
+	})
+	.on('mouseout',function(d){
+		fout(d.group);
+	});
 
 	focus.append("g")
 	    .attr("class", "x axis")
@@ -300,7 +327,7 @@ function updatex(){
     .attr("d", function(d){
 		return line1(d.gdata)
 	});
-	focus.select('.x.axis').transition(1500).call(xAxis1);
+	focus.select('.x.axis').transition(3000).call(xAxis1);
 }
 
 function refreshMA(n){

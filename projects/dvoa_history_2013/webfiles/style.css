@@ -91,6 +91,10 @@
 .tmline{
 	fill: none;
 	stroke: black;
+	stroke-width: 2px;
+}
+.tmline:hover{
+	cursor:pointer;
 }
 
 
