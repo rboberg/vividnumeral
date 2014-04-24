@@ -1,6 +1,6 @@
 // TO DO
 //xxx Fix lines out of bounds on y axis (problem is in refreshMA. getting domain before data updates)
-// Year formats
+//xxx Year formats
 // Series Hover
 // Show anything in context? Maybe active lines???
 // Add additional chart on hover?
@@ -117,9 +117,10 @@ x2 = d3.scale.linear().range([0, width]),
 y1 = d3.scale.linear().range([height[0],0]), 
 y2 = d3.scale.linear().range([height[1],0]);
 
+var formatNoComma = d3.format('d');
 
-var xAxis1 = d3.svg.axis().scale(x1).orient("bottom"),
-    xAxis2 = d3.svg.axis().scale(x2).orient("bottom"),
+var xAxis1 = d3.svg.axis().scale(x1).orient("bottom").tickFormat(formatNoComma),
+    xAxis2 = d3.svg.axis().scale(x2).orient("bottom").tickFormat(formatNoComma),
     yAxis = d3.svg.axis().scale(y1).orient("left");
 
     xAxis2
