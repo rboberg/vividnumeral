@@ -24,31 +24,32 @@
 }
 
 #ma_control{
-	width:50px;
-	height:150px;
+	width:400px;
+	height:30px;
 	position:relative;
 	float:left;
-	padding-left: 10px;
+	margin-top : 10px;
 }
 
 #ma_slider{
-	margin : 0px auto;
-	margin-top : 10px;
-	height: 100px;
+	float:left;
+	width : 300px;
+
 }
 
 #controls{
-	margin: 0px auto;
+	float:left;
 	width: 500px;
 }
 
 #ma_label{
-	margin: 0px auto;
+	float:left;
 	font-size:0.8em;
 	color:rgb(70,70,70);
 	font-family: 'Arial', sans-serif;
 	text-align: center;
 	font-weight: bold;
+	margin-right:10px;
 }
 #ma_label:hover {
  text-decoration: none;

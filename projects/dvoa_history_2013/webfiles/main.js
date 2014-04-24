@@ -2,12 +2,13 @@
 //xxx Add transitions to series selection
 //xxx Show points in lines -- makes it too slow
 //xxx Add 0 line
-//xxx Change series start behavior 
+//xxx Change series start behavior
+//xxx Move MA slider??
 // Add y-axis selector
 // Add y-axis label
 // Show anything in context? Maybe active lines???
 // Add additional chart on hover?
-// Move MA slider??
+
 
 
 ////////////////////////////////
@@ -112,7 +113,7 @@ $(function() {
 	  max: maxma,
 	  range: "min",
 	  value: 10,
-	  orientation: 'vertical',
+	  orientation: 'horizontal',
 	  slide: function( event, ui ) {
 	    $('#ma_label').text('MA=' + ui.value);
 	    refreshMA(ui.value);
@@ -122,7 +123,7 @@ $(function() {
 });
 
 // Set up chart dimensions
-var margins = {top: 20, right: 10, bottom: 30, left: 30, inner: [0,50]},
+var margins = {top: 10, right: 10, bottom: 30, left: 30, inner: [0,50]},
 height = [300,20],
 heightAll = height.reduce(function(a,b){return a+b;}) + margins.inner.reduce(function(a,b){return a+b;}) + margins.top + margins.bottom,
 width = 600 - margins.left - margins.right;
