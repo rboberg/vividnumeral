@@ -1,14 +1,13 @@
 // TO DO
 //xxx Add transitions to series selection
-// Show points in lines
-// Change series start behavior
-// Add 0 line
+//xxx Show points in lines -- makes it too slow
+//xxx Add 0 line
+//xxx Change series start behavior 
+// Add y-axis selector
+// Add y-axis label
 // Show anything in context? Maybe active lines???
 // Add additional chart on hover?
 // Move MA slider??
-
-
-
 
 
 ////////////////////////////////
@@ -221,14 +220,17 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	setYAxis(ycol);
 	setXAxis(xcol);
 
-	//// EXPERIMENTAL STARTS ////
+	focus
+	.append('line')
+	.attr({'class':'zeroline','x1':0,'x2':width,'y1':y1(0),'y2':y1(0)});
+
 	var pathgroup = focus.selectAll('.pathgroup').data(data).enter().append('g').attr('class','pathgroup');
 
 	pathgroup
 	.append('path')
 	.attr("class", function(d){return 'tmline '+d.group})
 	.attr("d", function(d){
-		return line1(d.gdata)
+		return line1(pathFilter(d.gdata))
 	})
 	.attr('title',function(d){return d.title})
 	.style('stroke',function(d){return d.dark})
@@ -241,6 +243,8 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	.on('mouseout',function(d){
 		fout(d.group);
 	});
+
+	
 
 
 	/*
@@ -331,9 +335,6 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 		return out;
 	}
 
-
-
-
 });
 
 // HELPER FUNCTIONS
@@ -347,7 +348,7 @@ function updatex(){
 	focus.selectAll(".tmline")
 	.transition(3000)
     .attr("d", function(d){
-		return line1(d.gdata)
+		return line1(pathFilter(d.gdata))
 	});
 	/*
 	focus.selectAll(".tmpoint")
@@ -370,17 +371,40 @@ function refreshMA(n){
 	var yrg = d3.extent(_.pluck(_.flatten(_.pluck(focus.selectAll('.tmline').data(),'gdata')),'ma'));
 	y1.domain([yrg[0],yrg[1]]);
 
+	/*
+	// was used to adjust x range for non-null points
+	// determine xrange
+	var xrg = d3.extent(_.pluck(pathFilter(_.flatten(_.pluck(focus.selectAll('.tmline').data(),'gdata'))),'x'));
+
+
+	// if brush.empty() or brush.extent()[0] < xmin set brush.extent
+	if(brush.empty()){
+		svg.select(".brush").call(brush.extent(xrg));
+		brushed();
+	} else if(brush.extent()[0] < xrg[0]){
+		svg.select('.brush').call(brush.extent([xrg[0],brush.extent()[1]]));
+		brushed();
+	} else{
+		chg.selectAll('.tmline')
+		.transition(3000)
+		.attr("d", function(d){
+			return line1(pathFilter(d.gdata))
+		});
+	}
+	*/
+
 	chg.selectAll('.tmline')
-	.transition(3000)
-	.attr("d", function(d){
-		return line1(d.gdata)
-	});
+		.transition(3000)
+		.attr("d", function(d){
+			return line1(pathFilter(d.gdata))
+		});
 
 	/*
 	chg.selectAll('.tmpoint')
 	.attr('cx',function(d){return x1(d.x)})
 	.attr('cy',function(d){return y1(d.ma)});
 	*/
+	focus.selectAll('.zeroline').transition(3000).attr({'y1':y1(0),'y2':y1(0)});
 	
 	boundary.select('.y.axis').transition(3000).call(yAxis);
 
@@ -388,14 +412,21 @@ function refreshMA(n){
 	
 }
 
-
+function pathFilter(gdata){
+	 return _.filter(gdata,function(d){return d.ma!==null});
+}
 
 function makeMA(gdata,col,n){
 	var sn = 0;
 	for(var i=0;i<gdata.length;i++){
-		sn += gdata[i][col] - (i>=n ? gdata[i-n][col] : null);
-		gdata[i].ma = i<(n-1)?null:sn/n;
-		gdata[i].x = i<(n-1)?gdata[Math.min(n,gdata.length)-1][xcol]:gdata[i][xcol];
+		//old method excluded MA's until they had full data
+		//this uses partial data to build a gradual MA
+		sn += gdata[i][col] - (i>=n ? gdata[i-n][col] : 0);
+		gdata[i].ma = sn/n;
+		gdata[i].x = gdata[i][xcol];
+
+		//gdata[i].ma = i<(n-1)?null:sn/n;
+		//gdata[i].x = i<(n-1)?gdata[Math.min(n,gdata.length)-1][xcol]:gdata[i][xcol];
 	}
 	return(gdata);
 }
