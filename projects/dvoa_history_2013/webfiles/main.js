@@ -221,31 +221,6 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	setYAxis(ycol);
 	setXAxis(xcol);
 
-
-	/*
-	//// THIS WORKS ////
-	focus.selectAll("path")
-	.data(data)
-	.enter()
-	.append('path')
-	.attr("class", function(d){return 'tmline '+d.group})
-	.attr("d", function(d){
-		return line1(d.gdata)
-	})
-	.attr('title',function(d){return d.title})
-	.style('stroke',function(d){return d.dark})
-	.on('click',function(d){
-		colorTeam(d.group, true);
-	})
-	.on('mouseover',function(d){
-		fover(d.group);
-	})
-	.on('mouseout',function(d){
-		fout(d.group);
-	});
-	//// ABOVE WORKS ////
-	*/
-
 	//// EXPERIMENTAL STARTS ////
 	var pathgroup = focus.selectAll('.pathgroup').data(data).enter().append('g').attr('class','pathgroup');
 
@@ -267,19 +242,8 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 		fout(d.group);
 	});
 
-	
-	/*
-	// testing adding points
-	focus
-	.selectAll('circle')
-	.data(_.flatten(_.pluck(data,'gdata')))
-	.enter()
-	.append('circle')
-	.attr('cx',function(d){return x1(d.x)})
-	.attr('cy',function(d){return y1(d.ma)})
-	.attr('r',2);
-	*/
 
+	/*
 	var pointgroup = pathgroup.append('g').attr('class','pointgroup');
 	pointgroup
 	.selectAll('.tmpoint')
@@ -290,9 +254,7 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	.attr('cx',function(d){return x1(d.x)})
 	.attr('cy',function(d){return y1(d.ma)})
 	.attr('r',2);
-
-
-	//// EXPERIMENTAL ENDS ////
+	*/
 
 	focus.append("g")
 	    .attr("class", "x axis")
@@ -387,24 +349,16 @@ function updatex(){
     .attr("d", function(d){
 		return line1(d.gdata)
 	});
+	/*
 	focus.selectAll(".tmpoint")
-	.transition(3000)
     .attr('cx',function(d){return x1(d.x)})
 	.attr('cy',function(d){return y1(d.ma)});
+	*/
 	focus.select('.x.axis').transition(3000).call(xAxis1);
 }
 
 function refreshMA(n){
 
-
-	/* THIS WORKS
-	var chg = focus.selectAll('.tmline')
-	.datum(function(d){
-		d.gdata = makeMA(d.gdata,ycol,n);
-		//debugger;
-		return d;
-	});
-	WORKS END*/	
 
 	var chg = focus.selectAll('.pathgroup')
 	.datum(function(d){
@@ -422,13 +376,11 @@ function refreshMA(n){
 		return line1(d.gdata)
 	});
 
+	/*
 	chg.selectAll('.tmpoint')
-	.transition(3000)
 	.attr('cx',function(d){return x1(d.x)})
 	.attr('cy',function(d){return y1(d.ma)});
-
-	//debugger;
-
+	*/
 	
 	boundary.select('.y.axis').transition(3000).call(yAxis);
 
