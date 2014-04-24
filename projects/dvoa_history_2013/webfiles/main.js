@@ -1,8 +1,8 @@
 // TO DO
-//xxx Fix lines out of bounds on y axis (problem is in refreshMA. getting domain before data updates)
-//xxx Year formats
 //xxx Series Hover
-// Sort active series to top
+//xxx Sort active series to top
+//xxx Title to lines
+// Show points in lines
 // Show anything in context? Maybe active lines???
 // Add additional chart on hover?
 // Move MA slider??
@@ -52,11 +52,15 @@ d3.csv('webfiles/team_info.csv',function(data){
 
 function fover(team){
 	d3.selectAll('.teamButton.'+team).style({'border-color':'DarkSlateGray '});
-	d3.selectAll('path.'+team).style('stroke','black');
+	d3.selectAll('path.'+team)
+	.style('stroke','black').classed('hoverline',true);
 }
 
 function fout(team){
 	d3.selectAll('.teamButton.'+team).style({'border-color':'white'});
+	d3.selectAll('path.'+team)
+	.classed('hoverline',false)
+	.style('stroke',function(dln){return dln.dark});
 	colorTeam(team,false)
 }
 
@@ -71,20 +75,24 @@ function colorTeam(team, changeClass){
 		.style('color',function(d){return d.ColorLight})
 		.classed('highButton',true);
 
-		tline.style('stroke',function(dln){return dln.dark});
+		tline
+		//.style('stroke',function(dln){return dln.dark})
+		.classed('highline',true);
 	} else{
 		tbutton
 		.style('background-color',function(d){return d.ColorLight})
 		.style('color',function(d){return d.ColorSolo})
 		.classed('highButton',false);
 
-		tline.style('stroke',function(dln){return dln.light});
+		tline
+		//.style('stroke',function(dln){return dln.dark})
+		.classed('highline',false);
 	}
 }
 
 //sets up tool tip for button labels
 $(function() {
-   	$( document ).tooltip();
+   	$( document ).tooltip({track : true, position:{my: "center top+25", at: "center"}});
 });
 
 ///////////////////////////////////
@@ -216,7 +224,8 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	.attr("d", function(d){
 		return line1(d.gdata)
 	})
-	.style('stroke',function(d){return d.light})
+	.attr('title',function(d){return d.title})
+	.style('stroke',function(d){return d.dark})
 	.on('click',function(d){
 		colorTeam(d.group, true);
 	})
@@ -293,7 +302,8 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 				group:groups[i],
 				gdata:_.where(data,{Team:groups[i]}),
 				light:teami.ColorLight,
-				dark:teami.ColorSolo
+				dark:teami.ColorSolo,
+				title:teami.TeamName + ' ' + teami.YearsActive
 			});
 			out[i].gdata = makeMA(out[i].gdata,ycol,10);
 		}
@@ -310,16 +320,8 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	// HELPER FUNCTIONS
 // Define changes on brush
 function brushed() {
-    x1.domain(brush.empty() ? x2.domain() : brush.extent());
-    //debugger;
-    /*
-    if((xrg[1]-xrg[0]) >= 1){
-    	y1.domain(d3.extent(_.pluck(_.filter(_.flatten(_.pluck(data,'gdata')),function(di){return (di[xcol]>=xrg[0] & di[xcol]<=xrg[1])}),ycol)));
-    }
-    */
-     
+    x1.domain(brush.empty() ? x2.domain() : brush.extent());   
     updatex();
-
 }
 
 function updatex(){

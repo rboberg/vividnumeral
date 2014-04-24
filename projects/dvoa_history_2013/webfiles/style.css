@@ -92,9 +92,13 @@
 	fill: none;
 	stroke: black;
 	stroke-width: 2px;
+	opacity: 0.125;
 }
 .tmline:hover{
 	cursor:pointer;
+}
+.highline, .hoverline{
+	opacity:1;
 }
 
 
