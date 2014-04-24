@@ -177,22 +177,6 @@ boundary
     .append('rect')
     .attr('transform','translate('+ (width + margins.left) +',' + margin[0].top + ')' )
     .attr({'height':margin[0].top,'width':margins.right+1})
-/*
-boundary
-    .append('text')
-    .attr('transform','translate('+margins.left/2+','+ (margin[0].top + height[0]/2) +')rotate(-90)')
-    .text('Y Axis')
-
-boundary
-    .append('text')
-    .attr('transform','translate('+ (margins.left + width/2) +','+ (margin[1].top + height[1]) +')')
-    .text('X Axis')
-   */
-
-//var color = d3.scale.category10();
-
-
-
 
 // Build Series Selector
 /*
