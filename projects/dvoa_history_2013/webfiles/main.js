@@ -6,9 +6,10 @@
 //xxx Move MA slider??
 //xxx Add y-axis selector
 //xxx Add y-axis label
-// Show anything in context? Maybe active lines???
 // Add additional chart on hover?
-
+	// Bar chart of teams for a certain year in current y value
+// Easier to click lines?
+// Show anything in context? Maybe active lines???
 
 
 ////////////////////////////////
@@ -20,10 +21,14 @@ bwidth = 50,
 bcol = 7,
 brow = 5,
 borderpx = 1
-ptop = 5;
+ptop = 5,
+bheightAll = ((bheight + borderpx*2 + ptop) * brow),
+bwidthAll = ((bwidth + borderpx*2) * bcol);
+
+
 
 var bdiv = d3.select("#team_button_div");
-bdiv.style({'width':((bwidth + borderpx*2) * bcol) + 'px','height':((bheight + borderpx*2 + ptop) * brow) + 'px'});
+bdiv.style({'width':bwidthAll + 'px','height':bheightAll + 'px'});
 
 var teamdata;
 d3.csv('webfiles/team_info.csv',function(data){
@@ -126,11 +131,11 @@ $(function() {
 
 
 
-// Set up chart dimensions
+// Set up main chart dimensions
 var margins = {top: 10, right: 10, bottom: 30, left: 30, inner: [0,50]},
 height = [300,20],
 heightAll = height.reduce(function(a,b){return a+b;}) + margins.inner.reduce(function(a,b){return a+b;}) + margins.top + margins.bottom,
-width = 600 - margins.left - margins.right;
+width = 800 - margins.left - margins.right;
 
 var margin = new Array(), istart=0,iend=margins.top,itop,ibottom;
 for(var i=0;i<height.length;i++){
@@ -145,6 +150,9 @@ for(var i=0;i<height.length;i++){
         left: margins.left
     }
 };
+
+
+
 
 //Initialize axis
 var x1 = d3.scale.linear().range([0, width]),
@@ -192,6 +200,7 @@ y_select.change(function(){
 });
 
 
+
 var line1 = d3.svg.line()
     .x(function(d) {return x1(d.x);})
     .y(function(d) { return y1(d.ma); });
@@ -235,6 +244,21 @@ boundary
     .append('rect')
     .attr('transform','translate('+ (width + margins.left) +',' + margin[0].top + ')' )
     .attr({'height':margin[0].top,'width':margins.right+1})
+
+
+// Set up bar charts
+var bardim = [300,bheightAll];
+var barslice = 2013;
+var nbar = 30;
+var bx = d3.scale.linear().range([0, bardim[0]]),
+	by = d3.scale.linear().range([bardim[1], 0]),
+	bh = d3.scale.linear().range([0,bardim[1]]);
+
+var barsvg = d3.select('#team_bar_div').append('svg')
+	.attr({'width':bardim[0],'height':bardim[1]});
+
+var barg = barsvg.append('g').attr('transform','translate(0)');
+
 
 // Build Series Selector
 /*
@@ -320,6 +344,23 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 	.style('stroke',function(d){return d.light});)
 	*/
 
+	//make bars
+	
+	barg.selectAll('.tmbar')
+		.data(_.map(data,function(d){
+			var findpoint = _.findWhere(d.gdata,{x:barslice})
+			if(findpoint===undefined){
+				return {group:d.group,value:null,rank:null}
+			}else{
+				return {group:d.group,value:findpoint.ma,rank:null}
+			}
+			
+		}))
+		.enter()
+		.append('rect')
+		.attr('class',function(d){return 'tmbar '+d.group});
+
+
 
 	function setYAxis(){
 		    y1.domain(d3.extent(_.flatten(_.pluck(data,'gdata')).map(function(d) { return d[ycol]; })));
@@ -371,7 +412,7 @@ function brushed() {
 
 function updatex(){
 	focus.selectAll(".tmline")
-	.transition(3000)
+	.transition().duration(1000)
     .attr("d", function(d){
 		return line1(pathFilter(d.gdata))
 	});
@@ -380,7 +421,10 @@ function updatex(){
     .attr('cx',function(d){return x1(d.x)})
 	.attr('cy',function(d){return y1(d.ma)});
 	*/
-	focus.select('.x.axis').transition(3000).call(xAxis1);
+	focus.select('.x.axis').transition().duration(1000).call(xAxis1);
+
+	barslice = Math.round(x1.domain()[1])
+	refreshBar()
 }
 
 function refreshMA(n){
@@ -418,7 +462,7 @@ function refreshMA(n){
 	*/
 
 	chg.selectAll('.tmline')
-		.transition(3000)
+		.transition().duration(1000)
 		.attr("d", function(d){
 			return line1(pathFilter(d.gdata))
 		});
@@ -428,12 +472,12 @@ function refreshMA(n){
 	.attr('cx',function(d){return x1(d.x)})
 	.attr('cy',function(d){return y1(d.ma)});
 	*/
-	focus.selectAll('.zeroline').transition(3000).attr({'y1':y1(0),'y2':y1(0)});
+	focus.selectAll('.zeroline').transition().duration(1000).attr({'y1':y1(0),'y2':y1(0)});
 	
-	boundary.select('.y.axis').transition(3000).call(yAxis);
+	boundary.select('.y.axis').transition().duration(1000).call(yAxis);
 
 
-	
+	refreshBar();
 }
 
 function pathFilter(gdata){
@@ -455,6 +499,55 @@ function makeMA(gdata,col,n){
 	return(gdata);
 }
 
+function refreshBar(){
+	var tmbars = barg.selectAll('.tmbar');
+	var tmlines = focus.selectAll('.tmline');
+	
+	var linedata = tmlines.data();
+
+	//Set bar data from line data
+	tmbars.datum(function(dbar){
+		dline = _.findWhere(linedata,{group:dbar.group});
+		findpoint = _.findWhere(dline.gdata,{x:barslice});
+		if(findpoint===undefined){
+			return {group:dbar.group,value:null,rank:null}
+		}else{
+			return {group:dbar.group,value:findpoint.ma,rank:null}
+		}
+	});
+
+	//Get bar ranks
+	var bardata = tmbars.data();
+	
+	var ord = _.pluck(
+		_.filter(
+			bardata,function(d){
+				return d.value!==null
+			}).sort(function(a,b){
+				return b.value-a.value
+			}),
+		'group'
+		);
+	tmbars.datum(function(dbar){
+		barindex = ord.indexOf(dbar.group);
+		return {group:dbar.group,value:dbar.value,rank:barindex>-1?barindex:null} 
+	});
+
+	bx.domain([0,ord.length]);
+	by.domain(y1.domain());
+	bh.domain([0,Math.max(Math.abs(y1.domain()[0]),y1.domain()[1])*2]);
+
+	tmbars
+		.transition()
+		.duration(1000)
+		.attr('y',function(d){return by(0)-(d.value > 0 ? bh(Math.abs(d.value)) : 0 )})
+		.delay(function(d,i){return i / nbar * 500})
+		.attr('x',function(d){return bx(d.rank)})
+		
+		.attr('height',function(d){return bh(Math.abs(d.value))})
+		.attr('width',bardim[0]/nbar);
+
+}
 
 function runOnLoad(){
 	refreshMA($('#ma_slider').slider('value'));

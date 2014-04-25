@@ -1,3 +1,5 @@
+
+
 .teamButton {
 	position:relative;
 	float:left;
@@ -23,8 +25,13 @@
 	position:relative;
 }
 
+#team_bar_div {
+	margin-left: 10px;
+	float:left;
+	position:relative;
+}
+
 #ma_control{
-	width:400px;
 	height:30px;
 	position:relative;
 	float:left;
@@ -32,17 +39,19 @@
 }
 #y_select_div{
 	margin-top : 10px;
+	float:left;
+	margin-right: 10px;
 }
 
 #ma_slider{
 	float:left;
-	width : 300px;
+	width : 500px;
 
 }
 
 #controls{
 	float:left;
-	width: 600px;
+	width: 800px;
 }
 
 #ma_label{
