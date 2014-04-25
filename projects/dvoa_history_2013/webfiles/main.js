@@ -1,15 +1,3 @@
-// TO DO
-//xxx Add transitions to series selection
-//xxx Show points in lines -- makes it too slow
-//xxx Add 0 line
-//xxx Change series start behavior
-//xxx Move MA slider??
-//xxx Add y-axis selector
-//xxx Add y-axis label
-// Add additional chart on hover?
-	// Bar chart of teams for a certain year in current y value
-// Easier to click lines?
-// Show anything in context? Maybe active lines???
 
 
 ////////////////////////////////
@@ -18,8 +6,8 @@
 
 var bheight = 20,
 bwidth = 50,
-bcol = 7,
-brow = 5,
+bcol = 5,
+brow = 7,
 borderpx = 1
 ptop = 5,
 bheightAll = ((bheight + borderpx*2 + ptop) * brow),
@@ -59,23 +47,21 @@ d3.csv('webfiles/team_info.csv',function(data){
 function fover(team){
 	d3.selectAll('.teamButton.'+team).style({'border-color':'DarkSlateGray '});
 	d3.selectAll('path.'+team)
-	.transition(3000)
-	.style({'stroke':'black','opacity':1});
+	.style({'opacity':1,'stroke-width':6});
+	d3.selectAll('rect.'+team)
+	.style({'opacity':1});
 }
 
 function fout(team){
 	d3.selectAll('.teamButton.'+team).style({'border-color':'white'});
-
-	d3.selectAll('path.'+team)
-	.transition(3000)
-	.style('stroke',function(dln){return dln.dark})
 
 	colorTeam(team,false)
 }
 
 function colorTeam(team, changeClass){
 	var tbutton = d3.selectAll('.teamButton.'+team),
-	tline = d3.selectAll('path.'+team);
+	tline = d3.selectAll('path.'+team),
+	tbar = d3.selectAll('rect.'+team);
 	
 	var highButton = (tbutton[0][0].className.indexOf('highButton') > -1)
 	if((highButton & !changeClass) | (!highButton & changeClass)){
@@ -85,7 +71,12 @@ function colorTeam(team, changeClass){
 		.classed('highButton',true);
 
 		tline
-		.classed('highline',true);
+		.classed('highline',true)
+		.transition()
+		.style({'stroke-width':3});
+
+		tbar
+		.classed('highbar',true);
 	} else{
 		tbutton
 		.style('background-color',function(d){return d.ColorLight})
@@ -94,9 +85,12 @@ function colorTeam(team, changeClass){
 
 		tline
 		.classed('highline',false)
-		.transition(3000)
-		.style('opacity',0.125);
+		.transition()
+		.style({'opacity':0.125,'stroke-width':3});
 		
+		tbar
+		.classed('highbar',false)
+		.style({'opacity':0.4});
 	}
 }
 
@@ -120,11 +114,11 @@ $(function() {
 	  value: 10,
 	  orientation: 'horizontal',
 	  slide: function( event, ui ) {
-	    $('#ma_label').text('MA=' + ui.value);
+	    $('#ma_label').text('Moving Average : ' + ui.value + ' Years');
 	    refreshMA(ui.value);
 	  }
 	});
-	$("#ma_label" ).text('MA=' + $('#ma_slider').slider('value'));
+	$("#ma_label" ).text('Moving Average : ' + $('#ma_slider').slider('value')+ ' Years');
 });
 
 
@@ -243,11 +237,11 @@ boundary
 boundary
     .append('rect')
     .attr('transform','translate('+ (width + margins.left) +',' + margin[0].top + ')' )
-    .attr({'height':margin[0].top,'width':margins.right+1})
+    .attr({'height':height[0],'width':margins.right+1})
 
 
 // Set up bar charts
-var bardim = [300,bheightAll];
+var bardim = [width-bwidthAll,bheightAll];
 var barslice = 2013;
 var nbar = 30;
 var bx = d3.scale.linear().range([0, bardim[0]]),
@@ -258,6 +252,11 @@ var barsvg = d3.select('#team_bar_div').append('svg')
 	.attr({'width':bardim[0],'height':bardim[1]});
 
 var barg = barsvg.append('g').attr('transform','translate(0)');
+
+barg.append('text')
+	.attr('class','barlabel')
+	.attr('transform','translate(' + bardim[0]+',2)')
+	.attr({'text-anchor':'end','dy':'.71em',"font-size":25});
 
 
 // Build Series Selector
@@ -350,15 +349,26 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 		.data(_.map(data,function(d){
 			var findpoint = _.findWhere(d.gdata,{x:barslice})
 			if(findpoint===undefined){
-				return {group:d.group,value:null,rank:null}
+				return {group:d.group,value:null,rank:null,color:d.dark,title:d.title}
 			}else{
-				return {group:d.group,value:findpoint.ma,rank:null}
+				return {group:d.group,value:findpoint.ma,rank:null,color:d.dark,title:d.title}
 			}
 			
 		}))
 		.enter()
 		.append('rect')
-		.attr('class',function(d){return 'tmbar '+d.group});
+		.attr('class',function(d){return 'tmbar '+d.group})
+		.style('fill',function(d){return d.color})
+		.attr('title',function(d){return d.title})
+		.on('click',function(d){
+			colorTeam(d.group, true);
+		})
+		.on('mouseover',function(d){
+			fover(d.group);
+		})
+		.on('mouseout',function(d){
+			fout(d.group);
+		});
 
 
 
@@ -408,11 +418,14 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 function brushed() {
     x1.domain(brush.empty() ? x2.domain() : brush.extent());   
     updatex();
+    barslice = Math.round(x1.domain()[1])
+
+	refreshBar()
 }
 
 function updatex(){
 	focus.selectAll(".tmline")
-	.transition().duration(1000)
+	.transition().duration(0)
     .attr("d", function(d){
 		return line1(pathFilter(d.gdata))
 	});
@@ -421,10 +434,9 @@ function updatex(){
     .attr('cx',function(d){return x1(d.x)})
 	.attr('cy',function(d){return y1(d.ma)});
 	*/
-	focus.select('.x.axis').transition().duration(1000).call(xAxis1);
+	focus.select('.x.axis').transition().duration(0).call(xAxis1);
 
-	barslice = Math.round(x1.domain()[1])
-	refreshBar()
+	
 }
 
 function refreshMA(n){
@@ -438,28 +450,6 @@ function refreshMA(n){
 
 	var yrg = d3.extent(_.pluck(_.flatten(_.pluck(focus.selectAll('.tmline').data(),'gdata')),'ma'));
 	y1.domain([yrg[0],yrg[1]]);
-
-	/*
-	// was used to adjust x range for non-null points
-	// determine xrange
-	var xrg = d3.extent(_.pluck(pathFilter(_.flatten(_.pluck(focus.selectAll('.tmline').data(),'gdata'))),'x'));
-
-
-	// if brush.empty() or brush.extent()[0] < xmin set brush.extent
-	if(brush.empty()){
-		svg.select(".brush").call(brush.extent(xrg));
-		brushed();
-	} else if(brush.extent()[0] < xrg[0]){
-		svg.select('.brush').call(brush.extent([xrg[0],brush.extent()[1]]));
-		brushed();
-	} else{
-		chg.selectAll('.tmline')
-		.transition(3000)
-		.attr("d", function(d){
-			return line1(pathFilter(d.gdata))
-		});
-	}
-	*/
 
 	chg.selectAll('.tmline')
 		.transition().duration(1000)
@@ -532,25 +522,38 @@ function refreshBar(){
 		barindex = ord.indexOf(dbar.group);
 		return {group:dbar.group,value:dbar.value,rank:barindex>-1?barindex:null} 
 	});
+	nbar = ord.length;
 
 	bx.domain([0,ord.length]);
-	by.domain(y1.domain());
-	bh.domain([0,Math.max(Math.abs(y1.domain()[0]),y1.domain()[1])*2]);
+	var yext = d3.extent(_.pluck(bardata,'value'));
+	by.domain([Math.min(yext[0],0),yext[1]]);
+	bh.domain([0,Math.max(Math.abs(yext[0]),yext[1]) - Math.min(0,yext[0])]);
 
 	tmbars
 		.transition()
 		.duration(1000)
 		.attr('y',function(d){return by(0)-(d.value > 0 ? bh(Math.abs(d.value)) : 0 )})
-		.delay(function(d,i){return i / nbar * 500})
-		.attr('x',function(d){return bx(d.rank)})
-		
+		.attr('width',Math.floor(bardim[0]/nbar))
 		.attr('height',function(d){return bh(Math.abs(d.value))})
-		.attr('width',bardim[0]/nbar);
+		.delay(function(d,i){return i / nbar * 500})
+		.attr('x',function(d){return bx(d.rank)});
 
+	d3.select('.barlabel').text(yearLabel());
+
+}
+
+function yearLabel(){
+	return (barslice - $('#ma_slider').slider('value') - 1) + '-' + barslice
 }
 
 function runOnLoad(){
 	refreshMA($('#ma_slider').slider('value'));
+	d3.select('.barlabel')
+	.style('opacity',0)
+	.text(yearLabel())
+	.transition()
+	.duration(1000)
+	.style('opacity',1);
 }
 
 window.onload = runOnLoad;
