@@ -18,9 +18,9 @@ bwidthAll = ((bwidth + borderpx*2) * bcol);
 var bdiv = d3.select("#team_button_div");
 bdiv.style({'width':bwidthAll + 'px','height':bheightAll + 'px'});
 
-var teamdata;
+//var teamdata;
 d3.csv('webfiles/team_info.csv',function(data){
-
+	//teamdata = data;
 	var buttons = bdiv.selectAll('div')
 	.data(data)
 	.enter()
@@ -41,7 +41,7 @@ d3.csv('webfiles/team_info.csv',function(data){
 			fout(d.Team);
 		});
 		
-	teamdata = data;
+
 })
 
 function fover(team){
@@ -396,6 +396,7 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 		var groups = _.uniq(_.pluck(data,"Team"),true),
 		out = new Array();;
 
+		var teamdata = d3.selectAll('.teamButton').data();
 		for(var i = 0;i<groups.length;i++){
 			teami = teamdata[_.indexOf(_.pluck(teamdata,"Team"),groups[i])]
 			out.push({
