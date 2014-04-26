@@ -1,4 +1,4 @@
-
+ // Add text
 
 ////////////////////////////////
 // BUTTON DIV
@@ -184,11 +184,17 @@ var ycols = [
 	{value:'DefRun',name:'Run Defense DVOA'},
 	{value:'ST',name:'Special Teams DVOA'},
 	];
+var invertcols = ['TotDef','DefPass','DefRun']
+var invertglobal = false;
 var y_select = $('#y_select');
 for(var i=0;i<ycols.length;i++){
 	y_select.append('<option value="'+ycols[i].value+'">'+ycols[i].name+'</option>')
 };
 y_select.change(function(){
+	if(invertcols.indexOf(ycol) >-1 ? invertcols.indexOf($(this).val()) === -1 : invertcols.indexOf($(this).val()) > -1){
+		y1.range([y1.range()[1],y1.range()[0]]);
+		invertglobal = !invertglobal;
+	}
 	ycol = $(this).val();
 	refreshMA($('#ma_slider').slider('value'));
 });
@@ -231,13 +237,13 @@ var boundary = svg.append("g")
 
 boundary
     .append('rect')
-    .attr('transform','translate('+ (-1) +',' + margin[0].top + ')' )
-    .attr({'height': height[0],'width':margins.left +1 })
+    .attr('transform','translate('+ (-1) +',' + 0 + ')' )
+    .attr({'height': height[0]+ margin[0].top ,'width':margins.left +1 })
 
 boundary
     .append('rect')
-    .attr('transform','translate('+ (width + margins.left) +',' + margin[0].top + ')' )
-    .attr({'height':height[0],'width':margins.right+1})
+    .attr('transform','translate('+ (width + margins.left) +',' + 0 + ')' )
+    .attr({'height':height[0]+ margin[0].top ,'width':margins.right+1})
 
 
 // Set up bar charts
@@ -412,6 +418,7 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 		return out;
 	}
 
+	refreshMA( $('#ma_slider').slider('value'));
 });
 
 // HELPER FUNCTIONS
@@ -421,7 +428,7 @@ function brushed() {
     updatex();
     barslice = Math.round(x1.domain()[1])
 
-	refreshBar()
+	refreshBar( $('#ma_slider').slider('value'))
 }
 
 function updatex(){
@@ -468,7 +475,7 @@ function refreshMA(n){
 	boundary.select('.y.axis').transition().duration(1000).call(yAxis);
 
 
-	refreshBar();
+	refreshBar(n);
 }
 
 function pathFilter(gdata){
@@ -490,7 +497,8 @@ function makeMA(gdata,col,n){
 	return(gdata);
 }
 
-function refreshBar(){
+function refreshBar(n){
+
 	var tmbars = barg.selectAll('.tmbar');
 	var tmlines = focus.selectAll('.tmline');
 	
@@ -503,7 +511,7 @@ function refreshBar(){
 		if(findpoint===undefined){
 			return {group:dbar.group,value:null,rank:null}
 		}else{
-			return {group:dbar.group,value:findpoint.ma,rank:null}
+			return {group:dbar.group,value:findpoint.ma*(invertglobal?-1:1),rank:null}
 		}
 	});
 
@@ -539,19 +547,20 @@ function refreshBar(){
 		.delay(function(d,i){return i / nbar * 500})
 		.attr('x',function(d){return bx(d.rank)});
 
-	d3.select('.barlabel').text(yearLabel());
+	d3.select('.barlabel').text(yearLabel(n));
 
 }
 
-function yearLabel(){
-	return (barslice - $('#ma_slider').slider('value') - 1) + '-' + barslice
+function yearLabel(n){
+	return n===1?barslice:(barslice - n + 1) + '-' + barslice
 }
 
 function runOnLoad(){
-	refreshMA($('#ma_slider').slider('value'));
+	var n = $('#ma_slider').slider('value')
+
+	refreshMA(n);
 	d3.select('.barlabel')
 	.style('opacity',0)
-	.text(yearLabel())
 	.transition()
 	.duration(1000)
 	.style('opacity',1);

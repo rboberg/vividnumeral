@@ -1,4 +1,6 @@
-
+svg{
+	overflow: hidden;
+}
 
 .teamButton {
 	position:relative;
@@ -91,6 +93,7 @@ select{
 #dvoa_chart_div{
   font-family: 'Arial', sans-serif;
   font-size:0.8em;
+  /*overflow-x: hidden;*/
 }
 
 .boundary rect{
