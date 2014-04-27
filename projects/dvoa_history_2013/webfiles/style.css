@@ -156,7 +156,8 @@ select{
 }
 
 .brush rect{
-	opacity:0.125;
+	fill-opacity:0.125;
+	stroke:rgb(70,70,70);
 }
 
 .context text{

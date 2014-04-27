@@ -126,7 +126,7 @@ $(function() {
 
 
 // Set up main chart dimensions
-var margins = {top: 10, right: 10, bottom: 30, left: 30, inner: [0,50]},
+var margins = {top: 10, right: 10, bottom: 30, left: 30, inner: [0,30]},
 height = [300,20],
 heightAll = height.reduce(function(a,b){return a+b;}) + margins.inner.reduce(function(a,b){return a+b;}) + margins.top + margins.bottom,
 width = 800 - margins.left - margins.right;
@@ -224,12 +224,15 @@ var context = svg.append("g")
     .attr("class", "context")
     .attr("transform", "translate(" + margin[1].left + "," + margin[1].top + ")");
 
-
 context.append('rect')
 .attr('id','context_outline')
 .attr('width', width)
 .attr('height',height[1]);
 
+context.append('text')
+.attr('transform','translate('+width/2+','+height[1]/2+')')
+.attr({'dy':'.35em','text-anchor':'middle'})
+.text('Click and Drag Inside this Box to Change the Years in the Chart');
 
 // to clip some boundaries and add some annotations
 var boundary = svg.append("g")
@@ -261,7 +264,7 @@ var barg = barsvg.append('g').attr('transform','translate(0)');
 
 barg.append('text')
 	.attr('class','barlabel')
-	.attr('transform','translate(' + bardim[0]+',2)')
+	.attr({'transform':'translate(' + bardim[0]+',2)'})
 	.attr({'text-anchor':'end','dy':'.71em',"font-size":25});
 
 

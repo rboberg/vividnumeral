@@ -32,11 +32,12 @@
 <BODY>
 
 <?php
-	$file_array[0] = 'projects/ff_2013_postmortem/index.html';
-	$file_array[1] = 'projects/NCAA_MatchUp/index.htm';
-	$file_array[2] = 'projects/nfl_dynasty_initial/index.php';
-	$file_array[3] = 'projects/ff_rank/index.php';
-	$file_array[4] = 'projects/ff_slopegraph/index.html';
+	$file_array[0] = 'projects/dvoa_history_2013/index.html';
+	$file_array[1] = 'projects/ff_2013_postmortem/index.html';
+	$file_array[2] = 'projects/NCAA_MatchUp/index.htm';
+	$file_array[3] = 'projects/nfl_dynasty_initial/index.php';
+	$file_array[4] = 'projects/ff_rank/index.php';
+	$file_array[5] = 'projects/ff_slopegraph/index.html';
 
 	foreach($file_array as $file_name)
 	{

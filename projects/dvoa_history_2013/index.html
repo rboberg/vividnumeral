@@ -10,8 +10,8 @@
 
 
 	<TITLE>DVOA History</TITLE>   
-	<META name="description" content="DVOA History">   	
-	<META name="date_posted" content="1986/12/05">
+	<META name="description" content="FootballOutsiders.com's DVOA is my favorit football statistic. This is interactive chart visualizes 63 years of DVOA History. A chart's only as good as the data in it, and Football Outsiders, Andreas Shephard, and Football Perspective deserve the credit for that.">   	
+	<META name="date_posted" content="2014/04/07">
 	<META name="author" content="Ross Boberg">
 	<link rel="stylesheet" href="../../style/flick/jquery-ui-1.10.4.custom.css">
 	<LINK href="../../style/article.css" rel="stylesheet" type="text/css"/>
@@ -24,16 +24,34 @@
 	<DIV id="content">
 
 		<DIV id="page_header">
-			<H1>DVOA History</H1>
+			<H1>63 Years of DVOA History</H1>
 			<p><a href="../../">Home</a></p>
 		</DIV>
 
 		<DIV id="main_text">
-			DVOA History
-			Notes:
-			<ul>
-				<li> I used pro-football references team classifications. This merged some of the series that footballperspective.com differentiated. For example, they had the Oakland and LA Raiders as two difference series. Pro-football reference has them as one franchise and I followed their convention and present one series.
-			</ul>
+			<p>
+				<a href="http://www.footballoutsiders.com">FootballOutsiders.com</a> publishes my favorite football statsitic: <a href="http://www.footballoutsiders.com/info/methods">Defense-adjsuted Value Over Average</a>. Or simply DVOA. It is a situation-based statistic that compares player and team performance to the league average.
+			</p>
+
+			<p>
+				DVOA can only be precisely calculated using play-by-play data, available since 1989, but Andreas Shepard recently estimated DVOA going back to 1950 and <a href="http://www.footballoutsiders.com/dvoa-ratings/2014/historical-dvoa-estimates">wrote about it</a> on Football Outsiders. Chase Stewart also worked with him to write a piece on <a href="http://www.footballperspective.com/estimated-dvoa-ratings-from-1950-to-2013/">Football Perspective</a>.
+			</p>
+			<p>
+				I used the data from those articles to create this interactive visualization of DVOA history.
+				<ul>
+					<li>The lines show the moving average of different team measures over time.</li>
+					<li>Change the measure using the drop down menu.</li>
+					<li>Change the length of the moving average using the slider.</li>
+					<li>The bar chart shows each team's value in the most recent year of the line chart.</li>
+					<li>Change the years shown on the line chart by clicking and dragging the grey bar at the bottom of the chart.</li>
+					<!--
+					<li>Highlight teams by pressing the buttons in the top left, the bars in the top right, or the lines in the chart.</li>
+					-->
+				</ul>
+					
+			</p>
+
+			
 		</DIV>
 		<DIV id = 'viz'>
 			<DIV id = 'viz_top'>
@@ -61,6 +79,12 @@
 
 			</DIV>
 		</DIV>
+
+		Notes:
+		<ul>
+			<li> I used <a href="http://www.pro-football-reference.com/">pro-football reference's</a> team classifications. This merged some of the series that <a href="http://www.footballperspective.com/estimated-dvoa-ratings-from-1950-to-2013/">footballperspective.com</a> separated. For example, they had the Oakland and LA Raiders as two difference series. Pro-football reference has them as one franchise. I followed the latter convention and present one series.</li>
+			<li>The line chart shows moving averages for series that don't have data over the full moving average calculation. For example, if the chart is set for a 10 year moving average the first year of a team's DVOA will display as one tenth the DVOA of that year.</li>
+		</ul>
 			
 	</DIV>
 	<!-- SCRIPT -->
