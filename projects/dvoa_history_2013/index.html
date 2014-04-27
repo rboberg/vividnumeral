@@ -9,9 +9,9 @@
 	<META name="GENERATOR" content="MSHTML 10.00.9200.16635">
 
 
-	<TITLE>DVOA History</TITLE>   
+	<TITLE>Visualizing 64 Years of DVOA History</TITLE>   
 	<META name="description" content="FootballOutsiders.com's DVOA is my favorit football statistic. This is interactive chart visualizes 63 years of DVOA History. A chart's only as good as the data in it, and Football Outsiders, Andreas Shephard, and Football Perspective deserve the credit for that.">   	
-	<META name="date_posted" content="2014/04/07">
+	<META name="date_posted" content="2014/04/27">
 	<META name="author" content="Ross Boberg">
 	<link rel="stylesheet" href="../../style/flick/jquery-ui-1.10.4.custom.css">
 	<LINK href="../../style/article.css" rel="stylesheet" type="text/css"/>
@@ -24,17 +24,17 @@
 	<DIV id="content">
 
 		<DIV id="page_header">
-			<H1>63 Years of DVOA History</H1>
+			<H1>Visualizing 64 Years of DVOA History</H1>
 			<p><a href="../../">Home</a></p>
 		</DIV>
 
-		<DIV id="main_text">
+		<DIV class="main_text">
 			<p>
-				<a href="http://www.footballoutsiders.com">FootballOutsiders.com</a> publishes my favorite football statsitic: <a href="http://www.footballoutsiders.com/info/methods">Defense-adjsuted Value Over Average</a>. Or simply DVOA. It is a situation-based statistic that compares player and team performance to the league average.
+				<a href="http://www.footballoutsiders.com">FootballOutsiders.com</a> publishes my favorite football statistic: <a href="http://www.footballoutsiders.com/info/methods">Defense-adjusted Value Over Average</a>. DVOA for short, their statistic compares player and team performance to the league average in similar situations.
 			</p>
 
 			<p>
-				DVOA can only be precisely calculated using play-by-play data, available since 1989, but Andreas Shepard recently estimated DVOA going back to 1950 and <a href="http://www.footballoutsiders.com/dvoa-ratings/2014/historical-dvoa-estimates">wrote about it</a> on Football Outsiders. Chase Stewart also worked with him to write a piece on <a href="http://www.footballperspective.com/estimated-dvoa-ratings-from-1950-to-2013/">Football Perspective</a>.
+				DVOA can only be precisely calculated using play-by-play data, available since 1989, but Andreas Shepard recently estimated DVOA going back to 1950 and <a href="http://www.footballoutsiders.com/dvoa-ratings/2014/historical-dvoa-estimates">wrote about it on Football Outsiders</a>. Chase Stuart worked with him to <a href="http://www.footballperspective.com/estimated-dvoa-ratings-from-1950-to-2013/">write another piece on FootballPerspective.com</a>.
 			</p>
 			<p>
 				I used the data from those articles to create this interactive visualization of DVOA history.
@@ -44,9 +44,7 @@
 					<li>Change the length of the moving average using the slider.</li>
 					<li>The bar chart shows each team's value in the most recent year of the line chart.</li>
 					<li>Change the years shown on the line chart by clicking and dragging the grey bar at the bottom of the chart.</li>
-					<!--
-					<li>Highlight teams by pressing the buttons in the top left, the bars in the top right, or the lines in the chart.</li>
-					-->
+					<li>Highlight teams by pressing the buttons, bars, or lines.</li>
 				</ul>
 					
 			</p>
@@ -79,13 +77,26 @@
 
 			</DIV>
 		</DIV>
+		<DIV class='main_text'>
+		<p>
+		In addition to the insights from Andreas' and Chase's articles, here are a few observations from playing around with these charts.
+		<ul>
+			<li>Over a 10 year period, the 49ers of the 80s and 90s had the best average DVOA ever, confirming some of the observations from a <a href='../nfl_dynasty_initial/'>previous article on NFL dynasties</a>. </li>
+			<li>Peyton Manning's Colts had the best Offensive DVOA over a 10 year period, with the current Patriots teams approaching those hiehgts. For now, this favors Manning over Brady in the <a href="http://grantland.com/features/that-championship-mailbag-2/">GOAT debate</a>.</li>
+			<li>The Steelers of the 70s and 80s had the most impressive Defensive DVOA over a 10 year period, with the Ravens of the late 90s and 2000s in a close second.</li>
+			<li>The Colts have somehow managed to have consistently bad Special Teams DVOA over the past 10 years. I always thought Special Teams performance was random and mean reverting, but the probability of bad luck producing 10 consecutive years of negative DVOA should be about 0.5 to the power of 10 = 0.1%. So that just seems bad.</li>
+		</ul>
+		</p>
+		<p>
+		Feel free to lob me an email at ross@vividnumeral.com with any comments, questions, or ideas.
+		</p>
 
 		Notes:
 		<ul>
 			<li> I used <a href="http://www.pro-football-reference.com/">pro-football reference's</a> team classifications. This merged some of the series that <a href="http://www.footballperspective.com/estimated-dvoa-ratings-from-1950-to-2013/">footballperspective.com</a> separated. For example, they had the Oakland and LA Raiders as two difference series. Pro-football reference has them as one franchise. I followed the latter convention and present one series.</li>
 			<li>The line chart shows moving averages for series that don't have data over the full moving average calculation. For example, if the chart is set for a 10 year moving average the first year of a team's DVOA will display as one tenth the DVOA of that year.</li>
 		</ul>
-			
+		</DIV>
 	</DIV>
 	<!-- SCRIPT -->
 	<script src="../../js/d3/d3-201404.js"></script>

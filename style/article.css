@@ -25,7 +25,7 @@
 	 padding-bottom: 30px;
 }
 
-#main_text{
+#main_text, .main_text{
 	width:600px;
 }
 	

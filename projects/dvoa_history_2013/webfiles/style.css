@@ -2,6 +2,10 @@ svg{
 	overflow: hidden;
 }
 
+.main_text{
+	width:600px;
+}
+
 .teamButton {
 	position:relative;
 	float:left;

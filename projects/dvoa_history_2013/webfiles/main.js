@@ -73,10 +73,11 @@ function colorTeam(team, changeClass){
 		tline
 		.classed('highline',true)
 		.transition()
-		.style({'stroke-width':3});
+		.style({'opacity':1,'stroke-width':3});
 
 		tbar
-		.classed('highbar',true);
+		.classed('highbar',true)
+		.style({'opacity':1});
 	} else{
 		tbutton
 		.style('background-color',function(d){return d.ColorLight})
@@ -114,7 +115,7 @@ $(function() {
 	  value: 10,
 	  orientation: 'horizontal',
 	  slide: function( event, ui ) {
-	    $('#ma_label').text('Moving Average : ' + ui.value + ' Years');
+	    $('#ma_label').text('Moving Average : ' + ui.value + ' Year' + 's');
 	    refreshMA(ui.value);
 	  }
 	});
@@ -512,9 +513,9 @@ function refreshBar(n){
 		dline = _.findWhere(linedata,{group:dbar.group});
 		findpoint = _.findWhere(dline.gdata,{x:barslice});
 		if(findpoint===undefined){
-			return {group:dbar.group,value:null,rank:null}
+			return {group:dbar.group,value:null,rank:null,title:dbar.title}
 		}else{
-			return {group:dbar.group,value:findpoint.ma*(invertglobal?-1:1),rank:null}
+			return {group:dbar.group,value:findpoint.ma*(invertglobal?-1:1),rank:null,title:dbar.title}
 		}
 	});
 
@@ -532,7 +533,7 @@ function refreshBar(n){
 		);
 	tmbars.datum(function(dbar){
 		barindex = ord.indexOf(dbar.group);
-		return {group:dbar.group,value:dbar.value,rank:barindex>-1?barindex:null} 
+		return {group:dbar.group,value:dbar.value,rank:barindex>-1?barindex:null,title:dbar.title} 
 	});
 	nbar = ord.length;
 
@@ -542,6 +543,7 @@ function refreshBar(n){
 	bh.domain([0,Math.max(Math.abs(yext[0]),yext[1]) - Math.min(0,yext[0])]);
 
 	tmbars
+		.attr('title',function(d){return d.title + ' : ' + Math.round(d.value)})
 		.transition()
 		.duration(1000)
 		.attr('y',function(d){return by(0)-(d.value > 0 ? bh(Math.abs(d.value)) : 0 )})
