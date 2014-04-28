@@ -6,6 +6,13 @@ svg{
 	width:600px;
 }
 
+.author{
+	color:rgb(150,150,150);
+}
+.author:hover{
+	text-decoration: none;
+}
+
 .teamButton {
 	position:relative;
 	float:left;
