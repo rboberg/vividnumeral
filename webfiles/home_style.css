@@ -36,7 +36,7 @@
 
 .head_link {
 	text-decoration: none; color: rgb(255,255,255); width:100px; display: block;
-	border-right-width: 1px;
+	border-width: 1px;
 	border-color: rgb(255,255,255);
 	background: rgb(190,190,190);
 	margin: 0px;
