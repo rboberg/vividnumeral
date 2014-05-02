@@ -26,7 +26,12 @@
 	<p>	
 	<b>Casual Statistics & Armchair Analytics <a class="color1">by Ross Boberg</a></b>
 	</p>
+	<a class="head_link" href="mailto:ross@vividnumeral.com?Subject=Vivid%20Numeral"><DIV>eMail</DIV></a>
+	<a class="head_link" href="https://www.linkedin.com/in/rossboberg"><DIV>LinkedIn</DIV></a>
+	<a class="head_link" href="http://www.facebook.com/rossboberg"><DIV>Facebook</DIV></a>
+	<a class="head_link" href="https://github.com/rboberg"><DIV>GitHub</DIV></a>
 </DIV>
+
 	
 <div id="content">
 <BODY>

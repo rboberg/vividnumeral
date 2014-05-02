@@ -34,6 +34,17 @@
 	color: rgb(0,120,240);/*rgb(0,120,240) rgb(255,102,0) rgb(73,111,240);*/
 }
 
+.head_link {
+	text-decoration: none; color: rgb(255,255,255); width:50px; display: block; border-width: 0px;
+	background: rgb(140,140,140);
+	margin: 0px auto;
+	border: 0px;
+}
+
+.head_link:hover{
+	background: rgb(70,70,70);
+}
+
 body {
 	text-align: center; font-family: georgia, "helvetica neue",helvetica,arial,sans-serif; font-size: 1em; color: rgb(70,70,70);
 }
