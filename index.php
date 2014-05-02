@@ -28,7 +28,7 @@
 	</p>
 	<a class="head_link" href="mailto:ross@vividnumeral.com?Subject=Vivid%20Numeral"><DIV>email</DIV></a>
 	<a class="head_link" href="https://www.linkedin.com/in/rossboberg"><DIV>LinkedIn</DIV></a>
-	<a class="head_link" href="http://www.facebook.com/rossboberg"><DIV>facebook</DIV></a>
+	<a class="head_link" href="http://www.facebook.com/rossboberg"><DIV>Facebook</DIV></a>
 	<a class="head_link" href="https://github.com/rboberg"><DIV>GitHub</DIV></a>
 </DIV>
 
