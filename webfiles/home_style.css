@@ -35,10 +35,11 @@
 }
 
 .head_link {
-	text-decoration: none; color: rgb(255,255,255); width:50px; display: block; border-width: 0px;
-	background: rgb(140,140,140);
-	margin: 0px auto;
-	border: 0px;
+	text-decoration: none; color: rgb(255,255,255); width:100px; display: block;
+	border-right-width: 1px;
+	border-color: rgb(255,255,255);
+	background: rgb(190,190,190);
+	margin: 0px;
 }
 
 .head_link:hover{
