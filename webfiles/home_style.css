@@ -41,6 +41,7 @@
 #head_button_div a {
 	text-decoration: none; color: rgb(255,255,255); width:160px; display: block;
 	background: rgb(210,210,210);
+	border: 0px;
 	padding-top:2px;
 	padding-bottom:2px;
 	margin: 0px;
