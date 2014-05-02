@@ -27,9 +27,9 @@
 	<b>Casual Statistics & Armchair Analytics <a class="color1">by Ross Boberg</a></b>
 	</p>
 	<a class="head_link" href="mailto:ross@vividnumeral.com?Subject=Vivid%20Numeral"><DIV>email</DIV></a>
-	<a class="head_link" href="https://www.linkedin.com/in/rossboberg"><DIV>LinkedIn</DIV></a>
-	<a class="head_link" href="http://www.facebook.com/rossboberg"><DIV>Facebook</DIV></a>
-	<a class="head_link" href="https://github.com/rboberg"><DIV>GitHub</DIV></a>
+	<a class="head_link" href="https://www.linkedin.com/in/rossboberg" target="_blank"><DIV>LinkedIn</DIV></a>
+	<a class="head_link" href="http://www.facebook.com/rossboberg" target="_blank"><DIV>Facebook</DIV></a>
+	<a class="head_link" href="https://github.com/rboberg" target="_blank"><DIV>GitHub</DIV></a>
 </DIV>
 
 	
