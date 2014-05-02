@@ -40,7 +40,8 @@
 
 #head_button_div a {
 	text-decoration: none; color: rgb(255,255,255); width:160px; display: block;
-	border-width: 1px;
+	border-right-width: 1px;
+	border-left-width: 1px;
 	border-color: rgb(255,255,255);
 	background: rgb(210,210,210);
 	padding-top:2px;
