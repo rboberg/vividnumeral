@@ -34,6 +34,11 @@
 	color: rgb(0,120,240);/*rgb(0,120,240) rgb(255,102,0) rgb(73,111,240);*/
 }
 
+#head_button_div{
+	margin-top:10px;
+	margin:0px auto;
+}
+
 #head_button_div a {
 	text-decoration: none; color: rgb(255,255,255); width:100px; display: block;
 	border-width: 1px;
