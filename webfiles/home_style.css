@@ -36,11 +36,10 @@
 
 #head_button_div{
 	margin-top:10px;
-	margin:0px auto;
 }
 
 #head_button_div a {
-	text-decoration: none; color: rgb(255,255,255); width:100px; display: block;
+	text-decoration: none; color: rgb(255,255,255); width:150px; display: block;
 	border-width: 1px;
 	border-color: rgb(255,255,255);
 	background: rgb(220,220,220);
