@@ -24,3 +24,7 @@
 	font-family: sans-serif;
 	fill: rgb(80,80,80);
 }
+
+.point_label{
+	text-anchor: middle;
+}

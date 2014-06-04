@@ -1,6 +1,6 @@
 //Set up dimensions
-var margins = {top: 30, right: 30, bottom: 30, left: 60},
-height = 300,
+var margins = {top: 10, right: 10, bottom: 35, left: 60},
+height = 400,
 width = 600 - margins.left - margins.right;
 
 //Set up axes
@@ -31,16 +31,21 @@ gdiv.selectAll('div')
 //set up scatter plot
 var scatter = svg.append("g").attr('transform','translate('+margins.left+','+margins.top+')');
 
-var axisVar = [{ugly:'power',pretty:'FIFA Points'},{ugly:'prob',pretty:'Probability of Surviving Group Stage'}]
+var axisVar = [{ugly:'power',pretty:'FIFA Points (log scale)'},{ugly:'prob',pretty:'Probability of Surviving Group Stage'}]
 
 d3.json('webfiles/through_prob.json',function(data){
-	x.domain(d3.extent(_.pluck(data,axisVar[0].ugly)));
-	y.domain(d3.extent(_.pluck(data,axisVar[1].ugly)));
+	xrg = d3.extent(_.pluck(data,axisVar[0].ugly));
+	yrg = d3.extent(_.pluck(data,axisVar[1].ugly));
 
+	x.domain([xrg[0]*0.95,xrg[1]*1.05]);
+	y.domain([yrg[0]*0.95,yrg[1]*1.05]);
+
+	// Create Points
 	scatter.selectAll('circle')
 	.data(data)
 	.enter()
 	.append('circle')
+	.attr('class',function(d) {return d})
 	.attr('cx', function(d) {
       return isNaN(d[axisVar[0].ugly]) ? d3.select(this).attr('cx') : x(d[axisVar[0].ugly]);
       })
@@ -50,9 +55,26 @@ d3.json('webfiles/through_prob.json',function(data){
 	.attr('fill',function(d) {return grpColor[d['group']]})
 	.attr('r',10);
 
+	// Create Text
+	scatter.selectAll('text')
+	.data(data)
+	.enter()
+	.append('text')
+	.attr('class',function(d) {return d + " point_label"})
+	.attr('x', function(d) {
+      return isNaN(d[axisVar[0].ugly]) ? d3.select(this).attr('x') : x(d[axisVar[0].ugly]);
+      })
+	.attr('y', function(d) {
+      return isNaN(d[axisVar[1].ugly]) ? d3.select(this).attr('y') : y(d[axisVar[1].ugly]);
+      })
+	.attr('fill',function(d) {return grpColor[d['group']]})
+	.text(function(d){return d.team});
+
 	// Set up axes
 	// x-axis
-	var xAxis = d3.svg.axis().scale(x).orient("bottom");
+	var xTicks = [600,700,800,900,1000,1250,1500];
+	//for(var i = 600; i<=1500;i=i+100){xTicks.push(i)}
+	var xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.format('d')).tickValues(xTicks);
 
 	svg.append("g")
 		.attr("class", "x axis")
@@ -66,7 +88,7 @@ d3.json('webfiles/through_prob.json',function(data){
 		.text(axisVar[0].pretty);
 
 	// y-axis
-	var yAxis = d3.svg.axis().scale(y).orient("left");
+	var yAxis = d3.svg.axis().scale(y).orient("left").tickFormat(d3.format('%'));
 
 	svg.append("g")
 		.attr("class", "y axis")
