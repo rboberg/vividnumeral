@@ -335,7 +335,7 @@ d3.csv('webfiles/estimated_dvoa.csv',function(data){
 
 	context.append("g")
       .attr("class", "x brush")
-      .call(brush)
+      .call(brush) 
     .selectAll("rect")
       .attr("y", 0)
       .attr("height", height[1]);

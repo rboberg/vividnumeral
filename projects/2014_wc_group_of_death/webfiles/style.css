@@ -1,0 +1,26 @@
+.group_button {
+	position:relative;
+	float:left;
+	border: solid white;
+	/*padding:2px;*/
+	font-family: 'Arial', sans-serif;
+	/*color: whitesmoke;*/
+	background-color: whitesmoke;
+	text-align: center;
+	border-radius: 5px;
+	font-size:1.2em;
+	padding-top:5px;
+}
+
+.axis path, .axis line{
+  fill: none;
+  stroke: rgb(80,80,80);
+  shape-rendering: crispEdges;
+}
+
+#scatter_div text{
+	font-size: 12px;
+	font-weight: normal;
+	font-family: sans-serif;
+	fill: rgb(80,80,80);
+}
