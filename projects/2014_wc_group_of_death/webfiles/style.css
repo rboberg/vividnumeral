@@ -5,12 +5,13 @@
 	/*padding:2px;*/
 	font-family: 'Arial', sans-serif;
 	/*color: whitesmoke;*/
-	background-color: whitesmoke;
+	color: white;
 	text-align: center;
 	border-radius: 5px;
 	font-size:1.2em;
 	padding-top:5px;
 }
+
 
 .axis path, .axis line{
   fill: none;
@@ -19,12 +20,28 @@
 }
 
 #scatter_div text{
-	font-size: 12px;
-	font-weight: normal;
 	font-family: sans-serif;
 	fill: rgb(80,80,80);
 }
 
 .point_label{
 	text-anchor: middle;
+	fill: rgb(180,20,20);
+}
+
+.group_button.hilite{
+	border-color: black;
+}
+
+
+circle.hilite {
+	stroke: black;
+}
+
+text.hilite {
+	font-weight: bold;
+}
+
+circle:hover, .group_button:hover{
+	cursor:pointer;
 }
