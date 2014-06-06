@@ -198,7 +198,8 @@ d3.json('webfiles/through_prob.json',function(data){
 		.style("text-anchor", "middle")
 		.text(axisVar[1].pretty);
 
-	//debugger;
+	//highlight group G to start
+	setHL('G')
 	})
 
 
@@ -209,9 +210,9 @@ d3.json('webfiles/through_prob.json',function(data){
 // Deadliest Table
 csvIn = 'webfiles/god_top.csv'
 COLUMNS = [
-{colname:'year',coltext:'Year',coltype:'tdtext',colgroup:'Deadliest Groups Since 2002'},
-{colname:'rd',coltext:'Group',coltype:'tdtext',colgroup:'Deadliest Groups Since 2002'},
-{colname:'pct',coltext:'% of Points',coltype:'tdvalue',colgroup:'Deadliest Groups Since 2002'},
+{colname:'year',coltext:'Year',coltype:'tdtext',colgroup:'Deadliest Since 2002'},
+{colname:'rd',coltext:'Group',coltype:'tdtext',colgroup:'Deadliest Since 2002'},
+{colname:'pct',coltext:'% of Points',coltype:'tdvalue',colgroup:'Deadliest Since 2002'},
 ]
 tableid = '#god_top'
 d3csvTable(csvIn, COLUMNS, tableid);
@@ -220,13 +221,14 @@ d3csvTable(csvIn, COLUMNS, tableid);
 // Friendliest Table
 csvIn = 'webfiles/god_bottom.csv'
 COLUMNS = [
-{colname:'year',coltext:'Year',coltype:'tdtext',colgroup:'Friendliest Groups Since 2002'},
-{colname:'rd',coltext:'Group',coltype:'tdtext',colgroup:'Friendliest Groups Since 2002'},
-{colname:'pct',coltext:'% of Points',coltype:'tdvalue',colgroup:'Friendliest Groups Since 2002'},
+{colname:'year',coltext:'Year',coltype:'tdtext',colgroup:'Friendliest Since 2002'},
+{colname:'rd',coltext:'Group',coltype:'tdtext',colgroup:'Friendliest Since 2002'},
+{colname:'pct',coltext:'% of Points',coltype:'tdvalue',colgroup:'Friendliest Since 2002'},
 ]
 tableid = '#god_bottom'
 d3csvTable(csvIn, COLUMNS, tableid);
 
+// Highlight Group G
 d3.select(d3.selectAll('#god_top tr:not(.thead)')[0][1]).style("color","skyblue")
 
 

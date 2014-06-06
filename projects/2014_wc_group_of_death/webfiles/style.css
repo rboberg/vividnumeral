@@ -80,3 +80,9 @@ circle:hover, .group_button:hover, #label_button:hover{
 	color: rgb(0,120,240);
 	font-weight: bold;
 }
+
+#table_div{
+	position:relative;
+	float:right;
+	margin-left:20px;
+}
