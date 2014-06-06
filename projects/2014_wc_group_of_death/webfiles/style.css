@@ -9,20 +9,50 @@
 	text-align: center;
 	border-radius: 5px;
 	font-size:1.2em;
-	padding-top:5px;
+	padding-top:2px;
+	padding-bottom:2px;
 }
 
 
+#label_button {
+	position:relative;
+	float:left;
+	border: solid gainsboro 2px;
+	/*padding:2px;*/
+	font-family: 'Arial', sans-serif;
+	/*color: whitesmoke;*/
+	color: lightsteelblue;
+	background-color: aliceblue;
+	text-align: center;
+	border-radius: 5px;
+	font-size:0.8em;
+	padding:5px;
+}
+
+#label_button.show_label {
+	border-color: darkgray;
+	color: steelblue;
+}
+
 .axis path, .axis line{
   fill: none;
-  stroke: rgb(80,80,80);
+  stroke: gainsboro;
   shape-rendering: crispEdges;
+}
+
+.axis text{
+	fill: gray;
+	font-size: 0.75em;
+}
+
+.axis .label{
+	font-size: 0.9em;
 }
 
 #scatter_div text{
 	font-family: sans-serif;
-	fill: rgb(80,80,80);
 }
+
 
 .point_label{
 	text-anchor: middle;
@@ -42,6 +72,11 @@ text.hilite {
 	font-weight: bold;
 }
 
-circle:hover, .group_button:hover{
+circle:hover, .group_button:hover, #label_button:hover{
 	cursor:pointer;
+}
+
+.trhilite td{
+	color: rgb(0,120,240);
+	font-weight: bold;
 }
