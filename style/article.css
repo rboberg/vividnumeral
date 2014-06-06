@@ -8,7 +8,7 @@
 	margin: 0px auto;
 	padding-left: 20px;
 	margin-bottom: 50px;
-	font-size:0.9em;
+	font-size:0.95em;
 	text-align: left;
 	font-family: georgia, "helvetica neue",helvetica,arial,sans-serif; color: rgb(70,70,70);
 }
@@ -76,13 +76,13 @@ p{
 }
 
 h2 {
-	font-size: 1.1em;
+	font-size: 1.15em;
 	color: rgb(255,50,50);
 	margin-bottom:10px;
 }	
 
 h3 {
-	font-size: 1em;
+	font-size: 1.05em;
 	margin: 0px; padding: 0px; border: 0px;
 	margin-bottom:10px;
 }

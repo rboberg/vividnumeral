@@ -1,8 +1,6 @@
 /*
 TO DO
-* Re-format Axis
-* Button to Show all Names?
-* Center buttons across the top?
+
 */
 
 //function to set highlighted group
@@ -146,7 +144,13 @@ d3.json('webfiles/through_prob.json',function(data){
       })
 	.style('fill',function(d) {return grpLight[d['group']]})
 	.attr('r',10)
-	.on('click',function(d){setHL(d.group)});
+	.on('click',function(d){setHL(d.group)})
+	.on('mouseover',function(d){
+		d3.selectAll('text.'+d.group).style('visibility','visible')
+	})
+	.on('mouseout',function(d){
+		d3.selectAll('text.'+d.group).style('visibility',d.group === global_higrp ? 'visible' : global_visibility)
+	});
 
 	// Create Text
 	scatter.selectAll('text')
