@@ -39,7 +39,7 @@
 <BODY>
 
 <?php
-	$file_array[0] = 'projects/2014_wc_group of death/index.html';
+	$file_array[0] = 'projects/2014_wc_group_of_death/index.html';
 	$file_array[1] = 'projects/dvoa_history_2013/index.html';
 	$file_array[2] = 'projects/ff_2013_postmortem/index.html';
 	$file_array[3] = 'projects/NCAA_MatchUp/index.htm';
