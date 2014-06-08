@@ -133,3 +133,10 @@ td{
 	border-top-style: double;
 	border-color: rgb(70,70,70);
 }
+
+.author{
+	color:rgb(150,150,150);
+}
+.author:hover{
+	text-decoration: none;
+}

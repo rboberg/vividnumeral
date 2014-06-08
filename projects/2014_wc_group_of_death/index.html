@@ -10,8 +10,8 @@
 
 
 	<TITLE>2014 GROUP OF DEATH</TITLE>   
-	<META name="description" content="How Deadly is Group G and How Screwed is the US?">   	
-	<META name="date_posted" content="1986/12/05">
+	<META name="description" content="Every World Cup has a Group of Death. This time it's Group G & the US is in it. How deadly is Group G and how screwed is the US? Here are some data driven answers.">   	
+	<META name="date_posted" content="2014/06/08">
 	<META name="author" content="Ross Boberg">
 	<LINK href="../../style/article.css" rel="stylesheet" type="text/css"/>
 	<LINK href="webfiles/style.css" rel="stylesheet" type="text/css"/>
@@ -24,13 +24,13 @@
 
 		<DIV id="page_header">
 			<H1>How Deadly is Group G and How Screwed is the US?</H1>
-			<p><a href="../../">Home</a></p>
+			<p><a class='author'>by Ross Boberg</a> / <a href="../../">Home</a></p>
 		</DIV>
 
 		<DIV id="main_text">
 			<H2>Kidding?</H2>
 			<p>
-				The question came to me while I was watching Grantland's "Men in Blazers" World Cup Preview {INSERT LINK}. They boldly called for the US to win the World Cup despite being in the "Group of Death" with 2 of the top 3 teams by FIFA rank. Were they kidding?
+				The question came to me while I was watching Grantland's hilarious <a href='http://grantland.com/world-cup-2014-men-in-blazers/'>"Men in Blazers" World Cup Preview</a>. They boldly called for the US to win the World Cup despite being in the "Group of Death" with 2 of the top 3 teams by FIFA rank. Were they kidding?
 			</p>
 			<p>
 				On the one hand, the preview is definitely comedy - they make predictions based on how they feel after eating "World Cup-Cakes." On the other hand, anyone in a blazer seems at least a little serious. Either way, like any high quality journalism, the Men in Blazers got me thinking. How deadly is the US's Group G? How screwed is the US in the group stage?
@@ -41,11 +41,11 @@
 
 			<H2>Methodology</H2>
 			<p>
-				My first goal (GOOOAL!) was to figure out the probability that the US gets through the group round. To that I need to predict what is going to happen in the group stage games. I used FIFA's rankings {INSERT LINK} and results from the past three World Cups {INSERT LINK} to build a model of game outcomes as a function of FIFA rank.
+				My first goal (GOOOAL!) was to figure out the probability that the US gets through the group round. To that I need to predict what is going to happen in the group stage games. I used <a href='http://www.fifa.com/worldranking/rankingtable/'>FIFA's point rankings</a> (as of May) and results from the past three World Cups to build a model of game outcomes as a function of FIFA rank.
 			</p>
 
 			<p>
-				I found that point differential varies with the log difference of two teams' FIFA rank. I adjusted the 2002 and 2006 FIFA ranks to make them comparable after FIFA changed scoring methodologies. The adjustments rescale the old ranks and adjust the ranks of less competitive conferences lower. For complete transparency, all the data and number crunching in R are posted to my GitHub page {INSERT LINK}.
+				I found that point differential varies with the log difference of two teams' FIFA rank. I adjusted the 2002 and 2006 FIFA ranks to make them comparable after FIFA changed scoring methodologies. The adjustments rescale the old ranks and adjust the ranks of less competitive conferences lower. For complete transparency, all the data and number crunching in R are posted to <a href='https://github.com/rboberg/rross'>my GitHub repo</a>.
 			</p>
 
 			<p>
@@ -60,12 +60,12 @@
 			</p>
 			<p>
 				The points are colored by Group and you can highlight each by clicking buttons A through G.
-				Or show all the labels at once using the button on the top right.
+				Or show all the labels at once using the button on the top right. Or hover over any dot with your mouse.
 			</p>
 			
 
 
-			<DIV ='button_div'>
+			<DIV id='button_div'>
 				<DIV id="group_div">
 				</DIV>
 				<DIV id='label_button'>
@@ -82,17 +82,20 @@
 				There are seven teams with lower rankings than the US that have a better chance of getting through. Russia(H) stands 4 spots below the US in FIFA ranks, but has over a 15% better chance of surviving the group stage than the US. 
 			</p>
 			<p>
-				When I heard that the US was in a group with the number 2 & 3 ranked teams, my gut reaction was to guess that they had maybe a 20-25% chance of getting through the Group stage. But they beat out either Germany or Portugal in 44% of my simulations. That surprised me. My knee jerk reaction probably {KAHNEMAN LINK} overestimated the role of skill and understimated the role of luck in determining the outcome. In a sport where goals are hard to come by, luck plays a strong role.
+				When I heard that the US was in a group with the number 2 & 3 ranked teams, my gut reaction was to guess that they had maybe a 20-25% chance of getting through the Group stage. But they beat out either Germany or Portugal in 44% of my simulations. That surprised me.
+			</p>
+			<p>
+				My knee jerk reaction to underestimate the US prospects highlights a well known "irrationallity". My "gut" forecast overweighted appealing narrative information (Germany and Portugal are two top three teams!) and neglected boring "base rate" information (four teams with the same skill each have a 50% chance of survival). In behavioral economics this is called <a href='http://en.wikipedia.org/wiki/Base_rate_fallacy'>base rate fallacy</a>, probably with a bit of <a href='http://en.wikipedia.org/wiki/Fundamental_attribution_error'>fundamental attribution error</a> thrown in. In a sport where games are often decided by one goal, luck plays a very important role & the base rate is stronger than you think.
 			</p>
 
 			<p>
-				Featuring 3 fo the top 12 teams, Italy, England, and Uruguay, Group D also looks tough.
-				Argentina has the easiest past to the Round of 16. The most threatening team in their group is Bosnia and Herzegovina (which is apparently one country). Group H's top team is Belgium, the 12th ranked FIFA team.
+				Featuring 3 of the top 12 teams, Italy, England, and Uruguay, Group D also looks tough.
+				Argentina(F) has the easiest path to the Round of 16. The most threatening team in their group is Bosnia and Herzegovina (which is apparently one country). Group H's top team is Belgium, the 12th ranked FIFA team - just two spots higher than the US.
 			</p>
 
 			<h2>One Measure to Rule them All</h2>
 			<p>
-				Calculating what percentage of all teams' FIFA points each group's teams make up puts a single number on how deadly each group is. That percentage also lets you compare the deadliness of the groups in this World Cup to past World Cups.
+				Calculating what percentage of all World Cup teams' FIFA points each group composes puts a single number on how deadly each group is. That percentage also lets you compare the deadliness of the groups in this World Cup to past World Cups.
 			</p>
 		
 			<div class='table_div'>
@@ -104,7 +107,7 @@
 			</p>
 
 			<p>
-				The outcome of 2002 group F is a positive case study in what can go right for the US. Sweden, the weakest of the strongest 3 in the group by FIFA rankings, tied England in the first game and won the "gimme" game against Nigeria.
+				The outcome of 2002 Group F is a reassuring case study in what can go right for the US. Sweden, the weakest of the strongest 3 in the group by FIFA rankings, tied England in the first game and won the "gimme" game against Nigeria.
 			</p>
 			<p>
 				England's win over Argentina, left them in position to advance with a tie in their final game against Argentina. They tied & advanced. Argentina, who had the same FIFA rank as eventual champion Brazil, went home.
@@ -115,7 +118,7 @@
 			</div>
 
 			<p>
-				The friendliest groups are also interesting. Somehow Russian and Belgium both managed to make their way in to the easiest groups of the last four World Cups: 2002 and 2014 Group H. I think it's time FIFA launched a full scale investigation.
+				The friendliest groups are also interesting. Somehow Russia and Belgium both managed to make their way in to the easiest groups of the last four World Cups: 2002 and 2014 Group H. If FIFA doesn't launch a full scale investigation, I'll have to take matters in to my own hands (sounds like the plot of the worst political thriller ever - working title 'Tournament of Deception').
 			</p>
 			<p>
 				 At fourth on the "friendliest list," Group F from this World Cup should be a breeze for Group favorite Argentina. My simulations show the "Blue and Whites" as having the best chance to advance out of the group stage.
