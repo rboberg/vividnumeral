@@ -214,9 +214,13 @@ d3.json('webfiles/through_prob.json',function(data){
 // Deadliest Table
 csvIn = 'webfiles/god_top.csv'
 COLUMNS = [
-{colname:'year',coltext:'Year',coltype:'tdtext',colgroup:'Deadliest Since 2002'},
-{colname:'rd',coltext:'Group',coltype:'tdtext',colgroup:'Deadliest Since 2002'},
-{colname:'pct',coltext:'% of Points',coltype:'tdvalue',colgroup:'Deadliest Since 2002'},
+{colname:'year',coltext:'Year',coltype:'tdtext',colgroup:'Deadliest Groups Since 2002'},
+{colname:'rd',coltext:'Group',coltype:'tdtext',colgroup:'Deadliest Groups Since 2002'},
+{colname:'pct',coltext:'% of Points',coltype:'tdvalue',colgroup:'Deadliest Groups Since 2002'},
+{colname:'team1',coltext:'Highest Ranked on the Left - * Advanced',coltype:'tdtext',colgroup:'Deadliest Groups Since 2002'},
+{colname:'team2',coltext:'',coltype:'tdtext',colgroup:'Deadliest Groups Since 2002'},
+{colname:'team3',coltext:'',coltype:'tdtext',colgroup:'Deadliest Groups Since 2002'},
+{colname:'team4',coltext:'',coltype:'tdtext',colgroup:'Deadliest Groups Since 2002'}
 ]
 tableid = '#god_top'
 d3csvTable(csvIn, COLUMNS, tableid);
@@ -225,9 +229,13 @@ d3csvTable(csvIn, COLUMNS, tableid);
 // Friendliest Table
 csvIn = 'webfiles/god_bottom.csv'
 COLUMNS = [
-{colname:'year',coltext:'Year',coltype:'tdtext',colgroup:'Friendliest Since 2002'},
-{colname:'rd',coltext:'Group',coltype:'tdtext',colgroup:'Friendliest Since 2002'},
-{colname:'pct',coltext:'% of Points',coltype:'tdvalue',colgroup:'Friendliest Since 2002'},
+{colname:'year',coltext:'Year',coltype:'tdtext',colgroup:'Friendliest Groups Since 2002'},
+{colname:'rd',coltext:'Group',coltype:'tdtext',colgroup:'Friendliest Groups Since 2002'},
+{colname:'pct',coltext:'% of Points',coltype:'tdvalue',colgroup:'Friendliest Groups Since 2002'},
+{colname:'team1',coltext:'Highest Ranked on the Left - * Advanced',coltype:'tdtext',colgroup:'Friendliest Groups Since 2002'},
+{colname:'team2',coltext:'',coltype:'tdtext',colgroup:'Friendliest Groups Since 2002'},
+{colname:'team3',coltext:'',coltype:'tdtext',colgroup:'Friendliest Groups Since 2002'},
+{colname:'team4',coltext:'',coltype:'tdtext',colgroup:'Friendliest Groups Since 2002'}
 ]
 tableid = '#god_bottom'
 d3csvTable(csvIn, COLUMNS, tableid);
@@ -244,9 +252,9 @@ function d3csvTable(csvIn, COLUMNS, tableid){
         var table = d3.select(tableid);
 
         // CREATE HEADERS FROM INPUT INFORMATION
-        // MAY BE TWO ROWS OF HEADERS DEPENDING IF ON SOME ARE GROUPED
+        // MAY BE TWO ROWS OF HEADERS DEPENDING IF SOME ARE GROUPED
         var HEAD1 = new Array();
-        var HEAD2 = _.filter(COLUMNS,function(o){return o.colgroup !== null})
+        var HEAD2 = _.filter(COLUMNS,function(o){return o.colgroup !== null & o.coltext !== ''})
         var whichgrp;
         //Group headers if there are any
          _.each(COLUMNS,function(o){
@@ -263,6 +271,7 @@ function d3csvTable(csvIn, COLUMNS, tableid){
             
         })
 
+        
         
         //Create the first header row
         table.append('tr').attr('class','thead')
@@ -283,7 +292,9 @@ function d3csvTable(csvIn, COLUMNS, tableid){
             .enter()
             .append('th')
             .text(function(column){return column.coltext})
-            .attr('class',function(column){return column.coltype});
+            .attr('class',function(column){return column.coltype})
+            .attr('colspan',function(column){return column.colname==='team1'?4:1})
+            .style('text-align','center');
         }
 
         //Create Rows

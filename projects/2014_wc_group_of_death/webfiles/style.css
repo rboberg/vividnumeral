@@ -83,8 +83,9 @@ circle:hover, .group_button:hover, #label_button:hover{
 	font-weight: bold;
 }
 
-#table_div{
+.table_div{
 	position:relative;
 	float:right;
-	margin-left:20px;
+	margin-bottom:20px;
+	margin-top:20px;
 }
