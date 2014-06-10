@@ -9,9 +9,9 @@
 	<META name="GENERATOR" content="MSHTML 10.00.9200.16635">
 
 
-	<TITLE>2014 GROUP OF DEATH</TITLE>   
-	<META name="description" content="How Deadly is Group G and How Screwed is the US?">   	
-	<META name="date_posted" content="1986/12/05">
+	<TITLE>World Cup Showdown: VividNumeral vs FiveThirtyEight</TITLE>   
+	<META name="description" content="A classic battle in the mold of David vs Goliath. If David and Goliath each made quantitative predictions about a soccer tournament. And if Goliath's model was WAY better.  And if Goliath didn't even realize David was competing.">   	
+	<META name="date_posted" content="2014/06/10">
 	<META name="author" content="Ross Boberg">
 	<LINK href="../../style/article.css" rel="stylesheet" type="text/css"/>
 	<LINK href="webfiles/style.css" rel="stylesheet" type="text/css"/>
@@ -23,49 +23,62 @@
 	<DIV id="content">
 
 		<DIV id="page_header">
-			<H1>How Deadly is Group G and How Screwed is the US?</H1>
-			<p><a href="../../">Home</a></p>
+			<H1>World Cup Showdown: VividNumeral vs FiveThirtyEight</H1>
+			<p><a class='author'>by Ross Boberg</a> / <a href="../../">Home</a></p>
 		</DIV>
 
 		<DIV id="main_text">
-			<H2>Kidding?</H2>
-			<p>
-				The question came to me while I was watching Grantland's "Men in Blazers" World Cup Preview {INSERT LINK}. They boldly called for the US to win the World Cup despite being in the "Group of Death" with 2 of the top 3 teams by FIFA rank. Were they kidding?
-			</p>
-			<p>
-				On the one hand, the preview is definitely comedy - they make predictions based on how they feel after eating "World Cup-Cakes." On the other hand, anyone in a blazer seems at least a little serious. Either way, like any high quality journalism, the Men in Blazers got me thinking. How deadly is the US's Group G? How screwed is the US in the group stage?
-			</p>
-			<p>
-				The answers are "very deadly" and "less screwed than I thought."
-			</p>
+			<h2>David & Goliath</h2>
 
-			<H2>Methodology</H2>
 			<p>
-				My first goal (GOOOAL!) was to figure out the probability that the US gets through the group round. To that I need to predict what is going to happen in the group stage games. I used FIFA's rankings {INSERT LINK} and results from the past three World Cups {INSERT LINK} to build a model of game outcomes as a function of FIFA rank.
+				This article records a classic battle in the mold of David vs Goliath. If David and Goliath each made quantitative predictions about a soccer tournament. And if Goliath's model was WAY better.  And if Goliath didn't even realize David was competing.
 			</p>
 
 			<p>
-				I found that point differential varies with the log difference of two teams' FIFA rank. I adjusted the 2002 and 2006 FIFA ranks to make them comparable after FIFA changed scoring methodologies. The adjustments rescale the old ranks and adjust the ranks of less competitive conferences lower. For complete transparency, all the data and number crunching in R are posted to my GitHub page {INSERT LINK}.
+				If the metaphor in the first paragraph confused you, VividNumeral (this website) = David & FiveThirtyEight (a subsidiary of ESPN) = Goliath. VividNumeral (me) posted group stage <a href="../2014_wc_group_of_death">World Cup predictions</a> on June 8th. FiveThirtyEight (Nate Silver) posted complete <a href='http://fivethirtyeight.com/interactives/world-cup/'>World Cup predictions</a> on June 9th. VividNumeral+1 for being early. FiveThirtyEight+100 for pretty much everything else.
+			</p>
+			<p>
+				I love Nate Silver's World Cup model. He goes in to a <a href='http://fivethirtyeight.com/features/its-brazils-world-cup-to-lose/'>fuller explanation</a> on FiveThirtyEight.com, but here are the highlights:
+			</p>
+			<ul>
+				<li>Very selective about which matches it counts</li>
+				<li>Splits offense and defense ratings</li>
+				<li>Uses individual player's statistics from major club leagues (England, Spain, Germany, Italy, and France) and tournaments</li>
+				<li>Circumstantial variables like home field advantage (<a href='http://www.nfl.com/features/freakonomics/episode-7'>strong in soccer</a>) and travel distance
+			</ul>
+
+			<p>
+				My model uses FIFA ranks and game outcomes from the past three World Cups, relates them to game point differential using kernel regression techniques, and uses those results to run simulations of the World Cup using current FIFA ranks. But FIFA ranks are pretty flawed compared to the <a href='http://www.espnfc.com/blog/name/93/post/1851480/headline'>SPI measure from ESPN</a> that Nate Silver's method uses. In addition to several other flaws (<a href='http://espn.go.com/soccer/worldcup/news/_/id/4504383/faq'>see the end of this article</a>), FIFA ranks particularly miss out on the club statistics that could be a very powerful variable. In short, I'm totally using SPI in 2018.
+			</p>
+
+			<h2>Nate Silver Hates America</h2>
+
+			<p>
+				The <a href='#comp_table'>table below</a> shows the difference in every team's group stage survival probability between FiverThirtyEight and VividNumeral. A high positive number means FiveThirtyEight forecasts a higher probability of advancing.
 			</p>
 
 			<p>
-				I used that model to simulate the first round of the World Cup 10,000 times and calculate the probability that each team makes it out of the group stage.
-			</p>
-
-			<H2>Survival</H2>
-
-			<p>
-				For each team, this scatterplot shows the probability of surviving the first round against the team's FIFA rank points.
-				Argentina(Group F), at the top of the chart, has about an 80% chance of getting through. Australia(B) at the bottom has about a 15% chance.
+				I seriously considered calling this article "Nate Silver Hates America," mostly to entice haters to stumble on my site after seething Google searches and bump up my site visit statistics, but partially because FiveThirtyEight has an 8% lower probability of the US escaping the group stage. In the SPI-based model, Germany massively benefits at the expense of the US and Portugal. In Nate Silver's defense, he hates Iran even more than the US - so he at least falls on the right side of the <a href='http://en.wikipedia.org/wiki/Axis_of_evil'>Axis of Evil</a>.
 			</p>
 			<p>
-				The points are colored by Group and you can highlight each by clicking buttons A through G.
-				Or show all the labels at once using the button on the top right.
+				Compared to my predictions, FiveThirtyEight's favorite teams are France (seriously, SPI might hate America), Brazil (home field advantage), and South Korea (Korea Republic in the table). I have no idea why FiveThirtyEight's model likes South Korea so much, but at least it's not North Korea, right?
 			</p>
-			
 
+			<p>
+				Compared to FiveThirtyEight, my predictions mostly prefer Greece, Algeria, and Switzerland. Not sure there's much to read in to this, other than maybe my model prefers former vassals of the Roman Empire. The love for Algeria (Group H) and Switzerland (E) is just the flip side of FiveThirtyEight's prefernce for South Korea (H) and France (E).
+			</p>
 
-			<DIV ='button_div'>
+			<p>
+				The only forecast from FiveThirtyEight I'm having trouble swallowing is a greater than 99% chance of Brazil getting out of the group stage. I understand that any ref who doesn't want to die is going to rule in favor of Brazil, but in a sport with such low scoring games anything can happen over a three game sample.
+			</p>
+
+			<h2>The Winner?</h2>
+			<p>
+				After the die is cast, I plan on comparing the outcomes of the group stage to our respective predictions using a simple linear regression for each set of probabilities on the actual outcomes and comparing the R^2 & regression coefficient of each model. I fully expect David to end up as a speck on Goliath's shoe. Without Goliath ever noticing.
+			</p>
+
+			<!--
+			<DIV id='button_div'>
 				<DIV id="group_div">
 				</DIV>
 				<DIV id='label_button'>
@@ -74,53 +87,11 @@
 			</DIV>
 			<DIV id="scatter_div">
 			</DIV>
+			-->
 
-			<p>
-				There is a lot of interesting information here. For one, Group G is low on the scatter plot = deadly. Group G teams have worse chances of making it through the group stage than teams with similar FIFA ranks.
-			</p>
-			<p>
-				There are seven teams with lower rankings than the US that have a better chance of getting through. Russia(H) stands 4 spots below the US in FIFA ranks, but has over a 15% better chance of surviving the group stage than the US. 
-			</p>
-			<p>
-				When I heard that the US was in a group with the number 2 & 3 ranked teams, my gut reaction was to guess that they had maybe a 20-25% chance of getting through the Group stage. But they beat out either Germany or Portugal in 44% of my simulations. That surprised me. My knee jerk reaction probably {KAHNEMAN LINK} overestimated the role of skill and understimated the role of luck in determining the outcome. In a sport where goals are hard to come by, luck plays a strong role.
-			</p>
-
-			<p>
-				Featuring 3 fo the top 12 teams, Italy, England, and Uruguay, Group D also looks tough.
-				Argentina has the easiest past to the Round of 16. The most threatening team in their group is Bosnia and Herzegovina (which is apparently one country). Group H's top team is Belgium, the 12th ranked FIFA team.
-			</p>
-
-			
-		
-			<div id='table_div'>
-				<table id="god_top"></table>
-				<table id="god_bottom"></table>
+			<div class='table_div'>
+				<table id="comp_table"></table>
 			</div>
-
-			<h2>One Measure to Rule them All</h2>
-			<p>
-				Calculating what percentage of all teams' FIFA points each group's teams make up puts a single number on how deadly each group is. That percentage also lets you compare the deadliness of the groups in this World Cup to past World Cups.
-			</p>
-			<p>
-				Based on that measure, 2014 Group G is just barely less deadly than Group F in 2002. Barely. Group F accounted for 0.04% more of the FIFA points in 2002 than Group G does in 2014. 
-			</p>
-
-			<p>
-				The outcome of 2002 group F is a positive case study in what can go right for the US. Sweden, the weakest of the strongest 3 in the group by FIFA rankings, tied England in the first game and won the "gimme" game against Nigeria.
-			</p>
-			<p>
-				England's win over Argentina, left them in position to advance with a tie in their final game against Argentina. They tied & advanced. Argentina, who had the same FIFA rank as eventual champion Brazil, went home.
-			</p>
-
-			<p>
-				The friendliest groups are also interesting. Somehow Russian and Belgium both managed to make their way in to the easiest groups of the last four World Cups: 2002 and 2014 Group H. I think it's time FIFA launched a full scale investigation.
-			</p>
-			<p>
-				 At fourth on the "friendliest list," Group F from this World Cup should be a breeze for Group favorite Argentina. My simulations show the "Blue and Whites" as having the best chance to advance out of the group stage.
-			</p>
-
-
-			
 
 		<DIV>
 	</DIV>

@@ -392,9 +392,9 @@ COLUMNS = [
 {colname:'Player',coltext:'Player',coltype:'tdtext',colgroup:null},
 {colname:'Position',coltext:'Position',coltype:'tdtext',colgroup:null},
 {colname:'DraftType',coltext:'Drafted By',coltype:'tdtext',colgroup:null},
-{colname:'DraftPosition',coltext:'Pick#',coltype:'tdvalue',colgroup:null},
-{colname:'PointsOverRep',coltext:'Points Over Replacement',coltype:'tdvalue',colgroup:null},
-{colname:'MeanResidual',coltext:'Pick Success',coltype:'tdbar',colgroup:null}
+{colname:'DraftPosition',coltext:'Pick#',coltype:'tdvalue',colgroup:'Advance Probability'},
+{colname:'PointsOverRep',coltext:'Points Over Replacement',coltype:'tdvalue',colgroup:'Advance Probability'},
+{colname:'MeanResidual',coltext:'Pick Success',coltype:'tdbar',colgroup:'Advance Probability'}
 ]
 tableid = '#besttable'
 domain = [0,180]

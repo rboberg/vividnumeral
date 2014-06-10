@@ -14,6 +14,10 @@
 	padding-bottom:2px;
 }
 
+#button_div{
+	margin-top:20px;
+
+}
 
 #label_button {
 	position:relative;
@@ -54,6 +58,9 @@
 	font-family: sans-serif;
 }
 
+#scatter_div {
+	margin-bottom: 20px;
+}
 
 .point_label{
 	font-size: 0.9em;
@@ -83,8 +90,21 @@ circle:hover, .group_button:hover, #label_button:hover{
 	font-weight: bold;
 }
 
-#table_div{
-	position:relative;
-	float:right;
-	margin-left:20px;
+.table_div{
+	position: relative;
+	margin: 0px auto;
+	margin-bottom:20px;
+	margin-top:20px;
+}
+
+.posbar {
+  fill: rgb(0,120,240);
+}
+
+.negbar {
+  fill: red;
+}
+
+.thead .tdbar {
+	text-align: 'center';
 }

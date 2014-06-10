@@ -1,7 +1,4 @@
 /*
-TO DO
-** EXPANDED DEADLIEST / FRIENDLIEST TABLES TO SHOW TEAMS
-*/
 
 //function to set highlighted group
 function setHL(grp){
@@ -34,7 +31,7 @@ global_visibility = 'hidden'
 global_higrp = 'none'
 
 //Set up axes
-var x = d3.scale.log().range([0, width]),
+var x = d3.scale.linear().range([0, width]),
 y = d3.scale.linear().range([height,0]);
 
 var svg = d3.select("#scatter_div").append("svg")
@@ -84,10 +81,12 @@ d3.selectAll('#label_button')
 var scatter = svg.append("g").attr('transform','translate('+margins.left+','+margins.top+')');
 
 //set up axis variables and labels
-var axisVar = [{ugly:'power',pretty:'FIFA Points (log scale)'},{ugly:'prob',pretty:'Probability of Surviving Group Stage'}]
+var axisVar = [{ugly:'prob_vn',pretty:'Vivid Numeral Probability'},{ugly:'prob_538',pretty:'FiveThirtyEight Probability'}]
 
 
-d3.json('webfiles/through_prob.json',function(data){
+d3.json('webfiles/vn_vs_538.json',function(data){
+
+
 	var tempAr = [];
 	for(var i = 0; i<data.length;i++){tempAr.push(-12)}
 	var yShift = _.object(_.pluck(data,"team"),tempAr)
@@ -96,39 +95,62 @@ d3.json('webfiles/through_prob.json',function(data){
 	for(var i = 0; i<data.length;i++){tempAr.push(0)}
 	var xShift = _.object(_.pluck(data,"team"),tempAr)
 	// Manually shift some labels
-	xShift['Mexico'] = 5
-	yShift['Mexico'] = 20
-	xShift['Ghana'] = 15
-	yShift['Ghana'] = 22
-	yShift['Uruguay'] = 22
-	yShift['Italy'] = 22
-	yShift['United States'] = 22
-	xShift['Japan'] = 40
-	yShift['Japan'] = 5
-	yShift['Colombia'] = 20
-	yShift['Greece'] = 20
-	xShift['Bosnia and Herzegovina'] = -100
-	xShift['Algeria'] = -60
-	yShift['Algeria'] = 5
-	xShift['Portugal'] = 110
-	yShift['Portugal'] = 15
-	xShift['Honduras'] = 70
-	yShift['Honduras'] = 15
-	xShift['Ecuador'] = 70
-	yShift['Ecuador'] = 10
-	xShift['England'] = 80
-	yShift['England'] = 20
-	xShift['Australia'] = 15
-	yShift['Australia'] = 23
-	xShift['Korea Republic'] = 65
-	yShift['Korea Republic'] = 20
+	xShift['Argentina'] = 0
+	yShift['Argentina'] = 20
 
-	xrg = d3.extent(_.pluck(data,axisVar[0].ugly));
-	yrg = d3.extent(_.pluck(data,axisVar[1].ugly));
+	xShift['Spain'] = 30
+	yShift['Spain'] = 10
 
-	x.domain([xrg[0]*0.95,xrg[1]*1.05]);
+	xShift['Belgium'] = -40
+	yShift['Belgium'] = 5
+
+	xShift['Uruguay'] = 45
+	yShift['Uruguay'] = 5
+
+	xShift['Russia'] = 35
+	yShift['Russia'] = 10
+
+	xShift['Bosnia and Herzegovina'] = 90
+	yShift['Bosnia and Herzegovina'] = 5
+
+	xShift['Cote d`Ivoire'] = -55
+	yShift['Cote d`Ivoire'] = 10
+
+	xShift['Switzerland'] = 50
+	yShift['Switzerland'] = 5
+
+	xShift['Netherlands'] = -30
+	
+	xShift['Mexico'] = 35
+	yShift['Mexico'] = 5
+
+	xShift['Croatia'] = 5
+	yShift['Croatia'] = 20
+
+	xShift['United States'] = -25
+
+	xShift['Costa Rica'] = -25
+
+	xShift['Greece'] = 35
+	yShift['Greece'] = 5
+
+	xShift['Ghana'] = -35
+	yShift['Ghana'] = 0
+
+	yShift['Japan'] = 18
+
+	yShift['Cameroon'] = 25
+
+	yShift['Iran'] = 25
+	
+
+	x.domain([0,1]);
 	y.domain([0,1]);
-	//y.domain([yrg[0]*0.95,yrg[1]*1.05]);
+
+	//Create (0,0) (1,1) line
+	scatter.append('line')
+	.attr({'x1':x(0),'y1':y(0),'x2':x(1),'y2':y(1)})
+	.style({'stroke':'lightgrey','visibility':'visible'})
 
 	// Create Points
 	scatter.selectAll('circle')
@@ -159,7 +181,7 @@ d3.json('webfiles/through_prob.json',function(data){
 	.append('text')
 	.attr('class',function(d) {return d.group + " point_label"})
 	.attr('x', function(d) {
-      return isNaN(d[axisVar[0].ugly]) ? d3.select(this).attr('x') : x(d[axisVar[0].ugly] + xShift[d.team]);
+      return isNaN(d[axisVar[0].ugly]) ? d3.select(this).attr('x') : x(d[axisVar[0].ugly]) + xShift[d.team];
       })
 	.attr('y', function(d) {
       return isNaN(d[axisVar[1].ugly]) ? d3.select(this).attr('y') : y(d[axisVar[1].ugly]) + yShift[d.team];
@@ -169,11 +191,11 @@ d3.json('webfiles/through_prob.json',function(data){
 	.text(function(d){return d.team})
 	//.on('click',function(d){setHL(d.group)});
 
+	
+
 	// Set up axes
 	// x-axis
-	var xTicks = [600,700,800,900,1000,1250,1500];
-	//for(var i = 600; i<=1500;i=i+100){xTicks.push(i)}
-	var xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.format('d')).tickValues(xTicks);
+	var xAxis = d3.svg.axis().scale(x).orient("bottom").tickFormat(d3.format('%'));
 
 	svg.append("g")
 		.attr("class", "x axis")
@@ -205,3 +227,167 @@ d3.json('webfiles/through_prob.json',function(data){
 	//highlight group G to start
 	setHL('G')
 	})
+
+
+*/
+
+
+
+
+csvIn = 'webfiles/vn_vs_538.csv'
+COLUMNS = [
+{colname:'team',coltext:'Team',coltype:'tdtext',colgroup:'Probablity of Surviving Group Stage'},
+{colname:'group',coltext:'Group',coltype:'tdtext',colgroup:'Probablity of Surviving Group Stage'},
+{colname:'prob_vn',coltext:'VN',coltype:'tdvalue',colgroup:'Probablity of Surviving Group Stage'},
+{colname:'prob_538',coltext:'538',coltype:'tdvalue',colgroup:'Probablity of Surviving Group Stage'},
+{colname:'prob_diff',coltext:'538 minus VN',coltype:'tdbar',colgroup:'Probablity of Surviving Group Stage'}
+]
+tableid = '#comp_table'
+domain = [-0.3,0.3]
+barheight = 20
+barpct = 80
+cellwidth = 200
+d3csvTable(csvIn, COLUMNS, tableid, domain, barheight, barpct, cellwidth);
+
+// Highlight Group G
+d3.select(d3.selectAll('#comp_table tr:not(.thead)')[0][1]).style("color","skyblue")
+
+
+// FUNCTION TO MAKE PRETTY TABLES WITH BARS
+function d3csvTable(csvIn, COLUMNS, tableid){
+    d3.csv(csvIn, function(data) {
+
+        //set operative table from ID
+        var table = d3.select(tableid);
+
+        // CREATE HEADERS FROM INPUT INFORMATION
+        // MAY BE TWO ROWS OF HEADERS DEPENDING IF SOME ARE GROUPED
+        var HEAD1 = new Array();
+        var HEAD2 = _.filter(COLUMNS,function(o){return o.colgroup !== null & o.coltext !== ''})
+        var whichgrp;
+        //Group headers if there are any
+         _.each(COLUMNS,function(o){
+            if(o.colgroup === null){
+                HEAD1.push({coltext:o.coltext,coltype:o.coltype,ncol:1,nrow:HEAD2.length >0 ? 2 : 1})
+            } else{
+                whichgrp = _.indexOf(_.pluck(HEAD1,'coltext'),o.colgroup)
+                if(whichgrp===-1){
+                    HEAD1.push({colname:o.colgroup,coltext:o.colgroup,coltype:'thgroup',ncol:1,nrow:1})
+                }else{
+                    HEAD1[whichgrp].ncol ++
+                }
+            }
+            
+        })
+
+        
+        
+        //Create the first header row
+        table.append('tr').attr('class','thead')
+        .selectAll('th')
+        .data(HEAD1)
+        .enter()
+        .append('th')
+        .text(function(column){return column.coltext})
+        .attr('class',function(column){return column.coltype})
+        .attr('colspan',function(column){return column.ncol})
+        .attr('rowspan',function(column){return column.nrow});
+
+        //If any columns were grouped create their individual headers
+        if(HEAD2.length > 0){
+            table.append('tr').attr('class','thead')
+            .selectAll('th')
+            .data(HEAD2)
+            .enter()
+            .append('th')
+            .text(function(column){return column.coltext})
+            .attr('class',function(column){return column.coltype})
+            .style('text-align',function(column){return column.coltype==='tdbar'?'center':''});
+            //.attr('colspan',function(column){return column.colname==='team1'?4:1});
+        }
+
+        //Create Rows
+        var rows = table.selectAll('tr:not(.thead)')
+        .data(data)
+        .enter()
+        .append('tr')
+        .classed('trtotal',function(d){return (d['Position']==='Total')})
+        .classed('trhilite',function(d){
+        	//debugger;
+        	return (d.rd =="G") & (d.year == '2014')
+        });
+
+        //Create Cells
+        var cells = rows.selectAll('td')
+        .data(function(row){
+            return _.map(COLUMNS,function(column){
+                return {column:column.colname,cvalue:row[column.colname],ctype:column.coltype};
+            });
+        })
+        .enter()
+        .append('td')
+        .attr('class',function(d){
+            //Set Cell class (tdvalue, tdtext, tdbar)
+            return d.ctype;
+        });
+
+        //format tdtext
+        rows.selectAll('.tdtext')
+        .text(function(d){return d.cvalue})
+
+        //format tdvalue
+        rows.selectAll('.tdvalue')
+        .text(function(d){
+        	var toprint = (Math.round(d.cvalue*100))
+        	return toprint.toFixed(0) + '%'
+        })
+
+
+        //Add rects to .tdbar cells
+        var maxpos = domain[1]  ;
+        var minneg = domain[0] ;
+        var barcenter = barpct*-1*minneg/(maxpos - minneg)
+
+        var x1 = d3.scale.linear()
+        .domain([0, Math.max(maxpos,-1*minneg)])
+        .range([0, Math.max(maxpos,-1*minneg)/(maxpos-minneg)*barpct + '%']);
+
+        var svg = rows.selectAll('.tdbar')
+        .append('svg')
+        .attr('width',cellwidth)
+        .attr('height',barheight);
+        
+        var g = svg
+        .append('g')
+        .classed('chart',true);
+
+        var bar = g
+        .append('rect')
+        .attr('width',function(d){return x1(Math.abs(d.cvalue));})
+        .attr('height',barheight)
+        .attr("x",function(d){
+            return d.cvalue < 0?(barcenter - parseFloat(x1(Math.abs(d.cvalue)))) + "%":barcenter + "%"
+        })
+        .attr('class',function(d){return d.cvalue < 0?'negbar':'posbar'});
+
+        //Add label text to tdbar
+        var text = g
+        .append('text')
+        .attr('x','100%')
+        .attr('y',barheight/2)
+        .attr('dy','0.3em')
+        .attr('transform','translate(0)')
+        .attr('text-anchor','end')
+        .text(function(d){
+        	var toprint = (Math.round(d.cvalue*100))
+        	return toprint.toFixed(0) + '%'
+        });
+
+
+    })   
+}
+
+
+
+
+
