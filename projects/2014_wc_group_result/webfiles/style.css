@@ -5,6 +5,13 @@
 	padding:0px;
 }
 
+#team_div {
+	position:relative;
+	float:right;
+	margin:0px;
+	padding:0px;
+}
+
 #intro{
 	padding-top: 12px;
 	padding-bottom: 0px;
