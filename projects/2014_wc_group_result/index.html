@@ -43,14 +43,24 @@
 
 			<H2>Or is That the Sound a Shrug Makes?</H2>
 
-			<p>Now that I've satisfied my ego, it's time to say outloud what you, my quant savy reader, probably already figured out. The chart that "tells you everything you need to know" tells you almost nothing you need to know.</p>
+			<p>Now that I've satisfied my ego, it's time to say outloud what you, my quant savy reader, probably already figured out. The chart above that I confidently claimed "tells you everything you need to know" actually tells you almost nothing you need to know.</p>
 
-			<p>My average prediction error was indeed smaller than FiveThirtyEight, but with a relevant scale on the chart the difference is imperceptable.</p>
+			<p>My average prediction error was indeed smaller than FiveThirtyEight, but plotted on a relevant scale the difference is totally imperceptable. (I won't feel too bad about my brief chart manipulation at the expense of an ESPN affiliiate, the sports network that brought you <a href='http://www.businessinsider.com/espn-graphic-lebron-choked-2012-6'>this</a>)</p>
 
-			
 			<div id="true_bar_div">
 				<img border="0" src="webfiles/wc_group_bar_true.png" alt="All Positions" width="304" height="320">
 			</div>
+
+			<p>The chart on the left uses a more informative scale and introduces a third bar that shows the average error for a prediction that gave equal weights to each team.</p>
+			<p>I measured the error of a forecast as the absolute value of the outcome (1 if the team advanced, 0 if they didn't) minus the forecasted probability of advancing. If I said a team had a 75% chance of advancing and they did advance, the error was 25%. If they did not advance the error was 75%.</p>
+
+			<p>A completely ignorant forecast that gave a 50% chance to each team, would have an average error of 50% by definition. A perfect forecaster would have 0% error. At 41.625% and 41.614% respectively, FiveThirtyEight's and my forecasts were closer to ignorant than perfect. That randomness makes the World Cup fun.</p>
+
+			<p>I haven't run the statistical significance tests, but my common sense significance test tells me loudly that a difference of .011% in our forecasts is completely irrelevant. If I had lowered the probability of a successful team's advancement by 0.35%, an insignificant amount, that average error would be zero.</p>
+
+			<p>Instead of a loud victory featuring David over Goliath, the true result is more of a shrug with a nod to the power of randomness.</p>
+
+			<H2>Where did we go wrong?</H2>
 
 			<div id="team_div">
 				<img border="0" src="webfiles/group_stage_outcome.png" alt="All Positions" width="300" height="900">

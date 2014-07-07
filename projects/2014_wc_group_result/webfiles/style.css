@@ -1,4 +1,4 @@
-#false_bar_div {
+#false_bar_div, #true_bar_div {
 	position:relative;
 	float:left;
 	margin:0px;
