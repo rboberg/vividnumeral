@@ -9,8 +9,8 @@
 	<META name="GENERATOR" content="MSHTML 10.00.9200.16635">
 
 
-	<TITLE>A RESOUNDING VICTORY</TITLE>   
-	<META name="description" content="Enter a description, this is what will show up on the homepage">   	
+	<TITLE>World Cup Postmortem</TITLE>   
+	<META name="description" content="The group stage is over and the results are in: VividNumeral's forecasts beat FiveThirtyEight's. But I suggest you read more before trolling Nate Silver's Twitter account.">   	
 	<META name="date_posted" content="1986/12/05">
 	<META name="author" content="Ross Boberg">
 	<LINK href="../../style/article.css" rel="stylesheet" type="text/css"/>
@@ -23,8 +23,8 @@
 	<DIV id="content">
 
 		<DIV id="page_header">
-			<H1>PAGE HEADER</H1>
-			<p><a href="../../">Home</a></p>
+			<H1>World Cup Postmortem</H1>
+			<p><a class='author'>by Ross Boberg</a> / <a href="../../">Home</a></p>
 		</DIV>
 
 		<DIV id="main_text">
@@ -43,9 +43,9 @@
 
 			<H2>Or is that the sound a shrug makes?</H2>
 
-			<p>Now that I've satisfied my ego, it's time to say outloud what you, my quant savy reader, probably already figured out. The chart I confidently claimed "tells you everything you need to know" actually tells you almost nothing you need to know.</p>
+			<p>Now that I've satisfied my ego, it's time to say outloud what my quant savy reader probably already figured out. The chart I confidently claimed "tells you everything you need to know" actually tells you almost nothing you need to know.</p>
 
-			<p>My average prediction error was indeed smaller than FiveThirtyEight, but plotted on a relevant scale the difference is totally imperceptable. (I'll try not to feel too bad about my brief chart manipulation at the expense of an ESPN subsidiary, the sports network that brought you <a href='http://www.businessinsider.com/espn-graphic-lebron-choked-2012-6'>this</a>)</p>
+			<p>My average prediction error was indeed smaller than FiveThirtyEight, but plotted on a relevant scale the difference is totally imperceptable. (I'll try not to feel too bad about my brief chart manipulation at the expense of an ESPN affiliate, the sports network that brought you <a href='http://www.businessinsider.com/espn-graphic-lebron-choked-2012-6'>this</a>)</p>
 
 			<div id="true_bar_div">
 				<img border="0" src="webfiles/wc_group_bar_true.png" alt="All Positions" width="304" height="320">
@@ -54,11 +54,11 @@
 			<p>The chart on the left uses a more informative scale and introduces a third bar that shows the average error for a naive prediction that gives equal weights to each team.</p>
 			<p>I measured the error of a forecast as the absolute value of the outcome (100% if the team advanced, 0% if they didn't) minus the forecasted probability of advancing. If I said a team had a 75% chance of advancing and they did advance, the error was 25%. If they did not advance the error was 75%.</p>
 
-			<p>A completely ignorant forecast that gave a 50% chance to each team, would have an average error of 50% by definition. A perfect forecaster would have 0% error. At 41.625% and 41.614% respectively, FiveThirtyEight's and my forecasts were closer to ignorant than perfect. That randomness makes the World Cup fun.</p>
+			<p>A completely ignorant forecast that gave a 50% chance to each team, would have an average error of 50% by definition, like the grey bar in the chart. A perfect forecaster would have 0% error. At 41.625% and 41.614% respectively, FiveThirtyEight's and my forecasts were closer to ignorant than perfect. That randomness makes predictions difficult and the World Cup fun.</p>
 
-			<p>I haven't run the statistical significance tests, but my common sense significance test tells me loudly that a difference of 0.011% in our forecasts is completely irrelevant. If I had lowered the probability of a single successful team's advancement by a meager 0.35% the difference in average error would be zero.</p>
+			<p>I haven't run  statistical significance tests, but my common sense significance test tells me loudly that a difference of 0.011% in our forecasts is completely irrelevant. If I had lowered the probability of a single successful team's advancement by a meager 0.35% the difference in average error would be zero.</p>
 
-			<p>Instead of a loud victory featuring David over Goliath, the true result is more of a shrug with a nod to the power of randomness.</p>
+			<p>Instead of a loud victory featuring David over Goliath, the true result is more of a inconclusive shrug with a stron nod to the power of randomness.</p>
 
 			<div id="team_div">
 				<img border="0" src="webfiles/group_stage_outcome.png" alt="All Positions" width="300" height="900">
@@ -70,14 +70,14 @@
 
 			<p>Bigger mistakes are at the top of the chart and smaller errors at the bottom. Spain, at the very top of the chart, was a huge miss for both forecasters. It's not a surprise that the reigning champs failing to advance was a surprise.</p>
 
-			<p>I discussed why I think FiveThirtyEight's model is better ex-ante (<a href='http://www.vividnumeral.com/content/projects/2014_wc_vn_vs_538/'>third paragraph</a>). That superiority lead their model to generally be more certain about predictions than mine. That means they gave really good teams (Brazil, Argentina, Germany) higher probabilities of advancing and really bad teams (Australia) smaller probabilities. As a result, FiveThirtyEight had the four smallest errors (as indicated by the four red lines at the bottom of the chart).</p>
+			<p>I discussed why I think FiveThirtyEight's model is better ex-ante (<a href='http://www.vividnumeral.com/content/projects/2014_wc_vn_vs_538/'>third paragraph here</a>). That superiority lead their model to generally be more certain about predictions than mine. That means they gave really good teams (Brazil, Argentina, Germany) very high probabilities of advancing and really bad teams (Australia) very low probabilities. Even though the Vividnumeral also got all of those more or less right, the model's higher uncertainty led to more moderate predictions. As a result, FiveThirtyEight had the four smallest errors, as indicated by the four red lines at the bottom of the chart.</p>
 
 			<p>However, FiveThirtyEight was burned by their certainty that Algeria would not advance, assigning the African nation the second lowest probability of success. I was more sanguine about Algeria's chances, giving them a 47% probability to FiveThirtyEight's 19%. If Russia had advanced instead of Algeria, my ever-so-slight victory (0.011%) would have turned in to a pretty substantial defeat (1.68%).</p>
 
-			<p>In fact if most of the close groups had broken differently, my tenuous win turns in to a loss. If Cote d'Ivoire had advanced instead of Greece, I would have lost by 2.5%. Ecuador instead of Switzerland = 2.8% loss. Ghana instead of US = 1.2% loss. Italy, who came with in a lick (<a href='http://www.espnfc.com/fifa-world-cup/story/1909004/luis-suarez-reaction----the-bite-debate'>or a bite</a>) of advancement, actually would have helped me a bit, leading to a 0.9% win.</p> 
+			<p>In fact if most of the close groups had broken differently, the tenuous win turns in to a loss. If Cote d'Ivoire had advanced instead of Greece, I would have lost by 2.5%. Ecuador instead of Switzerland = 2.8% loss. Ghana instead of US = 1.2% loss. Italy, who came with in a lick (<a href='http://www.espnfc.com/fifa-world-cup/story/1909004/luis-suarez-reaction----the-bite-debate'>or a bite</a>) of advancement, actually would have helped me a bit, leading to a 0.9% win.</p> 
 
 			<H2>An ugly win</H2>
-			<p>Those alternative scenarios, a ball bounce away from reality, highlight how difficult it is to judge the process that goes in to these forecasts from a single tournament. I really enjoy telling people that my forecasts were more accurate than Nate Silver's, but my conscious only allows me a couple seconds to bask in that glow before I come clean.</p>
+			<p>Those alternative scenarios, a bounce or two away from reality, highlight how difficult it is to judge the process that goes in to these forecasts from a single tournament. I really enjoy telling people that my forecasts were more accurate than Nate Silver's, but my conscious only allows me a couple seconds to bask in that glow before I come clean.</p>
 			<p>I'm pretty sure FiveThirtyEight's model is better. Like a soccer team that was outshot 5 to 20, but managed to squeak out a win in PKs, I'll take it, but I know I was lucky.</p>
 
 		<DIV>
