@@ -16,3 +16,9 @@
 	padding-top: 12px;
 	padding-bottom: 15px;
 }
+
+.chart_title{
+	font-family:sans-serif;
+	text-align: right;
+	font-weight: bold;
+}
