@@ -107,7 +107,6 @@ function setup_slopegraph(){
 		.domain([max, min])
 		.range([TOP_MARGIN, HEIGHT-BOTTOM_MARGIN])
 
-
 	sg.selectAll('.left_labels')
 		.data(data).enter().append('svg:text')
 			.attr('x', LEFT_MARGIN-35)
@@ -149,7 +148,6 @@ function setup_slopegraph(){
 			.attr('fill', pos_color)
 			.attr('class', function(d,i){return d.position})
 
-	//
 	sg.selectAll('.right_values')
 		.data(data).enter().append('svg:text')
 			.attr('x', WIDTH-RIGHT_MARGIN)
@@ -170,7 +168,6 @@ function setup_slopegraph(){
 		.attr('opacity', .5)
 		.text("ADP")
 
-	//
 	sg.append('svg:text')
 		.attr('x', WIDTH-RIGHT_MARGIN)
 		.attr('y', TOP_MARGIN/2)
