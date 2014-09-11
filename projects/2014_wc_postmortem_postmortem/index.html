@@ -39,9 +39,7 @@
 			<p>
 				I measured the error of a forecast as the absolute value of the outcome (100% if the team advanced, 0% if they didn't) minus the forecasted probability of advancing. If I said a team had a 75% chance of advancing and they did advance, the error was 25%. If they did not advance the error was 75%.
 			</p>
-			<p>
-				An example helps illustrate why that is a bad measure.
-			</p>
+			
 
 			<table id='example_table'>
 				<tr>
@@ -81,17 +79,21 @@
 				</tr>
 			</table>
 			<p>
-				If the truth is that a particular team would advance 90% of the time, the best guess should be 90%. If I guess 90% then my absolute error will be 10% 90% of the time (when the team does win) and 90% 10% of the time (when the team doesn't). The average expected error will be 18%.
+				An example helps illustrate why that is a bad measure. Say that the truth is that a particular team would advance 90% of the time. Then the best guess should be 90%.
+			</p>
+
+			<p>
+				If I guess 90% then my absolute error will be 10% 90% of the time (when the team does win) and 90% 10% of the time (when the team doesn't). The average expected error will be 18%.
 			</p>
 			<p>
-				What if I guessed 100%? Then my error would be 0% 90% of the time (when the team won) and 100% 10% of the time (when the team lost). The average expected error will be 10%.
+				A guess of 100% is wrong, so the expected error shoud be bigger, right? If I guess 100%, then my error would be 0% 90% of the time (when the team won) and 100% 10% of the time (when the team lost). The average expected error will be 10%.
 			</p>
 
 			<p>
 				So I got a better score (lower error) for a worse guess?! That should not happen.
 			</p>
 
-			<h2>Just Not Proper</h2>
+			<h2>Improper Behavior</h2>
 			<p>
 				The mean absolute error did not yield the best score when the probability was guessed correctly.
 			</p>
@@ -109,7 +111,7 @@
 			</div>
 			<br>
 			<p>
-				On the same charts I drew a line for the <a href='http://en.wikipedia.org/wiki/Scoring_rule#Logarithmic_scoring_rule'>log score</a> in red (Actual&#215;ln(Forecast) + (1-Actual)&#215;ln(1-Forecast)), a strictly proper scoring rule. (Nerd note: I exponentiated the log score in the chart so that it takes a value between 0 and 1).
+				On the same charts I drew a line for the <a href='http://en.wikipedia.org/wiki/Scoring_rule#Logarithmic_scoring_rule'>log score</a> in red, a strictly proper scoring rule defined: Actual&#215;ln(Forecast) + (1-Actual)&#215;ln(1-Forecast). (Nerd note: I exponentiated the log score in the chart so that it takes a value between 0 and 1).
 			</p>
 			<p>
 				Notice that the log score peaks in all the right places. A 20% forecast gives the highest expected score if reality is a 20% probability. A 50% forecast gives the highest expected score if reality is a 50% probability. An 80% forecast gives the highest expected score if reality is a 80% probability. That means the rule is proper! Hooray.
@@ -117,11 +119,11 @@
 
 			<h2>Results using the Log Score</h2>
 			<p>
-				If I calculate the log score for each forecast and average for each forecaster, VividNumeral still comes out ahead. The mean log score is -0.59 for VividNumeral, higher than -0.62 for FiveThirtyEight. Those numbers are really hard to interpret, but if I use e<sup>log score</sup> they are 55.2% and 53.7% respectively where a naïve 50% forecast for each would have a score of 50% to give some scale.
+				If I calculate the log score for each forecast and average for each forecaster, VividNumeral still comes out ahead. The mean log score is -0.59 for VividNumeral, higher than -0.62 for FiveThirtyEight. Those numbers are really hard to interpret, but if I use e<sup>log score</sup> they are 55.2% and 53.7% respectively where a naïve 50% forecast for each would have a score of 50% to provide some context.
 			</p>
 
 			<p>
-				My predictions were better, but it's still hard to gauge how much better and the degree to which that would be consistent over time. I hope this post proves I'm open to suggestions of better ways of doing things. If any one has a better way to compare these forecasts, feel free to email me your ideas: <a href='mailto:ross@vividnumeral.com'>ross@vividnumeral.com</a>.
+				My predictions were better, but it's still hard to gauge how much better and the degree to which that would be consistent over time. I hope this post proves I'm open to suggestions of better ways of doing things. If anyone has a better way to compare these forecasts, feel free to email me ideas: <a href='mailto:ross@vividnumeral.com'>ross@vividnumeral.com</a>.
 			</p>
 
 			<p>
