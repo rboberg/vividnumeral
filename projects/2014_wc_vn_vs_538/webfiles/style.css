@@ -1,0 +1,110 @@
+.group_button {
+	position:relative;
+	float:left;
+	border: solid white;
+	/*padding:2px;*/
+	font-family: 'Arial', sans-serif;
+	font-weight: bold;
+	/*color: whitesmoke;*/
+	color: white;
+	text-align: center;
+	border-radius: 5px;
+	font-size:1.15em;
+	padding-top:2px;
+	padding-bottom:2px;
+}
+
+#button_div{
+	margin-top:20px;
+
+}
+
+#label_button {
+	position:relative;
+	float:left;
+	border: solid gainsboro 2px;
+	/*padding:2px;*/
+	font-family: 'Arial', sans-serif;
+	/*color: whitesmoke;*/
+	color: lightsteelblue;
+	background-color: aliceblue;
+	text-align: center;
+	border-radius: 5px;
+	font-size:0.8em;
+	padding:5px;
+}
+
+#label_button.show_label {
+	border-color: darkgray;
+	color: steelblue;
+}
+
+.axis path, .axis line{
+  fill: none;
+  stroke: gainsboro;
+  shape-rendering: crispEdges;
+}
+
+.axis text{
+	fill: gray;
+	font-size: 0.75em;
+}
+
+.axis .label{
+	font-size: 0.85em;
+}
+
+#scatter_div text{
+	font-family: sans-serif;
+}
+
+#scatter_div {
+	margin-bottom: 20px;
+}
+
+.point_label{
+	font-size: 0.9em;
+	text-anchor: middle;
+	fill: rgb(180,20,20);
+}
+
+.group_button.hilite{
+	border-color: black;
+}
+
+
+circle.hilite {
+	stroke: black;
+}
+
+text.hilite {
+	font-weight: bold;
+}
+
+circle:hover, .group_button:hover, #label_button:hover{
+	cursor:pointer;
+}
+
+.trhilite td{
+	color: rgb(0,120,240);
+	font-weight: bold;
+}
+
+.table_div{
+	position: relative;
+	margin: 0px auto;
+	margin-bottom:20px;
+	margin-top:20px;
+}
+
+.posbar {
+  fill: rgb(0,120,240);
+}
+
+.negbar {
+  fill: red;
+}
+
+.thead .tdbar {
+	text-align: 'center';
+}
