@@ -1,15 +1,53 @@
 var charts = [];
 var chartIndices = [];
 var displayedChart = null;
+var firstChart = true;
+var chartsLoaded = false;
+var userIdValid = false;
+var userId = null;
+var position = 0;
 
 function initialize() {
-    d3.csv('webfiles/CHART_SERIES.csv', loadCharts);
+    enableNextButton(false);
+    $("#nextButton").click(nextChart);
+
+    $("#userId").keyup(validateUser);
+
+    $(".ratings").hide();
+    $("input[name='direction']").click(radioClicked);
+    $("input[name='conviction']").click(radioClicked);
+
+    d3.csv("webfiles/CHART_SERIES.csv", loadCharts);
+}
+
+function enableNextButton(enabled) {
+    $("#nextButton").prop("disabled", !enabled);
+}
+
+function validateUser(source) {
+    userIdValid = source.target.value.length == 5 && parseInt(source.target.value) % 7 == 0;
+    enableStart();
+}
+
+function enableStart() {
+    enableNextButton(chartsLoaded && userIdValid);
+}
+
+function isUndefined(v) {
+    return typeof v === "undefined";
+}
+
+function radioClicked(source) {
+    // Set currentChart direction/conviction equal to the radio button's enclosing label
+    displayedChart[source.target.name] = source.target.parentElement.innerText;
+
+    // Enable nextButton if both radio buttons have been clicked
+    $("#nextButton").prop("disabled", isUndefined(displayedChart.direction) || isUndefined(displayedChart.conviction));
 }
 
 function loadCharts(data) {
     var parseDate = d3.time.format("%Y-%m-%d").parse;
 
-    var currentChartId = -1;
     var currentChart = {id: -1};
 
     data.forEach(function (row) {
@@ -22,7 +60,7 @@ function loadCharts(data) {
             charts.push(currentChart);
         }
         currentChart.data.push({
-            // TODO: did we want 'anonymous' dates?
+            // TODO: did we want "anonymous" dates?
             date: parseDate(row.date),
             close: parseFloat(row.value)
         });
@@ -30,37 +68,44 @@ function loadCharts(data) {
 
     randomize();
 
-    // Ready
-    $('#nextButton').click(nextChart);
-    $('#nextButton').show();
+    chartsLoaded = true;
+    enableStart();
 }
 
 function randomize() {
     chartIndices = _.range(charts.length);
 
     // TODO: block randomization
-    // chartIndices = _.shuffle(chartIndices);
+    chartIndices = _.shuffle(chartIndices);
+
+    // TODO: remove in production
+    chartIndices = _.first(chartIndices, 5);
 
     chartIndices.reverse(); // so that we can use pop()
 }
 
-
 function nextChart() {
-    var ratingControls = $('#controls');
-    if (ratingControls[0].hidden) {
-        $('#nextButton').text('Next Chart');
-        ratingControls.show();
+
+    position += 1;
+    $("#main_content").empty();
+    $("#nextButton").prop("disabled", true);
+
+    if (firstChart) {
+        $("#nextButton").text("Next Chart");
+        $(".ratings").show();
+        $("#userId").prop("disabled", true);
+        firstChart = false;
 
     } else {
-        // TODO: record results
-        // TODO: reset controls
+        postResults();
     }
 
-    $('#main_content').empty();
+    $("input[name='direction']").removeAttr("checked");
+    $("input[name='conviction']").removeAttr("checked");
 
     if (chartIndices.length > 0) {
         displayedChart = charts[chartIndices.pop()];
-        $('#chartId').text(displayedChart.id);
+        $("#chartId").text(displayedChart.id);
         drawChart(displayedChart.data);
 
     } else {
@@ -70,9 +115,9 @@ function nextChart() {
 }
 
 function done() {
-    $('#controls').show(false);
+    $(".controls").hide();
     // TODO
-    $('#main_content').text('Done');
+    $("#main_content").text("Done");
 }
 
 function drawChart(data) {
@@ -128,4 +173,16 @@ function drawChart(data) {
         .datum(data)
         .attr("class", "line")
         .attr("d", line);
+}
+
+function postResults() {
+    var result = {
+        time: Date.now(),
+        position: position,
+        user: userId,
+        chart: displayedChart.id,
+        group: displayedChart.group,
+        direction: displayedChart.direction,
+        conviction: displayedChart.conviction
+    }
 }
