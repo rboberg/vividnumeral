@@ -5,13 +5,17 @@ var firstChart = true;
 var chartsLoaded = false;
 var userIdValid = false;
 var userId = null;
-var position = 0;
+var position = 1;
 
 function initialize() {
+
     enableNextButton(false);
     $("#nextButton").click(nextChart);
 
-    $("#userId").keyup(validateUser);
+    var userId = $("#userId");
+    userId.keydown(filterNonNumbers);
+    userId.keyup(validateUser);
+    userId.focus();
 
     $(".ratings").hide();
     $("input[name='direction']").click(radioClicked);
@@ -20,17 +24,44 @@ function initialize() {
     d3.csv("webfiles/CHART_SERIES.csv", loadCharts);
 }
 
+function filterNonNumbers(e) {
+    // Courtesy of http://stackoverflow.com/questions/995183/how-to-allow-only-numeric-0-9-in-html-inputbox-using-jquery
+    // Allow: backspace, delete, tab, escape, enter and .
+    if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
+        // Allow: Ctrl+A
+        (e.keyCode == 65 && e.ctrlKey === true) ||
+        // Allow: home, end, left, right
+        (e.keyCode >= 35 && e.keyCode <= 39)) {
+        // let it happen, don't do anything
+        return;
+    }
+    // Ensure that it is a number and stop the keypress
+    if ((e.shiftKey || (e.keyCode < 48 || e.keyCode > 57)) && (e.keyCode < 96 || e.keyCode > 105)) {
+        e.preventDefault();
+    }
+}
+
 function enableNextButton(enabled) {
     $("#nextButton").prop("disabled", !enabled);
 }
 
 function validateUser(source) {
-    userIdValid = source.target.value.length == 5 && parseInt(source.target.value) % 7 == 0;
+    var fiveDigits = source.target.value.length == 5;
+    userIdValid = fiveDigits && parseInt(source.target.value) % 7 == 0;
+    if (userIdValid) {
+        userId = source.target.value;
+        $("#invalidId").hide();
+
+    } else if (fiveDigits) {
+        $("#invalidId").show();
+    }
     enableStart();
 }
 
 function enableStart() {
-    enableNextButton(chartsLoaded && userIdValid);
+    var enabled = chartsLoaded && userIdValid;
+    enableNextButton(enabled);
+    if (enabled) $("#nextButton").focus();
 }
 
 function isUndefined(v) {
@@ -39,10 +70,12 @@ function isUndefined(v) {
 
 function radioClicked(source) {
     // Set currentChart direction/conviction equal to the radio button's enclosing label
-    displayedChart[source.target.name] = source.target.parentElement.innerText;
+    displayedChart[source.target.name] = source.target.parentElement.textContent.trim();
 
     // Enable nextButton if both radio buttons have been clicked
-    $("#nextButton").prop("disabled", isUndefined(displayedChart.direction) || isUndefined(displayedChart.conviction));
+    var disabled = isUndefined(displayedChart.direction) || isUndefined(displayedChart.conviction);
+    $("#nextButton").prop("disabled", disabled);
+    if (!disabled) $("#nextButton").focus();
 }
 
 function loadCharts(data) {
@@ -85,8 +118,6 @@ function randomize() {
 }
 
 function nextChart() {
-
-    position += 1;
     $("#main_content").empty();
     $("#nextButton").prop("disabled", true);
 
@@ -98,6 +129,7 @@ function nextChart() {
 
     } else {
         postResults();
+        position += 1;
     }
 
     $("input[name='direction']").removeAttr("checked");
@@ -115,15 +147,15 @@ function nextChart() {
 }
 
 function done() {
-    $(".controls").hide();
+    $("#controls").hide();
     // TODO
     $("#main_content").text("Done");
 }
 
 function drawChart(data) {
     var margin = {top: 20, right: 20, bottom: 30, left: 50},
-        width = 600 - margin.left - margin.right,
-        height = 300 - margin.top - margin.bottom;
+        width = 800 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
 
 
     var x = d3.time.scale()
@@ -134,7 +166,8 @@ function drawChart(data) {
 
     var xAxis = d3.svg.axis()
         .scale(x)
-        .orient("bottom");
+        .orient("bottom")
+        .tickFormat(d3.time.format("%b"));
 
     var yAxis = d3.svg.axis()
         .scale(y)
@@ -185,4 +218,6 @@ function postResults() {
         direction: displayedChart.direction,
         conviction: displayedChart.conviction
     }
+
+    $.post("results", result)
 }
