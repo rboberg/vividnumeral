@@ -1,8 +1,12 @@
 var charts = [];
 var chartIndices = [];
+var chartIds = [];
+var futureCharts = [];
+var chartIndicesUnpopped = [];
 var displayedChart = null;
 var firstChart = true;
 var chartsLoaded = false;
+var futureChartsLoaded = false;
 var userIdValid = false;
 var userId = null;
 var position = 1;
@@ -115,6 +119,8 @@ function randomize() {
     chartIndices = _.first(chartIndices, 5);
 
     chartIndices.reverse(); // so that we can use pop()
+    chartIds = _.map(chartIndices, function(i){return charts[i]['id']})
+    chartIndicesUnpopped = chartIndices.slice(0); // to store index order
 }
 
 function nextChart() {
@@ -146,10 +152,15 @@ function nextChart() {
 
 }
 
+
+
 function done() {
     $("#controls").hide();
     // TODO
-    $("#main_content").text("Done");
+    // $("#main_content").text("Done");
+
+    // Display results
+    revealFuture();
 }
 
 function drawChart(data) {
@@ -220,4 +231,110 @@ function postResults() {
     }
 
     $.post("results", result)
+}
+
+
+function revealFuture(){
+    // reset chart indices
+    chartIndices = chartIndicesUnpopped;
+
+    // load future data
+    d3.csv("webfiles/CHART_RESULT_SERIES.csv", loadFutureCharts);
+
+    drawFutureCharts(futureCharts[0]);
+    /*
+    if (chartIndices.length > 0) {
+        displayedChart = charts[chartIndices.pop()];
+        $("#chartId").text(displayedChart.id);
+        drawChart(displayedChart.data);
+
+    } else {
+        done();
+    }
+    */
+}
+
+function loadFutureCharts(data) {
+    var parseDate = d3.time.format("%Y-%m-%d").parse;
+
+    var currentChart = {id: -1};
+
+    var subset = _.filter(data, function(obj){return _.contains(chartIds, obj.groupid)});
+
+    subset.forEach(function (row) {
+        if (row.groupid !== currentChart.id) {
+            currentChart = {
+                id: row.groupid,
+                group: row.group,
+                underlyer: row.underlyer,
+                data: []
+            };
+            futureCharts.push(currentChart);
+        }
+        currentChart.data.push({
+            // TODO: did we want "anonymous" dates?
+            date: parseDate(row.date),
+            close: parseFloat(row.value),
+            type: row.type
+        });
+});
+
+    
+}
+
+
+function drawFutureCharts(data) {
+    var margin = {top: 20, right: 20, bottom: 30, left: 50},
+        width = 800 - margin.left - margin.right,
+        height = 400 - margin.top - margin.bottom;
+
+
+    var x = d3.time.scale()
+        .range([0, width]);
+
+    var y = d3.scale.linear()
+        .range([height, 0]);
+
+    var xAxis = d3.svg.axis()
+        .scale(x)
+        .orient("bottom")
+        .tickFormat(d3.time.format("%b"));
+
+    var yAxis = d3.svg.axis()
+        .scale(y)
+        .orient("left");
+
+    var line = d3.svg.line()
+        .x(function (d) { return x(d.date); })
+        .y(function (d) { return y(d.close); });
+
+    //var svg = d3.select("body").append("svg")
+    var svg = d3.select("#main_content").append("svg")
+        .attr("width", width + margin.left + margin.right)
+        .attr("height", height + margin.top + margin.bottom)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    x.domain(d3.extent(data, function (d) { return d.date; }));
+    y.domain(d3.extent(data, function (d) { return d.close; }));
+
+    svg.append("g")
+        .attr("class", "x axis")
+        .attr("transform", "translate(0," + height + ")")
+        .call(xAxis);
+
+    svg.append("g")
+        .attr("class", "y axis")
+        .call(yAxis)
+        .append("text")
+        .attr("transform", "rotate(-90)")
+        .attr("y", 6)
+        .attr("dy", ".71em")
+        .style("text-anchor", "end")
+        .text("Price ($)");
+
+    svg.append("path")
+        .datum(data)
+        .attr("class", "line")
+        .attr("d", line);
 }
