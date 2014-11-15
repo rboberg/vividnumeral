@@ -3,6 +3,7 @@ var chartIndices = [];
 var chartIds = [];
 var futureCharts = [];
 var chartIndicesUnpopped = [];
+var resultStore = [];
 var displayedChart = null;
 var firstChart = true;
 var chartsLoaded = false;
@@ -230,6 +231,8 @@ function postResults() {
         conviction: displayedChart.conviction
     }
 
+    resultStore.push(result);
+
     $.post("results", result)
 }
 
@@ -240,18 +243,6 @@ function revealFuture(){
 
     // load future data
     d3.csv("webfiles/CHART_RESULT_SERIES.csv", loadFutureCharts);
-
-    drawFutureCharts(futureCharts[0].data);
-    /*
-    if (chartIndices.length > 0) {
-        displayedChart = charts[chartIndices.pop()];
-        $("#chartId").text(displayedChart.id);
-        drawChart(displayedChart.data);
-
-    } else {
-        done();
-    }
-    */
 }
 
 function loadFutureCharts(data) {
@@ -267,6 +258,8 @@ function loadFutureCharts(data) {
                 id: row.groupid,
                 group: row.group,
                 underlyer: row.underlyer,
+                conviction: _.findWhere(resultStore, {chart:row.groupid }).conviction,
+                direction: _.findWhere(resultStore, {chart:row.groupid }).direction,
                 data: []
             };
             futureCharts.push(currentChart);
@@ -279,12 +272,18 @@ function loadFutureCharts(data) {
         });
     });
 
+    futureChartsLoaded = true;
+    for(var i=0;i<futureCharts.length;i++){
+        drawFutureCharts(futureCharts[i]);
+    }
     
 }
 
 
 function drawFutureCharts(data) {
-    var margin = {top: 20, right: 20, bottom: 30, left: 50},
+
+
+    var margin = {top: 50, right: 20, bottom: 30, left: 50},
         width = 800 - margin.left - margin.right,
         height = 400 - margin.top - margin.bottom;
 
@@ -315,8 +314,8 @@ function drawFutureCharts(data) {
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-    x.domain(d3.extent(data, function (d) { return d.date; }));
-    y.domain(d3.extent(data, function (d) { return d.close; }));
+    x.domain(d3.extent(data.data, function (d) { return d.date; }));
+    y.domain(d3.extent(data.data, function (d) { return d.close; }));
 
     svg.append("g")
         .attr("class", "x axis")
@@ -334,7 +333,17 @@ function drawFutureCharts(data) {
         .text("Price ($)");
 
     svg.append("path")
-        .datum(data)
-        .attr("class", "line")
+        .datum(_.filter(data.data, function(obj){return obj.type==='past'}))
+        .attr("class", "line past")
         .attr("d", line);
+
+    svg.append("path")
+        .datum(_.filter(data.data, function(obj){return obj.type==='future'}))
+        .attr("class", "line future")
+        .attr("d", line);
+
+    svg.append('text')
+        .datum(data)
+        .attr({"x":"30", "y":"-5", "fill":"black"})
+        .text(function(d){return d.underlyer + ": " + d.direction + " " + d.conviction})
 }
