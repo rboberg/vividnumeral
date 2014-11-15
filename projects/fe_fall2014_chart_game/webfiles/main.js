@@ -241,7 +241,7 @@ function revealFuture(){
     // load future data
     d3.csv("webfiles/CHART_RESULT_SERIES.csv", loadFutureCharts);
 
-    drawFutureCharts(futureCharts[0]);
+    drawFutureCharts(futureCharts[0].data);
     /*
     if (chartIndices.length > 0) {
         displayedChart = charts[chartIndices.pop()];
@@ -277,7 +277,7 @@ function loadFutureCharts(data) {
             close: parseFloat(row.value),
             type: row.type
         });
-});
+    });
 
     
 }
