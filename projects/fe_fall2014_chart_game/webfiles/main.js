@@ -2,7 +2,6 @@ var charts = [];
 var chartIndices = [];
 var chartIds = [];
 var futureCharts = [];
-var chartIndicesUnpopped = [];
 var resultStore = [];
 var displayedChart = null;
 var firstChart = true;
@@ -121,7 +120,6 @@ function randomize() {
 
     chartIndices.reverse(); // so that we can use pop()
     chartIds = _.map(chartIndices, function(i){return charts[i]['id']})
-    chartIndicesUnpopped = chartIndices.slice(0); // to store index order
 }
 
 function nextChart() {
@@ -238,10 +236,8 @@ function postResults() {
 
 
 function revealFuture(){
-    // reset chart indices
-    chartIndices = chartIndicesUnpopped;
 
-    // load future data
+    // load future data & charts
     d3.csv("webfiles/CHART_RESULT_SERIES.csv", loadFutureCharts);
 }
 
@@ -265,7 +261,6 @@ function loadFutureCharts(data) {
             futureCharts.push(currentChart);
         }
         currentChart.data.push({
-            // TODO: did we want "anonymous" dates?
             date: parseDate(row.date),
             close: parseFloat(row.value),
             type: row.type
