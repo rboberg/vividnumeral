@@ -1,0 +1,3222 @@
+[
+	{
+		"age" : 18,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 17,
+		"YesPct" : 0.89
+	},
+	{
+		"age" : 18,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 19,
+		"YesPct" : 1
+	},
+	{
+		"age" : 18,
+		"variable" : "use_reddit",
+		"No" : 35,
+		"Yes" : 4,
+		"YesPct" : 0.1
+	},
+	{
+		"age" : 18,
+		"variable" : "use_social_networking",
+		"No" : 4,
+		"Yes" : 36,
+		"YesPct" : 0.9
+	},
+	{
+		"age" : 18,
+		"variable" : "use_twitter",
+		"No" : 23,
+		"Yes" : 17,
+		"YesPct" : 0.42
+	},
+	{
+		"age" : 18,
+		"variable" : "used_dating_site",
+		"No" : 37,
+		"Yes" : 3,
+		"YesPct" : 0.08
+	},
+	{
+		"age" : 19,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 10,
+		"YesPct" : 0.77
+	},
+	{
+		"age" : 19,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 13,
+		"YesPct" : 1
+	},
+	{
+		"age" : 19,
+		"variable" : "use_reddit",
+		"No" : 23,
+		"Yes" : 6,
+		"YesPct" : 0.21
+	},
+	{
+		"age" : 19,
+		"variable" : "use_social_networking",
+		"No" : 3,
+		"Yes" : 26,
+		"YesPct" : 0.9
+	},
+	{
+		"age" : 19,
+		"variable" : "use_twitter",
+		"No" : 13,
+		"Yes" : 16,
+		"YesPct" : 0.55
+	},
+	{
+		"age" : 19,
+		"variable" : "used_dating_site",
+		"No" : 28,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 20,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 12,
+		"YesPct" : 0.8
+	},
+	{
+		"age" : 20,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 15,
+		"YesPct" : 1
+	},
+	{
+		"age" : 20,
+		"variable" : "use_reddit",
+		"No" : 30,
+		"Yes" : 5,
+		"YesPct" : 0.14
+	},
+	{
+		"age" : 20,
+		"variable" : "use_social_networking",
+		"No" : 3,
+		"Yes" : 34,
+		"YesPct" : 0.92
+	},
+	{
+		"age" : 20,
+		"variable" : "use_twitter",
+		"No" : 27,
+		"Yes" : 10,
+		"YesPct" : 0.27
+	},
+	{
+		"age" : 20,
+		"variable" : "used_dating_site",
+		"No" : 34,
+		"Yes" : 3,
+		"YesPct" : 0.08
+	},
+	{
+		"age" : 21,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 10,
+		"YesPct" : 0.77
+	},
+	{
+		"age" : 21,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 13,
+		"YesPct" : 1
+	},
+	{
+		"age" : 21,
+		"variable" : "use_reddit",
+		"No" : 25,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 21,
+		"variable" : "use_social_networking",
+		"No" : 2,
+		"Yes" : 25,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 21,
+		"variable" : "use_twitter",
+		"No" : 20,
+		"Yes" : 7,
+		"YesPct" : 0.26
+	},
+	{
+		"age" : 21,
+		"variable" : "used_dating_site",
+		"No" : 25,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 22,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 26,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 22,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 26,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 22,
+		"variable" : "use_reddit",
+		"No" : 31,
+		"Yes" : 4,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 22,
+		"variable" : "use_social_networking",
+		"No" : 2,
+		"Yes" : 33,
+		"YesPct" : 0.94
+	},
+	{
+		"age" : 22,
+		"variable" : "use_twitter",
+		"No" : 20,
+		"Yes" : 15,
+		"YesPct" : 0.43
+	},
+	{
+		"age" : 22,
+		"variable" : "used_dating_site",
+		"No" : 32,
+		"Yes" : 2,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 23,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 15,
+		"YesPct" : 0.94
+	},
+	{
+		"age" : 23,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 16,
+		"YesPct" : 1
+	},
+	{
+		"age" : 23,
+		"variable" : "use_reddit",
+		"No" : 28,
+		"Yes" : 4,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 23,
+		"variable" : "use_social_networking",
+		"No" : 3,
+		"Yes" : 32,
+		"YesPct" : 0.91
+	},
+	{
+		"age" : 23,
+		"variable" : "use_twitter",
+		"No" : 23,
+		"Yes" : 12,
+		"YesPct" : 0.34
+	},
+	{
+		"age" : 23,
+		"variable" : "used_dating_site",
+		"No" : 32,
+		"Yes" : 3,
+		"YesPct" : 0.09
+	},
+	{
+		"age" : 24,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 21,
+		"YesPct" : 0.95
+	},
+	{
+		"age" : 24,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 21,
+		"YesPct" : 0.95
+	},
+	{
+		"age" : 24,
+		"variable" : "use_reddit",
+		"No" : 36,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 24,
+		"variable" : "use_social_networking",
+		"No" : 2,
+		"Yes" : 35,
+		"YesPct" : 0.95
+	},
+	{
+		"age" : 24,
+		"variable" : "use_twitter",
+		"No" : 27,
+		"Yes" : 10,
+		"YesPct" : 0.27
+	},
+	{
+		"age" : 24,
+		"variable" : "used_dating_site",
+		"No" : 32,
+		"Yes" : 5,
+		"YesPct" : 0.14
+	},
+	{
+		"age" : 25,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 13,
+		"YesPct" : 0.81
+	},
+	{
+		"age" : 25,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 13,
+		"YesPct" : 0.81
+	},
+	{
+		"age" : 25,
+		"variable" : "use_reddit",
+		"No" : 24,
+		"Yes" : 3,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 25,
+		"variable" : "use_social_networking",
+		"No" : 5,
+		"Yes" : 22,
+		"YesPct" : 0.81
+	},
+	{
+		"age" : 25,
+		"variable" : "use_twitter",
+		"No" : 18,
+		"Yes" : 9,
+		"YesPct" : 0.33
+	},
+	{
+		"age" : 25,
+		"variable" : "used_dating_site",
+		"No" : 20,
+		"Yes" : 7,
+		"YesPct" : 0.26
+	},
+	{
+		"age" : 26,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 12,
+		"YesPct" : 0.86
+	},
+	{
+		"age" : 26,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 14,
+		"YesPct" : 1
+	},
+	{
+		"age" : 26,
+		"variable" : "use_reddit",
+		"No" : 25,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 26,
+		"variable" : "use_social_networking",
+		"No" : 5,
+		"Yes" : 23,
+		"YesPct" : 0.82
+	},
+	{
+		"age" : 26,
+		"variable" : "use_twitter",
+		"No" : 21,
+		"Yes" : 7,
+		"YesPct" : 0.25
+	},
+	{
+		"age" : 26,
+		"variable" : "used_dating_site",
+		"No" : 25,
+		"Yes" : 3,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 27,
+		"variable" : "use_email",
+		"No" : 5,
+		"Yes" : 20,
+		"YesPct" : 0.8
+	},
+	{
+		"age" : 27,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 24,
+		"YesPct" : 0.96
+	},
+	{
+		"age" : 27,
+		"variable" : "use_reddit",
+		"No" : 31,
+		"Yes" : 7,
+		"YesPct" : 0.18
+	},
+	{
+		"age" : 27,
+		"variable" : "use_social_networking",
+		"No" : 4,
+		"Yes" : 35,
+		"YesPct" : 0.9
+	},
+	{
+		"age" : 27,
+		"variable" : "use_twitter",
+		"No" : 33,
+		"Yes" : 6,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 27,
+		"variable" : "used_dating_site",
+		"No" : 33,
+		"Yes" : 6,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 28,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 12,
+		"YesPct" : 0.86
+	},
+	{
+		"age" : 28,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 13,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 28,
+		"variable" : "use_reddit",
+		"No" : 27,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 28,
+		"variable" : "use_social_networking",
+		"No" : 8,
+		"Yes" : 23,
+		"YesPct" : 0.74
+	},
+	{
+		"age" : 28,
+		"variable" : "use_twitter",
+		"No" : 24,
+		"Yes" : 7,
+		"YesPct" : 0.23
+	},
+	{
+		"age" : 28,
+		"variable" : "used_dating_site",
+		"No" : 29,
+		"Yes" : 2,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 29,
+		"variable" : "use_email",
+		"No" : 0,
+		"Yes" : 15,
+		"YesPct" : 1
+	},
+	{
+		"age" : 29,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 15,
+		"YesPct" : 1
+	},
+	{
+		"age" : 29,
+		"variable" : "use_reddit",
+		"No" : 25,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 29,
+		"variable" : "use_social_networking",
+		"No" : 3,
+		"Yes" : 27,
+		"YesPct" : 0.9
+	},
+	{
+		"age" : 29,
+		"variable" : "use_twitter",
+		"No" : 25,
+		"Yes" : 5,
+		"YesPct" : 0.17
+	},
+	{
+		"age" : 29,
+		"variable" : "used_dating_site",
+		"No" : 24,
+		"Yes" : 6,
+		"YesPct" : 0.2
+	},
+	{
+		"age" : 30,
+		"variable" : "use_email",
+		"No" : 6,
+		"Yes" : 11,
+		"YesPct" : 0.65
+	},
+	{
+		"age" : 30,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 14,
+		"YesPct" : 0.82
+	},
+	{
+		"age" : 30,
+		"variable" : "use_reddit",
+		"No" : 23,
+		"Yes" : 4,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 30,
+		"variable" : "use_social_networking",
+		"No" : 7,
+		"Yes" : 21,
+		"YesPct" : 0.75
+	},
+	{
+		"age" : 30,
+		"variable" : "use_twitter",
+		"No" : 23,
+		"Yes" : 4,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 30,
+		"variable" : "used_dating_site",
+		"No" : 19,
+		"Yes" : 9,
+		"YesPct" : 0.32
+	},
+	{
+		"age" : 31,
+		"variable" : "use_email",
+		"No" : 0,
+		"Yes" : 3,
+		"YesPct" : 1
+	},
+	{
+		"age" : 31,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 3,
+		"YesPct" : 1
+	},
+	{
+		"age" : 31,
+		"variable" : "use_reddit",
+		"No" : 13,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 31,
+		"variable" : "use_social_networking",
+		"No" : 0,
+		"Yes" : 13,
+		"YesPct" : 1
+	},
+	{
+		"age" : 31,
+		"variable" : "use_twitter",
+		"No" : 9,
+		"Yes" : 4,
+		"YesPct" : 0.31
+	},
+	{
+		"age" : 31,
+		"variable" : "used_dating_site",
+		"No" : 12,
+		"Yes" : 1,
+		"YesPct" : 0.08
+	},
+	{
+		"age" : 32,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 17,
+		"YesPct" : 0.89
+	},
+	{
+		"age" : 32,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 19,
+		"YesPct" : 1
+	},
+	{
+		"age" : 32,
+		"variable" : "use_reddit",
+		"No" : 26,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 32,
+		"variable" : "use_social_networking",
+		"No" : 2,
+		"Yes" : 27,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 32,
+		"variable" : "use_twitter",
+		"No" : 25,
+		"Yes" : 4,
+		"YesPct" : 0.14
+	},
+	{
+		"age" : 32,
+		"variable" : "used_dating_site",
+		"No" : 22,
+		"Yes" : 7,
+		"YesPct" : 0.24
+	},
+	{
+		"age" : 33,
+		"variable" : "use_email",
+		"No" : 0,
+		"Yes" : 14,
+		"YesPct" : 1
+	},
+	{
+		"age" : 33,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 14,
+		"YesPct" : 1
+	},
+	{
+		"age" : 33,
+		"variable" : "use_reddit",
+		"No" : 17,
+		"Yes" : 3,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 33,
+		"variable" : "use_social_networking",
+		"No" : 2,
+		"Yes" : 19,
+		"YesPct" : 0.9
+	},
+	{
+		"age" : 33,
+		"variable" : "use_twitter",
+		"No" : 16,
+		"Yes" : 5,
+		"YesPct" : 0.24
+	},
+	{
+		"age" : 33,
+		"variable" : "used_dating_site",
+		"No" : 18,
+		"Yes" : 3,
+		"YesPct" : 0.14
+	},
+	{
+		"age" : 34,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 11,
+		"YesPct" : 0.92
+	},
+	{
+		"age" : 34,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 12,
+		"YesPct" : 1
+	},
+	{
+		"age" : 34,
+		"variable" : "use_reddit",
+		"No" : 21,
+		"Yes" : 2,
+		"YesPct" : 0.09
+	},
+	{
+		"age" : 34,
+		"variable" : "use_social_networking",
+		"No" : 6,
+		"Yes" : 20,
+		"YesPct" : 0.77
+	},
+	{
+		"age" : 34,
+		"variable" : "use_twitter",
+		"No" : 21,
+		"Yes" : 5,
+		"YesPct" : 0.19
+	},
+	{
+		"age" : 34,
+		"variable" : "used_dating_site",
+		"No" : 22,
+		"Yes" : 4,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 35,
+		"variable" : "use_email",
+		"No" : 5,
+		"Yes" : 14,
+		"YesPct" : 0.74
+	},
+	{
+		"age" : 35,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 17,
+		"YesPct" : 0.89
+	},
+	{
+		"age" : 35,
+		"variable" : "use_reddit",
+		"No" : 25,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 35,
+		"variable" : "use_social_networking",
+		"No" : 3,
+		"Yes" : 25,
+		"YesPct" : 0.89
+	},
+	{
+		"age" : 35,
+		"variable" : "use_twitter",
+		"No" : 24,
+		"Yes" : 4,
+		"YesPct" : 0.14
+	},
+	{
+		"age" : 35,
+		"variable" : "used_dating_site",
+		"No" : 25,
+		"Yes" : 3,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 36,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 18,
+		"YesPct" : 0.9
+	},
+	{
+		"age" : 36,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 18,
+		"YesPct" : 0.9
+	},
+	{
+		"age" : 36,
+		"variable" : "use_reddit",
+		"No" : 28,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 36,
+		"variable" : "use_social_networking",
+		"No" : 8,
+		"Yes" : 22,
+		"YesPct" : 0.73
+	},
+	{
+		"age" : 36,
+		"variable" : "use_twitter",
+		"No" : 26,
+		"Yes" : 4,
+		"YesPct" : 0.13
+	},
+	{
+		"age" : 36,
+		"variable" : "used_dating_site",
+		"No" : 25,
+		"Yes" : 5,
+		"YesPct" : 0.17
+	},
+	{
+		"age" : 37,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 8,
+		"YesPct" : 0.8
+	},
+	{
+		"age" : 37,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 8,
+		"YesPct" : 0.8
+	},
+	{
+		"age" : 37,
+		"variable" : "use_reddit",
+		"No" : 24,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 37,
+		"variable" : "use_social_networking",
+		"No" : 8,
+		"Yes" : 16,
+		"YesPct" : 0.67
+	},
+	{
+		"age" : 37,
+		"variable" : "use_twitter",
+		"No" : 21,
+		"Yes" : 3,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 37,
+		"variable" : "used_dating_site",
+		"No" : 19,
+		"Yes" : 4,
+		"YesPct" : 0.17
+	},
+	{
+		"age" : 38,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 17,
+		"YesPct" : 0.85
+	},
+	{
+		"age" : 38,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 19,
+		"YesPct" : 0.95
+	},
+	{
+		"age" : 38,
+		"variable" : "use_reddit",
+		"No" : 28,
+		"Yes" : 3,
+		"YesPct" : 0.1
+	},
+	{
+		"age" : 38,
+		"variable" : "use_social_networking",
+		"No" : 5,
+		"Yes" : 27,
+		"YesPct" : 0.84
+	},
+	{
+		"age" : 38,
+		"variable" : "use_twitter",
+		"No" : 25,
+		"Yes" : 7,
+		"YesPct" : 0.22
+	},
+	{
+		"age" : 38,
+		"variable" : "used_dating_site",
+		"No" : 25,
+		"Yes" : 7,
+		"YesPct" : 0.22
+	},
+	{
+		"age" : 39,
+		"variable" : "use_email",
+		"No" : 0,
+		"Yes" : 9,
+		"YesPct" : 1
+	},
+	{
+		"age" : 39,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 9,
+		"YesPct" : 1
+	},
+	{
+		"age" : 39,
+		"variable" : "use_reddit",
+		"No" : 17,
+		"Yes" : 1,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 39,
+		"variable" : "use_social_networking",
+		"No" : 4,
+		"Yes" : 14,
+		"YesPct" : 0.78
+	},
+	{
+		"age" : 39,
+		"variable" : "use_twitter",
+		"No" : 17,
+		"Yes" : 1,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 39,
+		"variable" : "used_dating_site",
+		"No" : 14,
+		"Yes" : 4,
+		"YesPct" : 0.22
+	},
+	{
+		"age" : 40,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 21,
+		"YesPct" : 0.91
+	},
+	{
+		"age" : 40,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 22,
+		"YesPct" : 0.96
+	},
+	{
+		"age" : 40,
+		"variable" : "use_reddit",
+		"No" : 37,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 40,
+		"variable" : "use_social_networking",
+		"No" : 4,
+		"Yes" : 35,
+		"YesPct" : 0.9
+	},
+	{
+		"age" : 40,
+		"variable" : "use_twitter",
+		"No" : 33,
+		"Yes" : 6,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 40,
+		"variable" : "used_dating_site",
+		"No" : 33,
+		"Yes" : 6,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 41,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 6,
+		"YesPct" : 0.86
+	},
+	{
+		"age" : 41,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 7,
+		"YesPct" : 1
+	},
+	{
+		"age" : 41,
+		"variable" : "use_reddit",
+		"No" : 20,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 41,
+		"variable" : "use_social_networking",
+		"No" : 6,
+		"Yes" : 16,
+		"YesPct" : 0.73
+	},
+	{
+		"age" : 41,
+		"variable" : "use_twitter",
+		"No" : 18,
+		"Yes" : 4,
+		"YesPct" : 0.18
+	},
+	{
+		"age" : 41,
+		"variable" : "used_dating_site",
+		"No" : 15,
+		"Yes" : 7,
+		"YesPct" : 0.32
+	},
+	{
+		"age" : 42,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 17,
+		"YesPct" : 0.89
+	},
+	{
+		"age" : 42,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 19,
+		"YesPct" : 1
+	},
+	{
+		"age" : 42,
+		"variable" : "use_reddit",
+		"No" : 28,
+		"Yes" : 4,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 42,
+		"variable" : "use_social_networking",
+		"No" : 8,
+		"Yes" : 27,
+		"YesPct" : 0.77
+	},
+	{
+		"age" : 42,
+		"variable" : "use_twitter",
+		"No" : 30,
+		"Yes" : 5,
+		"YesPct" : 0.14
+	},
+	{
+		"age" : 42,
+		"variable" : "used_dating_site",
+		"No" : 31,
+		"Yes" : 4,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 43,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 11,
+		"YesPct" : 0.92
+	},
+	{
+		"age" : 43,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 10,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 43,
+		"variable" : "use_reddit",
+		"No" : 22,
+		"Yes" : 1,
+		"YesPct" : 0.04
+	},
+	{
+		"age" : 43,
+		"variable" : "use_social_networking",
+		"No" : 5,
+		"Yes" : 18,
+		"YesPct" : 0.78
+	},
+	{
+		"age" : 43,
+		"variable" : "use_twitter",
+		"No" : 17,
+		"Yes" : 6,
+		"YesPct" : 0.26
+	},
+	{
+		"age" : 43,
+		"variable" : "used_dating_site",
+		"No" : 22,
+		"Yes" : 1,
+		"YesPct" : 0.04
+	},
+	{
+		"age" : 44,
+		"variable" : "use_email",
+		"No" : 0,
+		"Yes" : 15,
+		"YesPct" : 1
+	},
+	{
+		"age" : 44,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 14,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 44,
+		"variable" : "use_reddit",
+		"No" : 22,
+		"Yes" : 3,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 44,
+		"variable" : "use_social_networking",
+		"No" : 6,
+		"Yes" : 20,
+		"YesPct" : 0.77
+	},
+	{
+		"age" : 44,
+		"variable" : "use_twitter",
+		"No" : 22,
+		"Yes" : 4,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 44,
+		"variable" : "used_dating_site",
+		"No" : 23,
+		"Yes" : 3,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 45,
+		"variable" : "use_email",
+		"No" : 4,
+		"Yes" : 19,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 45,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 21,
+		"YesPct" : 0.91
+	},
+	{
+		"age" : 45,
+		"variable" : "use_reddit",
+		"No" : 34,
+		"Yes" : 2,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 45,
+		"variable" : "use_social_networking",
+		"No" : 9,
+		"Yes" : 29,
+		"YesPct" : 0.76
+	},
+	{
+		"age" : 45,
+		"variable" : "use_twitter",
+		"No" : 32,
+		"Yes" : 6,
+		"YesPct" : 0.16
+	},
+	{
+		"age" : 45,
+		"variable" : "used_dating_site",
+		"No" : 33,
+		"Yes" : 3,
+		"YesPct" : 0.08
+	},
+	{
+		"age" : 46,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 10,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 46,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 12,
+		"YesPct" : 1
+	},
+	{
+		"age" : 46,
+		"variable" : "use_reddit",
+		"No" : 17,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 46,
+		"variable" : "use_social_networking",
+		"No" : 6,
+		"Yes" : 12,
+		"YesPct" : 0.67
+	},
+	{
+		"age" : 46,
+		"variable" : "use_twitter",
+		"No" : 14,
+		"Yes" : 4,
+		"YesPct" : 0.22
+	},
+	{
+		"age" : 46,
+		"variable" : "used_dating_site",
+		"No" : 15,
+		"Yes" : 3,
+		"YesPct" : 0.17
+	},
+	{
+		"age" : 47,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 13,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 47,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 13,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 47,
+		"variable" : "use_reddit",
+		"No" : 31,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 47,
+		"variable" : "use_social_networking",
+		"No" : 9,
+		"Yes" : 21,
+		"YesPct" : 0.7
+	},
+	{
+		"age" : 47,
+		"variable" : "use_twitter",
+		"No" : 26,
+		"Yes" : 5,
+		"YesPct" : 0.16
+	},
+	{
+		"age" : 47,
+		"variable" : "used_dating_site",
+		"No" : 26,
+		"Yes" : 5,
+		"YesPct" : 0.16
+	},
+	{
+		"age" : 48,
+		"variable" : "use_email",
+		"No" : 7,
+		"Yes" : 12,
+		"YesPct" : 0.63
+	},
+	{
+		"age" : 48,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 17,
+		"YesPct" : 0.89
+	},
+	{
+		"age" : 48,
+		"variable" : "use_reddit",
+		"No" : 25,
+		"Yes" : 3,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 48,
+		"variable" : "use_social_networking",
+		"No" : 14,
+		"Yes" : 16,
+		"YesPct" : 0.53
+	},
+	{
+		"age" : 48,
+		"variable" : "use_twitter",
+		"No" : 24,
+		"Yes" : 6,
+		"YesPct" : 0.2
+	},
+	{
+		"age" : 48,
+		"variable" : "used_dating_site",
+		"No" : 28,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 49,
+		"variable" : "use_email",
+		"No" : 4,
+		"Yes" : 15,
+		"YesPct" : 0.79
+	},
+	{
+		"age" : 49,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 16,
+		"YesPct" : 0.84
+	},
+	{
+		"age" : 49,
+		"variable" : "use_reddit",
+		"No" : 28,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 49,
+		"variable" : "use_social_networking",
+		"No" : 8,
+		"Yes" : 23,
+		"YesPct" : 0.74
+	},
+	{
+		"age" : 49,
+		"variable" : "use_twitter",
+		"No" : 28,
+		"Yes" : 3,
+		"YesPct" : 0.1
+	},
+	{
+		"age" : 49,
+		"variable" : "used_dating_site",
+		"No" : 29,
+		"Yes" : 2,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 50,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 25,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 50,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 25,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 50,
+		"variable" : "use_reddit",
+		"No" : 44,
+		"Yes" : 3,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 50,
+		"variable" : "use_social_networking",
+		"No" : 15,
+		"Yes" : 35,
+		"YesPct" : 0.7
+	},
+	{
+		"age" : 50,
+		"variable" : "use_twitter",
+		"No" : 42,
+		"Yes" : 8,
+		"YesPct" : 0.16
+	},
+	{
+		"age" : 50,
+		"variable" : "used_dating_site",
+		"No" : 44,
+		"Yes" : 6,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 51,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 10,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 51,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 11,
+		"YesPct" : 0.92
+	},
+	{
+		"age" : 51,
+		"variable" : "use_reddit",
+		"No" : 22,
+		"Yes" : 1,
+		"YesPct" : 0.04
+	},
+	{
+		"age" : 51,
+		"variable" : "use_social_networking",
+		"No" : 12,
+		"Yes" : 11,
+		"YesPct" : 0.48
+	},
+	{
+		"age" : 51,
+		"variable" : "use_twitter",
+		"No" : 20,
+		"Yes" : 3,
+		"YesPct" : 0.13
+	},
+	{
+		"age" : 51,
+		"variable" : "used_dating_site",
+		"No" : 20,
+		"Yes" : 2,
+		"YesPct" : 0.09
+	},
+	{
+		"age" : 52,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 20,
+		"YesPct" : 0.91
+	},
+	{
+		"age" : 52,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 20,
+		"YesPct" : 0.91
+	},
+	{
+		"age" : 52,
+		"variable" : "use_reddit",
+		"No" : 45,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 52,
+		"variable" : "use_social_networking",
+		"No" : 17,
+		"Yes" : 28,
+		"YesPct" : 0.62
+	},
+	{
+		"age" : 52,
+		"variable" : "use_twitter",
+		"No" : 40,
+		"Yes" : 5,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 52,
+		"variable" : "used_dating_site",
+		"No" : 39,
+		"Yes" : 6,
+		"YesPct" : 0.13
+	},
+	{
+		"age" : 53,
+		"variable" : "use_email",
+		"No" : 4,
+		"Yes" : 18,
+		"YesPct" : 0.82
+	},
+	{
+		"age" : 53,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 19,
+		"YesPct" : 0.86
+	},
+	{
+		"age" : 53,
+		"variable" : "use_reddit",
+		"No" : 31,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 53,
+		"variable" : "use_social_networking",
+		"No" : 9,
+		"Yes" : 23,
+		"YesPct" : 0.72
+	},
+	{
+		"age" : 53,
+		"variable" : "use_twitter",
+		"No" : 27,
+		"Yes" : 5,
+		"YesPct" : 0.16
+	},
+	{
+		"age" : 53,
+		"variable" : "used_dating_site",
+		"No" : 32,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 54,
+		"variable" : "use_email",
+		"No" : 7,
+		"Yes" : 17,
+		"YesPct" : 0.71
+	},
+	{
+		"age" : 54,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 21,
+		"YesPct" : 0.91
+	},
+	{
+		"age" : 54,
+		"variable" : "use_reddit",
+		"No" : 48,
+		"Yes" : 2,
+		"YesPct" : 0.04
+	},
+	{
+		"age" : 54,
+		"variable" : "use_social_networking",
+		"No" : 21,
+		"Yes" : 30,
+		"YesPct" : 0.59
+	},
+	{
+		"age" : 54,
+		"variable" : "use_twitter",
+		"No" : 42,
+		"Yes" : 9,
+		"YesPct" : 0.18
+	},
+	{
+		"age" : 54,
+		"variable" : "used_dating_site",
+		"No" : 50,
+		"Yes" : 1,
+		"YesPct" : 0.02
+	},
+	{
+		"age" : 55,
+		"variable" : "use_email",
+		"No" : 4,
+		"Yes" : 12,
+		"YesPct" : 0.75
+	},
+	{
+		"age" : 55,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 14,
+		"YesPct" : 0.88
+	},
+	{
+		"age" : 55,
+		"variable" : "use_reddit",
+		"No" : 27,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 55,
+		"variable" : "use_social_networking",
+		"No" : 6,
+		"Yes" : 22,
+		"YesPct" : 0.79
+	},
+	{
+		"age" : 55,
+		"variable" : "use_twitter",
+		"No" : 28,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 55,
+		"variable" : "used_dating_site",
+		"No" : 25,
+		"Yes" : 3,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 56,
+		"variable" : "use_email",
+		"No" : 6,
+		"Yes" : 15,
+		"YesPct" : 0.71
+	},
+	{
+		"age" : 56,
+		"variable" : "use_internet",
+		"No" : 6,
+		"Yes" : 15,
+		"YesPct" : 0.71
+	},
+	{
+		"age" : 56,
+		"variable" : "use_reddit",
+		"No" : 28,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 56,
+		"variable" : "use_social_networking",
+		"No" : 9,
+		"Yes" : 21,
+		"YesPct" : 0.7
+	},
+	{
+		"age" : 56,
+		"variable" : "use_twitter",
+		"No" : 23,
+		"Yes" : 7,
+		"YesPct" : 0.23
+	},
+	{
+		"age" : 56,
+		"variable" : "used_dating_site",
+		"No" : 28,
+		"Yes" : 3,
+		"YesPct" : 0.1
+	},
+	{
+		"age" : 57,
+		"variable" : "use_email",
+		"No" : 5,
+		"Yes" : 15,
+		"YesPct" : 0.75
+	},
+	{
+		"age" : 57,
+		"variable" : "use_internet",
+		"No" : 4,
+		"Yes" : 16,
+		"YesPct" : 0.8
+	},
+	{
+		"age" : 57,
+		"variable" : "use_reddit",
+		"No" : 35,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 57,
+		"variable" : "use_social_networking",
+		"No" : 17,
+		"Yes" : 18,
+		"YesPct" : 0.51
+	},
+	{
+		"age" : 57,
+		"variable" : "use_twitter",
+		"No" : 31,
+		"Yes" : 4,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 57,
+		"variable" : "used_dating_site",
+		"No" : 32,
+		"Yes" : 3,
+		"YesPct" : 0.09
+	},
+	{
+		"age" : 58,
+		"variable" : "use_email",
+		"No" : 6,
+		"Yes" : 17,
+		"YesPct" : 0.74
+	},
+	{
+		"age" : 58,
+		"variable" : "use_internet",
+		"No" : 5,
+		"Yes" : 18,
+		"YesPct" : 0.78
+	},
+	{
+		"age" : 58,
+		"variable" : "use_reddit",
+		"No" : 40,
+		"Yes" : 1,
+		"YesPct" : 0.02
+	},
+	{
+		"age" : 58,
+		"variable" : "use_social_networking",
+		"No" : 20,
+		"Yes" : 25,
+		"YesPct" : 0.56
+	},
+	{
+		"age" : 58,
+		"variable" : "use_twitter",
+		"No" : 39,
+		"Yes" : 6,
+		"YesPct" : 0.13
+	},
+	{
+		"age" : 58,
+		"variable" : "used_dating_site",
+		"No" : 40,
+		"Yes" : 5,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 59,
+		"variable" : "use_email",
+		"No" : 7,
+		"Yes" : 13,
+		"YesPct" : 0.65
+	},
+	{
+		"age" : 59,
+		"variable" : "use_internet",
+		"No" : 5,
+		"Yes" : 14,
+		"YesPct" : 0.74
+	},
+	{
+		"age" : 59,
+		"variable" : "use_reddit",
+		"No" : 27,
+		"Yes" : 1,
+		"YesPct" : 0.04
+	},
+	{
+		"age" : 59,
+		"variable" : "use_social_networking",
+		"No" : 12,
+		"Yes" : 17,
+		"YesPct" : 0.59
+	},
+	{
+		"age" : 59,
+		"variable" : "use_twitter",
+		"No" : 27,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 59,
+		"variable" : "used_dating_site",
+		"No" : 28,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 60,
+		"variable" : "use_email",
+		"No" : 5,
+		"Yes" : 21,
+		"YesPct" : 0.81
+	},
+	{
+		"age" : 60,
+		"variable" : "use_internet",
+		"No" : 6,
+		"Yes" : 20,
+		"YesPct" : 0.77
+	},
+	{
+		"age" : 60,
+		"variable" : "use_reddit",
+		"No" : 45,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 60,
+		"variable" : "use_social_networking",
+		"No" : 22,
+		"Yes" : 28,
+		"YesPct" : 0.56
+	},
+	{
+		"age" : 60,
+		"variable" : "use_twitter",
+		"No" : 41,
+		"Yes" : 9,
+		"YesPct" : 0.18
+	},
+	{
+		"age" : 60,
+		"variable" : "used_dating_site",
+		"No" : 41,
+		"Yes" : 9,
+		"YesPct" : 0.18
+	},
+	{
+		"age" : 61,
+		"variable" : "use_email",
+		"No" : 5,
+		"Yes" : 16,
+		"YesPct" : 0.76
+	},
+	{
+		"age" : 61,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 18,
+		"YesPct" : 0.86
+	},
+	{
+		"age" : 61,
+		"variable" : "use_reddit",
+		"No" : 31,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 61,
+		"variable" : "use_social_networking",
+		"No" : 11,
+		"Yes" : 22,
+		"YesPct" : 0.67
+	},
+	{
+		"age" : 61,
+		"variable" : "use_twitter",
+		"No" : 28,
+		"Yes" : 5,
+		"YesPct" : 0.15
+	},
+	{
+		"age" : 61,
+		"variable" : "used_dating_site",
+		"No" : 29,
+		"Yes" : 4,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 62,
+		"variable" : "use_email",
+		"No" : 8,
+		"Yes" : 12,
+		"YesPct" : 0.6
+	},
+	{
+		"age" : 62,
+		"variable" : "use_internet",
+		"No" : 6,
+		"Yes" : 14,
+		"YesPct" : 0.7
+	},
+	{
+		"age" : 62,
+		"variable" : "use_reddit",
+		"No" : 35,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 62,
+		"variable" : "use_social_networking",
+		"No" : 12,
+		"Yes" : 25,
+		"YesPct" : 0.68
+	},
+	{
+		"age" : 62,
+		"variable" : "use_twitter",
+		"No" : 34,
+		"Yes" : 3,
+		"YesPct" : 0.08
+	},
+	{
+		"age" : 62,
+		"variable" : "used_dating_site",
+		"No" : 36,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 63,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 13,
+		"YesPct" : 0.93
+	},
+	{
+		"age" : 63,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 14,
+		"YesPct" : 1
+	},
+	{
+		"age" : 63,
+		"variable" : "use_reddit",
+		"No" : 26,
+		"Yes" : 2,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 63,
+		"variable" : "use_social_networking",
+		"No" : 10,
+		"Yes" : 18,
+		"YesPct" : 0.64
+	},
+	{
+		"age" : 63,
+		"variable" : "use_twitter",
+		"No" : 25,
+		"Yes" : 3,
+		"YesPct" : 0.11
+	},
+	{
+		"age" : 63,
+		"variable" : "used_dating_site",
+		"No" : 24,
+		"Yes" : 4,
+		"YesPct" : 0.14
+	},
+	{
+		"age" : 64,
+		"variable" : "use_email",
+		"No" : 6,
+		"Yes" : 16,
+		"YesPct" : 0.73
+	},
+	{
+		"age" : 64,
+		"variable" : "use_internet",
+		"No" : 5,
+		"Yes" : 17,
+		"YesPct" : 0.77
+	},
+	{
+		"age" : 64,
+		"variable" : "use_reddit",
+		"No" : 34,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 64,
+		"variable" : "use_social_networking",
+		"No" : 16,
+		"Yes" : 19,
+		"YesPct" : 0.54
+	},
+	{
+		"age" : 64,
+		"variable" : "use_twitter",
+		"No" : 34,
+		"Yes" : 2,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 64,
+		"variable" : "used_dating_site",
+		"No" : 34,
+		"Yes" : 2,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 65,
+		"variable" : "use_email",
+		"No" : 8,
+		"Yes" : 16,
+		"YesPct" : 0.67
+	},
+	{
+		"age" : 65,
+		"variable" : "use_internet",
+		"No" : 5,
+		"Yes" : 18,
+		"YesPct" : 0.78
+	},
+	{
+		"age" : 65,
+		"variable" : "use_reddit",
+		"No" : 35,
+		"Yes" : 2,
+		"YesPct" : 0.05
+	},
+	{
+		"age" : 65,
+		"variable" : "use_social_networking",
+		"No" : 17,
+		"Yes" : 20,
+		"YesPct" : 0.54
+	},
+	{
+		"age" : 65,
+		"variable" : "use_twitter",
+		"No" : 35,
+		"Yes" : 2,
+		"YesPct" : 0.05
+	},
+	{
+		"age" : 65,
+		"variable" : "used_dating_site",
+		"No" : 36,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 66,
+		"variable" : "use_email",
+		"No" : 8,
+		"Yes" : 17,
+		"YesPct" : 0.68
+	},
+	{
+		"age" : 66,
+		"variable" : "use_internet",
+		"No" : 9,
+		"Yes" : 16,
+		"YesPct" : 0.64
+	},
+	{
+		"age" : 66,
+		"variable" : "use_reddit",
+		"No" : 34,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 66,
+		"variable" : "use_social_networking",
+		"No" : 15,
+		"Yes" : 21,
+		"YesPct" : 0.58
+	},
+	{
+		"age" : 66,
+		"variable" : "use_twitter",
+		"No" : 34,
+		"Yes" : 2,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 66,
+		"variable" : "used_dating_site",
+		"No" : 35,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 67,
+		"variable" : "use_email",
+		"No" : 6,
+		"Yes" : 11,
+		"YesPct" : 0.65
+	},
+	{
+		"age" : 67,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 14,
+		"YesPct" : 0.82
+	},
+	{
+		"age" : 67,
+		"variable" : "use_reddit",
+		"No" : 32,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 67,
+		"variable" : "use_social_networking",
+		"No" : 16,
+		"Yes" : 17,
+		"YesPct" : 0.52
+	},
+	{
+		"age" : 67,
+		"variable" : "use_twitter",
+		"No" : 32,
+		"Yes" : 1,
+		"YesPct" : 0.03
+	},
+	{
+		"age" : 67,
+		"variable" : "used_dating_site",
+		"No" : 31,
+		"Yes" : 2,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 68,
+		"variable" : "use_email",
+		"No" : 5,
+		"Yes" : 12,
+		"YesPct" : 0.71
+	},
+	{
+		"age" : 68,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 14,
+		"YesPct" : 0.82
+	},
+	{
+		"age" : 68,
+		"variable" : "use_reddit",
+		"No" : 24,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 68,
+		"variable" : "use_social_networking",
+		"No" : 12,
+		"Yes" : 12,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 68,
+		"variable" : "use_twitter",
+		"No" : 21,
+		"Yes" : 3,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 68,
+		"variable" : "used_dating_site",
+		"No" : 21,
+		"Yes" : 3,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 69,
+		"variable" : "use_email",
+		"No" : 4,
+		"Yes" : 7,
+		"YesPct" : 0.64
+	},
+	{
+		"age" : 69,
+		"variable" : "use_internet",
+		"No" : 4,
+		"Yes" : 7,
+		"YesPct" : 0.64
+	},
+	{
+		"age" : 69,
+		"variable" : "use_reddit",
+		"No" : 13,
+		"Yes" : 1,
+		"YesPct" : 0.07
+	},
+	{
+		"age" : 69,
+		"variable" : "use_social_networking",
+		"No" : 10,
+		"Yes" : 6,
+		"YesPct" : 0.38
+	},
+	{
+		"age" : 69,
+		"variable" : "use_twitter",
+		"No" : 15,
+		"Yes" : 1,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 69,
+		"variable" : "used_dating_site",
+		"No" : 15,
+		"Yes" : 1,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 70,
+		"variable" : "use_email",
+		"No" : 4,
+		"Yes" : 12,
+		"YesPct" : 0.75
+	},
+	{
+		"age" : 70,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 13,
+		"YesPct" : 0.81
+	},
+	{
+		"age" : 70,
+		"variable" : "use_reddit",
+		"No" : 24,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 70,
+		"variable" : "use_social_networking",
+		"No" : 14,
+		"Yes" : 12,
+		"YesPct" : 0.46
+	},
+	{
+		"age" : 70,
+		"variable" : "use_twitter",
+		"No" : 25,
+		"Yes" : 1,
+		"YesPct" : 0.04
+	},
+	{
+		"age" : 70,
+		"variable" : "used_dating_site",
+		"No" : 21,
+		"Yes" : 5,
+		"YesPct" : 0.19
+	},
+	{
+		"age" : 71,
+		"variable" : "use_email",
+		"No" : 5,
+		"Yes" : 11,
+		"YesPct" : 0.69
+	},
+	{
+		"age" : 71,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 13,
+		"YesPct" : 0.81
+	},
+	{
+		"age" : 71,
+		"variable" : "use_reddit",
+		"No" : 17,
+		"Yes" : 1,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 71,
+		"variable" : "use_social_networking",
+		"No" : 11,
+		"Yes" : 8,
+		"YesPct" : 0.42
+	},
+	{
+		"age" : 71,
+		"variable" : "use_twitter",
+		"No" : 18,
+		"Yes" : 1,
+		"YesPct" : 0.05
+	},
+	{
+		"age" : 71,
+		"variable" : "used_dating_site",
+		"No" : 19,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 72,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 5,
+		"YesPct" : 0.62
+	},
+	{
+		"age" : 72,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 5,
+		"YesPct" : 0.62
+	},
+	{
+		"age" : 72,
+		"variable" : "use_reddit",
+		"No" : 9,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 72,
+		"variable" : "use_social_networking",
+		"No" : 3,
+		"Yes" : 9,
+		"YesPct" : 0.75
+	},
+	{
+		"age" : 72,
+		"variable" : "use_twitter",
+		"No" : 12,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 72,
+		"variable" : "used_dating_site",
+		"No" : 11,
+		"Yes" : 1,
+		"YesPct" : 0.08
+	},
+	{
+		"age" : 73,
+		"variable" : "use_email",
+		"No" : 7,
+		"Yes" : 6,
+		"YesPct" : 0.46
+	},
+	{
+		"age" : 73,
+		"variable" : "use_internet",
+		"No" : 6,
+		"Yes" : 7,
+		"YesPct" : 0.54
+	},
+	{
+		"age" : 73,
+		"variable" : "use_reddit",
+		"No" : 16,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 73,
+		"variable" : "use_social_networking",
+		"No" : 9,
+		"Yes" : 8,
+		"YesPct" : 0.47
+	},
+	{
+		"age" : 73,
+		"variable" : "use_twitter",
+		"No" : 16,
+		"Yes" : 1,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 73,
+		"variable" : "used_dating_site",
+		"No" : 16,
+		"Yes" : 1,
+		"YesPct" : 0.06
+	},
+	{
+		"age" : 74,
+		"variable" : "use_email",
+		"No" : 5,
+		"Yes" : 2,
+		"YesPct" : 0.29
+	},
+	{
+		"age" : 74,
+		"variable" : "use_internet",
+		"No" : 4,
+		"Yes" : 3,
+		"YesPct" : 0.43
+	},
+	{
+		"age" : 74,
+		"variable" : "use_reddit",
+		"No" : 10,
+		"Yes" : 1,
+		"YesPct" : 0.09
+	},
+	{
+		"age" : 74,
+		"variable" : "use_social_networking",
+		"No" : 6,
+		"Yes" : 5,
+		"YesPct" : 0.45
+	},
+	{
+		"age" : 74,
+		"variable" : "use_twitter",
+		"No" : 10,
+		"Yes" : 1,
+		"YesPct" : 0.09
+	},
+	{
+		"age" : 74,
+		"variable" : "used_dating_site",
+		"No" : 10,
+		"Yes" : 1,
+		"YesPct" : 0.09
+	},
+	{
+		"age" : 75,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 12,
+		"YesPct" : 0.86
+	},
+	{
+		"age" : 75,
+		"variable" : "use_internet",
+		"No" : 4,
+		"Yes" : 10,
+		"YesPct" : 0.71
+	},
+	{
+		"age" : 75,
+		"variable" : "use_reddit",
+		"No" : 20,
+		"Yes" : 1,
+		"YesPct" : 0.05
+	},
+	{
+		"age" : 75,
+		"variable" : "use_social_networking",
+		"No" : 9,
+		"Yes" : 13,
+		"YesPct" : 0.59
+	},
+	{
+		"age" : 75,
+		"variable" : "use_twitter",
+		"No" : 18,
+		"Yes" : 4,
+		"YesPct" : 0.18
+	},
+	{
+		"age" : 75,
+		"variable" : "used_dating_site",
+		"No" : 21,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 76,
+		"variable" : "use_email",
+		"No" : 6,
+		"Yes" : 3,
+		"YesPct" : 0.33
+	},
+	{
+		"age" : 76,
+		"variable" : "use_internet",
+		"No" : 6,
+		"Yes" : 3,
+		"YesPct" : 0.33
+	},
+	{
+		"age" : 76,
+		"variable" : "use_reddit",
+		"No" : 12,
+		"Yes" : 1,
+		"YesPct" : 0.08
+	},
+	{
+		"age" : 76,
+		"variable" : "use_social_networking",
+		"No" : 9,
+		"Yes" : 4,
+		"YesPct" : 0.31
+	},
+	{
+		"age" : 76,
+		"variable" : "use_twitter",
+		"No" : 13,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 76,
+		"variable" : "used_dating_site",
+		"No" : 13,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 77,
+		"variable" : "use_email",
+		"No" : 6,
+		"Yes" : 6,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 77,
+		"variable" : "use_internet",
+		"No" : 6,
+		"Yes" : 6,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 77,
+		"variable" : "use_reddit",
+		"No" : 11,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 77,
+		"variable" : "use_social_networking",
+		"No" : 6,
+		"Yes" : 5,
+		"YesPct" : 0.45
+	},
+	{
+		"age" : 77,
+		"variable" : "use_twitter",
+		"No" : 11,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 77,
+		"variable" : "used_dating_site",
+		"No" : 11,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 78,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 5,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 78,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 5,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 78,
+		"variable" : "use_reddit",
+		"No" : 12,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 78,
+		"variable" : "use_social_networking",
+		"No" : 7,
+		"Yes" : 5,
+		"YesPct" : 0.42
+	},
+	{
+		"age" : 78,
+		"variable" : "use_twitter",
+		"No" : 12,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 78,
+		"variable" : "used_dating_site",
+		"No" : 11,
+		"Yes" : 1,
+		"YesPct" : 0.08
+	},
+	{
+		"age" : 79,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 4,
+		"YesPct" : 0.57
+	},
+	{
+		"age" : 79,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 4,
+		"YesPct" : 0.57
+	},
+	{
+		"age" : 79,
+		"variable" : "use_reddit",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 79,
+		"variable" : "use_social_networking",
+		"No" : 2,
+		"Yes" : 2,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 79,
+		"variable" : "use_twitter",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 79,
+		"variable" : "used_dating_site",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 80,
+		"variable" : "use_email",
+		"No" : 10,
+		"Yes" : 6,
+		"YesPct" : 0.38
+	},
+	{
+		"age" : 80,
+		"variable" : "use_internet",
+		"No" : 8,
+		"Yes" : 8,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 80,
+		"variable" : "use_reddit",
+		"No" : 9,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 80,
+		"variable" : "use_social_networking",
+		"No" : 6,
+		"Yes" : 4,
+		"YesPct" : 0.4
+	},
+	{
+		"age" : 80,
+		"variable" : "use_twitter",
+		"No" : 10,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 80,
+		"variable" : "used_dating_site",
+		"No" : 9,
+		"Yes" : 1,
+		"YesPct" : 0.1
+	},
+	{
+		"age" : 81,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 5,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 81,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 5,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 81,
+		"variable" : "use_reddit",
+		"No" : 9,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 81,
+		"variable" : "use_social_networking",
+		"No" : 8,
+		"Yes" : 2,
+		"YesPct" : 0.2
+	},
+	{
+		"age" : 81,
+		"variable" : "use_twitter",
+		"No" : 10,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 81,
+		"variable" : "used_dating_site",
+		"No" : 9,
+		"Yes" : 1,
+		"YesPct" : 0.1
+	},
+	{
+		"age" : 82,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 3,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 82,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 3,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 82,
+		"variable" : "use_reddit",
+		"No" : 6,
+		"Yes" : 1,
+		"YesPct" : 0.14
+	},
+	{
+		"age" : 82,
+		"variable" : "use_social_networking",
+		"No" : 6,
+		"Yes" : 1,
+		"YesPct" : 0.14
+	},
+	{
+		"age" : 82,
+		"variable" : "use_twitter",
+		"No" : 7,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 82,
+		"variable" : "used_dating_site",
+		"No" : 7,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 83,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 5,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 83,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 4,
+		"YesPct" : 0.67
+	},
+	{
+		"age" : 83,
+		"variable" : "use_reddit",
+		"No" : 7,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 83,
+		"variable" : "use_social_networking",
+		"No" : 7,
+		"Yes" : 1,
+		"YesPct" : 0.12
+	},
+	{
+		"age" : 83,
+		"variable" : "use_twitter",
+		"No" : 8,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 83,
+		"variable" : "used_dating_site",
+		"No" : 8,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 84,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 1,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 84,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 1,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 84,
+		"variable" : "use_reddit",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 84,
+		"variable" : "use_social_networking",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 84,
+		"variable" : "use_twitter",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 84,
+		"variable" : "used_dating_site",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 85,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 2,
+		"YesPct" : 0.4
+	},
+	{
+		"age" : 85,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 2,
+		"YesPct" : 0.4
+	},
+	{
+		"age" : 85,
+		"variable" : "use_reddit",
+		"No" : 6,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 85,
+		"variable" : "use_social_networking",
+		"No" : 5,
+		"Yes" : 1,
+		"YesPct" : 0.17
+	},
+	{
+		"age" : 85,
+		"variable" : "use_twitter",
+		"No" : 6,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 85,
+		"variable" : "used_dating_site",
+		"No" : 6,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 86,
+		"variable" : "use_email",
+		"No" : 4,
+		"Yes" : 1,
+		"YesPct" : 0.2
+	},
+	{
+		"age" : 86,
+		"variable" : "use_internet",
+		"No" : 5,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 86,
+		"variable" : "use_reddit",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 86,
+		"variable" : "use_social_networking",
+		"No" : 2,
+		"Yes" : 1,
+		"YesPct" : 0.33
+	},
+	{
+		"age" : 86,
+		"variable" : "use_twitter",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 86,
+		"variable" : "used_dating_site",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 87,
+		"variable" : "use_email",
+		"No" : 5,
+		"Yes" : 3,
+		"YesPct" : 0.38
+	},
+	{
+		"age" : 87,
+		"variable" : "use_internet",
+		"No" : 4,
+		"Yes" : 3,
+		"YesPct" : 0.43
+	},
+	{
+		"age" : 87,
+		"variable" : "use_reddit",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 87,
+		"variable" : "use_social_networking",
+		"No" : 3,
+		"Yes" : 1,
+		"YesPct" : 0.25
+	},
+	{
+		"age" : 87,
+		"variable" : "use_twitter",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 87,
+		"variable" : "used_dating_site",
+		"No" : 4,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 88,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 1,
+		"YesPct" : 0.33
+	},
+	{
+		"age" : 88,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 88,
+		"variable" : "use_reddit",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 88,
+		"variable" : "use_social_networking",
+		"No" : 1,
+		"Yes" : 1,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 88,
+		"variable" : "use_twitter",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 88,
+		"variable" : "used_dating_site",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 89,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 89,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 89,
+		"variable" : "use_reddit",
+		"No" : 1,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 89,
+		"variable" : "use_social_networking",
+		"No" : 1,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 89,
+		"variable" : "use_twitter",
+		"No" : 1,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 89,
+		"variable" : "used_dating_site",
+		"No" : 1,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 90,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 1,
+		"YesPct" : 0.33
+	},
+	{
+		"age" : 90,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 1,
+		"YesPct" : 0.33
+	},
+	{
+		"age" : 90,
+		"variable" : "use_reddit",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 90,
+		"variable" : "use_social_networking",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 90,
+		"variable" : "use_twitter",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 90,
+		"variable" : "used_dating_site",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 91,
+		"variable" : "use_email",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 91,
+		"variable" : "use_internet",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 92,
+		"variable" : "use_email",
+		"No" : 1,
+		"Yes" : 2,
+		"YesPct" : 0.67
+	},
+	{
+		"age" : 92,
+		"variable" : "use_internet",
+		"No" : 1,
+		"Yes" : 2,
+		"YesPct" : 0.67
+	},
+	{
+		"age" : 92,
+		"variable" : "use_reddit",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 92,
+		"variable" : "use_social_networking",
+		"No" : 1,
+		"Yes" : 2,
+		"YesPct" : 0.67
+	},
+	{
+		"age" : 92,
+		"variable" : "use_twitter",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 92,
+		"variable" : "used_dating_site",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 94,
+		"variable" : "use_email",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 94,
+		"variable" : "use_internet",
+		"No" : 3,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 97,
+		"variable" : "use_email",
+		"No" : 0,
+		"Yes" : 2,
+		"YesPct" : 1
+	},
+	{
+		"age" : 97,
+		"variable" : "use_internet",
+		"No" : 0,
+		"Yes" : 2,
+		"YesPct" : 1
+	},
+	{
+		"age" : 97,
+		"variable" : "use_reddit",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 97,
+		"variable" : "use_social_networking",
+		"No" : 1,
+		"Yes" : 1,
+		"YesPct" : 0.5
+	},
+	{
+		"age" : 97,
+		"variable" : "use_twitter",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 97,
+		"variable" : "used_dating_site",
+		"No" : 2,
+		"Yes" : 0,
+		"YesPct" : 0
+	},
+	{
+		"age" : 99,
+		"variable" : "use_email",
+		"No" : 7,
+		"Yes" : 23,
+		"YesPct" : 0.77
+	},
+	{
+		"age" : 99,
+		"variable" : "use_internet",
+		"No" : 5,
+		"Yes" : 25,
+		"YesPct" : 0.83
+	},
+	{
+		"age" : 99,
+		"variable" : "use_reddit",
+		"No" : 41,
+		"Yes" : 2,
+		"YesPct" : 0.05
+	},
+	{
+		"age" : 99,
+		"variable" : "use_social_networking",
+		"No" : 19,
+		"Yes" : 30,
+		"YesPct" : 0.61
+	},
+	{
+		"age" : 99,
+		"variable" : "use_twitter",
+		"No" : 41,
+		"Yes" : 8,
+		"YesPct" : 0.16
+	},
+	{
+		"age" : 99,
+		"variable" : "used_dating_site",
+		"No" : 46,
+		"Yes" : 3,
+		"YesPct" : 0.06
+	}
+]

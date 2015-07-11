@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>title</title>
+    <link rel="stylesheet" href="web-files/jquery-ui.min.css">
+    <link rel="stylesheet" href="web-files/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="web-files/jquery-ui.theme.min.css">
+    <link rel="stylesheet" href="web-files/style.css">
+  </head>
+  <body>
+
+    <div id='controls'>
+      Moving Average:
+      <a id='slider-label'>1</a>
+      <div id='slider'></div>
+    </div>
+
+    <div id='chartdiv'>
+    </div>
+
+      <!-- page content -->
+      <script src="web-files/jquery-2.1.4.min.js"  charset="utf-8"></script>
+      <script src="web-files/jquery-ui.min.js"  charset="utf-8"></script>
+      <script src="http://d3js.org/d3.v3.min.js"  charset="utf-8"></script>
+      <script src='http://underscorejs.org/underscore-min.js'></script>
+      <script src="web-files/d3.legend.js"  charset="utf-8"></script>
+      <script>
+        $('#slider').slider({
+          max:20,
+          min:1,
+          slide: function(event, ui) {
+            updatePath(ui.value)
+            $('#slider-label').text(ui.value)
+          }
+        })
+      </script>
+      <script>
+      <!-- D3 SCRIPT GOES HERE -->
+
+      var w = 800, h = 300, pad = 20, left_pad = 80, right_pad = 200;
+      var color = d3.scale.category10();
+      var n_ma = 1;
+
+      var x,y;
+
+      var xvar = 'age';
+      var yvar = 'value';
+
+      var svg = d3.select('#chartdiv')
+        .append('svg')
+        .attr('width', w)
+        .attr('height', h)
+
+      var line = d3.svg.line()
+        //.interpolate("cardinal").tension(0.5)
+        .x(function(d) { return x(d[xvar]); })
+        .y(function(d) { return y(d[yvar]); });
+
+      d3.csv("data/Digital.csv", function(data) {
+        //alert(data[0])
+        data = _.filter(data, function(x){return x.age <= 90})
+
+        color.domain(d3.keys(data[0]).filter(function(key) { return key !== "age"; }));
+
+        var apps = color.domain().map(function(app) {
+          return {
+            name: app,
+            values: data.map(function(d) {
+              return {age: +d.age, value: +d[app]};
+            })
+          };
+        });
+
+        // alert(data[0]['age'])
+
+        x = d3.scale.linear().domain(d3.extent(_.pluck(data,xvar))).range([left_pad, w-pad-right_pad])
+        y = d3.scale.linear()
+          .domain([1,0])
+          .range([pad, h-pad*2])
+
+        // alert(_.pluck(data,yvar))
+
+        var xAxis = d3.svg.axis().scale(x).orient("bottom")
+        var yAxis = d3.svg.axis().scale(y).orient("left")
+        svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate(0, "+(h-1.5*pad)+")")
+          .call(xAxis)
+          .append('text')
+            .attr("y", 20)
+            .attr("x", left_pad)
+            .attr("dy", ".71em")
+            .style('text-anchor','start')
+            .text("Age of Respondent");
+            
+          
+       
+        svg.append("g")
+          .attr("class", "axis")
+          .attr("transform", "translate("+(left_pad-pad)+", 0)")
+          .call(yAxis)
+          .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", -40)
+            .attr("x", -20)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("Percent of Yes/No Respondents Who Use Technology");
+
+
+        var app = svg.selectAll('.app')
+          .data(apps)
+          .enter()
+          .append('g')
+          .attr('class','app')
+
+        app.append('path')
+          .attr('class','line')
+          //.attr('d', function(d){return line(d.values)})
+          .attr('d', function(d){return line(movingAverage(d.values,n_ma))})
+          .attr("data-legend",function(d) { return d.name})
+          .style('stroke', function(d){return color(d.name)})
+
+
+        app.selectAll('circle')
+          .data(function(d){return _.map(d.values, function(obj){
+            newobj = obj
+            newobj['name'] = d.name
+            return newobj
+          }, d)})
+          .enter()
+          .append('circle')
+          .attr('cx', function(d){return x(d[xvar])})
+          .attr('cy', function(d){return y(d[yvar])})
+          .attr('r', 1.5)
+          .style('fill', function(d){return color(d.name)})
+
+        legend = svg.append("g")
+          .attr("class","legend")
+          .attr("transform","translate(" + (w-right_pad).toString() +"," + (h/2 - 30).toString() +")")
+          .style("font-size","12px")
+          .call(d3.legend)
+      });
+
+      function updatePath(n_ma){
+        d3.selectAll('.app').selectAll('.line')
+          .transition(1000)
+          .attr('d', function(d){return line(movingAverage(d.values,n_ma))})
+      }
+
+      function movingAverage(ages_values, n){
+        if (n == 1){return ages_values}
+
+        var ages = _.pluck(ages_values, 'age')
+        var values = _.pluck(ages_values, 'value')
+        var ma, lowi, hii, odd;
+        var ret_ar = []
+
+        var len = values.length
+
+        for (i = 0; i < len; i++){
+          ma = 0
+          odd = (n % 2) == 1
+
+          if(odd){
+            lowi = i - (n - 1) / 2
+            hii = i + (n - 1) / 2
+          } else{
+            lowi = i - n / 2
+            hii = i + n / 2
+          }
+
+          if(lowi < 0){
+            hii = hii - lowi
+            lowi = 0
+          } else if(hii > len){
+            lowi = lowi - (hii - len + 1)
+            hii = len - 1
+          }
+
+          for (j = lowi; j <= hii; j++){
+            if(odd | (j != lowi & j != hii)) {
+              ma += values[j]
+            } else{
+              ma += values[j] * 0.5
+            }
+          }
+
+          ret_ar.push({'age':ages[i], 'value':ma/n})
+        }
+
+        return ret_ar
+      }
+
+      </script>
+
+    
+  </body>
+</html>
