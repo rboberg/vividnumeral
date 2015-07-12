@@ -12,7 +12,7 @@
 
     <div id='controls'>
       Moving Average:
-      <a id='slider-label'>1</a>
+      <a id='slider-label'>10</a>
       <div id='slider'></div>
     </div>
 
@@ -33,6 +33,7 @@
         $('#slider').slider({
           max:20,
           min:1,
+          value:10,
           slide: function(event, ui) {
             updatePath(ui.value)
             $('#slider-label').text(ui.value)
@@ -44,7 +45,7 @@
 
       var w = 800, h = 300, pad = 20, left_pad = 80, right_pad = 200;
       var color = d3.scale.category10();
-      var n_ma = 1;
+      var n_ma = 10;
 
       var x,y;
 
@@ -178,7 +179,7 @@
           if(lowi < 0){
             hii = hii - lowi
             lowi = 0
-          } else if(hii > len){
+          } else if(hii >= len){
             lowi = lowi - (hii - len + 1)
             hii = len - 1
           }
