@@ -28,6 +28,8 @@ agg_dt[,response:=parse]
 
 agg_dt = agg_dt[response %in% c('Yes', 'No')]
 
+ggplot(subset(agg_dt,variable %in% c('use_internet', 'use_email')), aes(x=age,y=count, fill=variable)) + geom_histogram(stat='identity', position='dodge')
+
 agg = dcast(agg_dt, age + variable ~ response, value.var = 'count', fill=0)
 agg$YesPct = agg$Yes / (agg$Yes + agg$No)
 
@@ -37,5 +39,6 @@ write(toJSON(agg, pretty=T), '../data/Digital.json')
 #write(toJSON(agg4json, pretty=T), '../data/Digital.json')
 
 agg4csv = dcast(agg, age~variable, value.var='YesPct', fill=0)
+agg4csv = rename(agg4csv, c('use_email'='Email', 'use_internet'='Internet', 'use_reddit'='Reddit', 'use_social_networking'='SocialNetworking', 'use_twitter'='Twitter', 'used_dating_site'='DatingSite'))
 write.csv(agg4csv, '../data/Digital.csv', row.names=F)
 
