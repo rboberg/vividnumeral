@@ -47,7 +47,14 @@
                     var divDate = document.createElement('div');
                     divDate.id = fileName.split('.')[0] + '_date';
                     divDate.classList.add('lb_date');
-                    divDate.innerHTML = dateInfo.toLocaleString('default', { month: 'short' }) + "<br>" + dateInfo.getDate();
+                    divDate.innerHTML = (
+                        dateInfo.toLocaleString('default', { month: 'short' })
+                        + " "
+                        + dateInfo.getDate()
+                        + "<br>"
+                        + dateInfo.getFullYear()
+                        // + dateInfo.toLocaleString('default', { year: 'short' })
+                    );
 
                     var divInfo = document.createElement('div');
                     divInfo.id = fileName.split('.')[0] + '_info';

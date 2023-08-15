@@ -1,7 +1,7 @@
 vividnumeral
 ============
 
-### Casual Statistics and Armchair Analytics at [VividNumeral.com](http://www.vividnumeral.com)
+### Casual Statistics and Armchair Analytics at [rboberg.github.io/vividnumeral/](https://rboberg.github.io/vividnumeral/)
 
 #### Directory Structure:
 
