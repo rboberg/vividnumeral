@@ -106,14 +106,19 @@
 
 
 <div id="player_values">
-<?php
-$file_name="webfiles/player_value_table.html";
-$file_html = file_get_contents($file_name);
-echo $file_html;
-?> 
+
 </div>
 
-
+<script>
+    fetch('webfiles/player_value_table.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('player_values').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error fetching player values:', error);
+        });
+</script>
 
 </DIV>
 </body>
