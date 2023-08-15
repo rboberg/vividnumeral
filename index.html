@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="favicon.ico" />
     <link href="webfiles/home_style.css" rel="stylesheet" type="text/css"/>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             var fileArray = [
                 'projects/2014_wc_postmortem_postmortem/index.html',
                 'projects/2014_wc_group_result/index.html',
@@ -25,8 +25,10 @@
                 'projects/ff_slopegraph/index.html',
             ];
 
-            fileArray.forEach(function(fileName) {
-                fetch(fileName).then(response => response.text()).then(data => {
+            for (const fileName of fileArray) {
+                await fetch(fileName)
+                .then(response => response.text())
+                .then(data => {
                     var parser = new DOMParser();
                     var doc = parser.parseFromString(data, "text/html");
                     var title = doc.querySelector('title').innerText;
@@ -55,14 +57,14 @@
                     divHead.appendChild(divDate);
                     divHead.appendChild(divInfo);
                     anchor.appendChild(divHead);
-                    //anchor.appendChild(document.createElement('p').textContent = doc.querySelector('meta[name="description"]').content);
+
                     var descriptionParagraph = document.createElement('p');
                     descriptionParagraph.textContent = doc.querySelector('meta[name="description"]').content;
                     anchor.appendChild(descriptionParagraph);
-                    
+
                     document.getElementById('content').appendChild(anchor);
                 });
-            });
+            }
         });
     </script>
 </head>
