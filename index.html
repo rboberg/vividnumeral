@@ -55,7 +55,10 @@
                     divHead.appendChild(divDate);
                     divHead.appendChild(divInfo);
                     anchor.appendChild(divHead);
-                    anchor.appendChild(document.createElement('p').textContent = doc.querySelector('meta[name="description"]').content);
+                    //anchor.appendChild(document.createElement('p').textContent = doc.querySelector('meta[name="description"]').content);
+                    var descriptionParagraph = document.createElement('p');
+                    descriptionParagraph.textContent = doc.querySelector('meta[name="description"]').content;
+                    anchor.appendChild(descriptionParagraph);
                     
                     document.getElementById('content').appendChild(anchor);
                 });
